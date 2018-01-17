@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  web:
+    image: node:latest
+    working_dir: /tournaments-api-ui
+    command: bash -c "npm install && npm start"
+    environment:
+      PORT: 3001
+    ports:
+      - '3001:3001'
+      - '3002:3002'
+    volumes:
+      - .:/tournaments-api-ui
+      - cache-volume:/tournaments-api-ui/node_modules
+
+volumes:
+  cache-volume:
