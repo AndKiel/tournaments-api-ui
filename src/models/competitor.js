@@ -1,9 +1,9 @@
-import { types } from "mobx-state-tree"
+import { types } from 'mobx-state-tree';
 
-const Competitor = types.model("Competitor", {
+const Competitor = types.model('Competitor', {
   id: types.identifier(types.string),
   name: types.string,
-  status: types.enumeration(["enlisted", "confirmed"])
+  status: types.enumeration(['enlisted', 'confirmed'])
 });
 
-export default Competitor
+export default Competitor;

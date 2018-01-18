@@ -1,26 +1,26 @@
 const apiRoutes = {
-  signUpUsers: () => "/users/sign_up",
+  signUpUsers: () => '/users/sign_up',
 
-  oauthToken: () => "/oauth/token",
-  oauthTokenInfo: () => "/oauth/token/info",
-  oauthRevoke: () => "/oauth/revoke",
+  oauthToken: () => '/oauth/token',
+  oauthTokenInfo: () => '/oauth/token/info',
+  oauthRevoke: () => '/oauth/revoke',
 
-  user: () => "/user",
+  user: () => '/user',
 
-  tournaments: () => "/tournaments",
-  enlistedTournaments: () => "/tournaments/enlisted",
+  tournaments: () => '/tournaments',
+  enlistedTournaments: () => '/tournaments/enlisted',
   tournament: id => `/tournaments/${id}`,
   startTournament: id => `/tournaments/${id}/start`,
   endTournament: id => `/tournaments/${id}/end`,
 
-  competitor: () => "/competitor",
+  competitor: () => '/competitor',
   confirmCompetitor: id => `/competitors/${id}/confirm`,
 
-  rounds: () => "/rounds",
+  rounds: () => '/rounds',
   round: id => `/rounds/${id}`,
 
-  players: () => "/players",
+  players: () => '/players',
   player: id => `/players/${id}`
 };
 
-export default apiRoutes
+export default apiRoutes;

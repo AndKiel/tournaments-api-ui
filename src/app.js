@@ -8,12 +8,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigation/>
+        <Navigation />
         <BrowserRouter>
           <Route exact path="/" component={Home} />
         </BrowserRouter>
       </div>
-    )
+    );
   }
 }
 
