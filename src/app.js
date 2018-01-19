@@ -3,9 +3,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 
 import Navigation from './components/navigation';
-import Home from './pages/home';
+import SignInPage from './pages/sign_in_page';
+import SignUpPage from './pages/sign_up_page';
 import ApiClient from './utils/api_client';
 import AppStore from './stores/app_store';
+import routes from './utils/routes';
 
 const apiClient = new ApiClient();
 const appStore = AppStore.create({}, { apiClient });
@@ -14,12 +16,13 @@ class App extends Component {
   render() {
     return (
       <Provider store={appStore}>
-        <div>
-          <Navigation />
-          <BrowserRouter>
-            <Route exact path="/" component={Home} />
-          </BrowserRouter>
-        </div>
+        <BrowserRouter>
+          <div>
+            <Navigation />
+            <Route exact path={routes.signIn()} component={SignInPage} />
+            <Route exact path={routes.signUp()} component={SignUpPage} />
+          </div>
+        </BrowserRouter>
       </Provider>
     );
   }
