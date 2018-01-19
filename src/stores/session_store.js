@@ -9,23 +9,21 @@ const SessionStore = types
     const { apiClient } = getEnv(self);
 
     return {
-      signUp: flow(function* signUp(email, password, password_confirmation) {
-        yield apiClient.post(apiRoutes.signUpUsers(), {
-          email: email,
-          password: password,
-          password_confirmation: password_confirmation
+      async signUp(email, password, password_confirmation) {
+        return await apiClient.post(apiRoutes.signUpUsers(), {
+          data: {
+            user: { email, password, password_confirmation }
+          }
         });
-      }),
+      },
 
-      signIn: flow(function* signIn(email, password) {
-        yield apiClient.requestToken(email, password);
-        self.isSignedIn = true;
-      }),
+      async signIn(email, password) {
+        return await apiClient.requestToken(email, password);
+      },
 
-      signOut: flow(function* signOut() {
-        yield apiClient.revokeToken();
-        self.isSignedIn = false;
-      })
+      async signOut() {
+        return await apiClient.revokeToken();
+      }
     };
   });
 
