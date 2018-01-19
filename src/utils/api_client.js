@@ -5,7 +5,7 @@ import AccessToken from '../models/access_token';
 
 class ApiClient {
   constructor() {
-    this.apiUrl = process.env.REACT_APP_API_URL;
+    this.client = axios.create({ baseURL: process.env.REACT_APP_API_URL });
     this.token = null;
   }
 
@@ -25,14 +25,14 @@ class ApiClient {
   }
 
   async send(opts) {
-    const request = assign({ baseUrl: this.apiURL, authenticate: false }, opts);
+    const request = assign({ authenticate: false }, opts);
 
     if (request.authenticate === true && this.token !== null) {
       request.headers = { Authorization: `Bearer ${this.token.access_token}` };
     }
 
     try {
-      const response = await axios(request);
+      const response = await this.client.request(request);
       return response.data;
     } catch (error) {
       if (
