@@ -12,7 +12,3 @@ services:
       - '3002:3002'
     volumes:
       - .:/tournaments-api-ui
-      - cache-volume:/tournaments-api-ui/node_modules
-
-volumes:
-  cache-volume:
