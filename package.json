@@ -1,7 +1,11 @@
 {
   "name": "tournaments-api-ui",
   "version": "0.1.0",
+  "description": "Front-end for tournament management application.",
   "license": "MIT",
+  "author": {
+    "name": "Andrzej Kiełtyka"
+  },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
