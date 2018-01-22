@@ -27,14 +27,17 @@ class SignUpPage extends Component {
 
   async submitForm() {
     try {
-      const response = await this.props.store.sessionStore.signUp(
+      this.errors = {};
+      await this.props.store.sessionStore.signUp(
         this.email,
         this.password,
         this.password_confirmation
       );
-      // TODO: successful sign up
+      // TODO: success alert
     } catch (error) {
-      // TODO: display errors in form
+      if (error.response && error.response.data && error.response.data.fields) {
+        this.errors = error.response.data.fields;
+      }
     }
   }
 
@@ -50,6 +53,9 @@ class SignUpPage extends Component {
                 label="Email"
                 value={this.email}
                 error={this.errors.email}
+                helperText={
+                  this.errors.email ? this.errors.email.join(', ') : ''
+                }
                 onChange={e => (this.email = e.target.value)}
                 margin="normal"
                 autoFocus
@@ -61,6 +67,9 @@ class SignUpPage extends Component {
                 label="Password"
                 value={this.password}
                 error={this.errors.password}
+                helperText={
+                  this.errors.password ? this.errors.password.join(', ') : ''
+                }
                 onChange={e => (this.password = e.target.value)}
                 type="password"
                 margin="normal"
@@ -72,6 +81,11 @@ class SignUpPage extends Component {
                 label="Password confirmation"
                 value={this.password_confirmation}
                 error={this.errors.password_confirmation}
+                helperText={
+                  this.errors.password_confirmation
+                    ? this.errors.password_confirmation.join(', ')
+                    : ''
+                }
                 onChange={e => (this.password_confirmation = e.target.value)}
                 type="password"
                 margin="normal"
