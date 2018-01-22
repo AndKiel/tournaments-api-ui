@@ -9,12 +9,8 @@ const SessionStore = types
     const { apiClient } = getEnv(self);
 
     return {
-      async signUp(email, password, password_confirmation) {
-        return await apiClient.post(apiRoutes.signUpUsers(), {
-          data: {
-            user: { email, password, password_confirmation }
-          }
-        });
+      async signUp(data) {
+        return await apiClient.post(apiRoutes.signUpUsers(), { data: data });
       },
 
       async signIn(email, password) {

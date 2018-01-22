@@ -15,20 +15,21 @@ import {
 @inject('store')
 @observer
 class SignUpPage extends Component {
-  @observable email = '';
-  @observable password = '';
-  @observable password_confirmation = '';
+  @observable
+  formData = {
+    user: {
+      email: '',
+      password: '',
+      password_confirmation: ''
+    }
+  };
   @observable errors = {};
 
   @autobind
   async submitForm() {
     try {
       this.errors = {};
-      await this.props.store.sessionStore.signUp(
-        this.email,
-        this.password,
-        this.password_confirmation
-      );
+      await this.props.store.sessionStore.signUp(this.formData);
       this.props.store.uiStore.setAlert(
         'success',
         'Account was created successfully.'
@@ -50,12 +51,12 @@ class SignUpPage extends Component {
               <TextField
                 id="email"
                 label="Email"
-                value={this.email}
+                value={this.formData.user.email}
                 error={this.errors.email}
                 helperText={
                   this.errors.email ? this.errors.email.join(', ') : ''
                 }
-                onChange={e => (this.email = e.target.value)}
+                onChange={e => (this.formData.user.email = e.target.value)}
                 margin="normal"
                 autoFocus
                 required
@@ -64,12 +65,12 @@ class SignUpPage extends Component {
               <TextField
                 id="password"
                 label="Password"
-                value={this.password}
+                value={this.formData.user.password}
                 error={this.errors.password}
                 helperText={
                   this.errors.password ? this.errors.password.join(', ') : ''
                 }
-                onChange={e => (this.password = e.target.value)}
+                onChange={e => (this.formData.user.password = e.target.value)}
                 type="password"
                 margin="normal"
                 required
@@ -78,14 +79,16 @@ class SignUpPage extends Component {
               <TextField
                 id="password_confirmation"
                 label="Password confirmation"
-                value={this.password_confirmation}
+                value={this.formData.user.password_confirmation}
                 error={this.errors.password_confirmation}
                 helperText={
                   this.errors.password_confirmation
                     ? this.errors.password_confirmation.join(', ')
                     : ''
                 }
-                onChange={e => (this.password_confirmation = e.target.value)}
+                onChange={e =>
+                  (this.formData.user.password_confirmation = e.target.value)
+                }
                 type="password"
                 margin="normal"
                 required
