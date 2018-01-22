@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { extendObservable } from 'mobx';
+import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
+import autobind from 'autobind-decorator';
 import {
   Button,
   Card,
@@ -11,20 +12,15 @@ import {
   Typography
 } from 'material-ui';
 
+@inject('store')
+@observer
 class SignUpPage extends Component {
-  constructor(props) {
-    super(props);
+  @observable email = '';
+  @observable password = '';
+  @observable password_confirmation = '';
+  @observable errors = {};
 
-    extendObservable(this, {
-      email: '',
-      password: '',
-      password_confirmation: '',
-      errors: {}
-    });
-
-    this.submitForm = this.submitForm.bind(this);
-  }
-
+  @autobind
   async submitForm() {
     try {
       this.errors = {};
@@ -112,4 +108,4 @@ class SignUpPage extends Component {
   }
 }
 
-export default inject('store')(observer(SignUpPage));
+export default SignUpPage;
