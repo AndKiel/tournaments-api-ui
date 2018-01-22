@@ -2,19 +2,19 @@ import { types } from 'mobx-state-tree';
 
 const UIStore = types
   .model('UIStore', {
-    alert_text: types.optional(types.string, ''),
-    alert_type: types.optional(types.string, '')
+    alertText: types.optional(types.string, ''),
+    alertType: types.optional(types.string, '')
   })
   .actions(self => {
     return {
       closeAlert() {
-        self.alert_type = '';
-        self.alert_text = '';
+        self.alertType = '';
+        self.alertText = '';
       },
 
       setAlert(type, text) {
-        self.alert_type = type;
-        self.alert_text = text;
+        self.alertType = type;
+        self.alertText = text;
         setTimeout(() => self.closeAlert(), 5000);
       }
     };
