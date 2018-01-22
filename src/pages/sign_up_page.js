@@ -33,7 +33,10 @@ class SignUpPage extends Component {
         this.password,
         this.password_confirmation
       );
-      // TODO: success alert
+      this.props.store.uiStore.setAlert(
+        'success',
+        'Account was created successfully.'
+      );
     } catch (error) {
       if (error.response && error.response.data && error.response.data.fields) {
         this.errors = error.response.data.fields;

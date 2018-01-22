@@ -1,4 +1,4 @@
-import { types, getEnv, flow } from 'mobx-state-tree';
+import { types, getEnv } from 'mobx-state-tree';
 import apiRoutes from '../utils/api_routes';
 
 const SessionStore = types
