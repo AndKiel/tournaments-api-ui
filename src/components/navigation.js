@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { AppBar, Button, Toolbar, Typography } from 'material-ui';
 import { Link } from 'react-router-dom';
 import routes from '../utils/routes';
+import styles from './navigation.scss';
 
 class Navigation extends Component {
   render() {
     return (
-      <AppBar position="static">
+      <AppBar position="static" className={styles.navbar}>
         <Toolbar>
           <Typography type="title" color="inherit" style={{ flex: 1 }}>
             Tournaments
