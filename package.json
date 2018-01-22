@@ -8,14 +8,6 @@
     "test": "node scripts/test.js --env=jsdom",
     "precommit": "lint-staged"
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "lint-staged": {
     "src/**/*.js": [
       "prettier --single-quote --write",
