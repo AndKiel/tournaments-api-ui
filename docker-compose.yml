@@ -7,8 +7,13 @@ services:
     command: bash -c "yarn install && yarn start"
     environment:
       PORT: 3001
+      YARN_CACHE_FOLDER: /yarn_cache
     ports:
       - '3001:3001'
       - '3002:3002'
     volumes:
       - .:/tournaments-api-ui
+      - yarn-cache:/yarn_cache
+
+volumes:
+  yarn-cache:
