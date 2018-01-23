@@ -1,4 +1,4 @@
-import { types, getEnv, flow } from 'mobx-state-tree';
+import { types, getEnv, getRoot, flow } from 'mobx-state-tree';
 import apiRoutes from '../utils/api_routes';
 
 const SessionStore = types
@@ -26,6 +26,7 @@ const SessionStore = types
 
       signOut: flow(function* signOut() {
         yield apiClient.revokeToken();
+        yield getRoot(self).userStore.nullifyUser();
       })
     };
   });

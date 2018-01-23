@@ -6,6 +6,7 @@ import Navigation from './components/navigation';
 import Alert from './components/alert';
 import SignInPage from './pages/sign_in_page';
 import SignUpPage from './pages/sign_up_page';
+import AccountPage from './pages/account_page';
 import ApiClient from './utils/api_client';
 import AppStore from './stores/app_store';
 import routes from './utils/routes';
@@ -20,8 +21,10 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Navigation />
+            <Route exact path={routes.root()} />
             <Route exact path={routes.signIn()} component={SignInPage} />
             <Route exact path={routes.signUp()} component={SignUpPage} />
+            <Route exact path={routes.account()} component={AccountPage} />
             <Alert />
           </div>
         </BrowserRouter>

@@ -27,7 +27,9 @@ class Navigation extends Component {
           </Typography>
           {this.props.store.sessionStore.isSignedIn ? (
             <div>
-              <Button color="contrast">Account</Button>
+              <Button color="contrast" component={Link} to={routes.account()}>
+                Account
+              </Button>
               <Button color="contrast" onClick={this.signOut}>
                 Sign out
               </Button>
