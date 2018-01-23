@@ -80,7 +80,7 @@ class ApiClient {
   }
 
   async revokeToken() {
-    await this.post(apiRoutes.oauthRevoke());
+    await this.post(apiRoutes.oauthRevoke(), { authenticate: true });
     this.nullifyToken();
   }
 
