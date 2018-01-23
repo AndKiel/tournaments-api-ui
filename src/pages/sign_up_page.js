@@ -32,7 +32,7 @@ class SignUpPage extends Component {
       await this.props.store.sessionStore.signUp(this.formData);
       this.props.store.uiStore.setAlert(
         'success',
-        'Account was created successfully.'
+        'You have successfully signed up.'
       );
     } catch (error) {
       if (error.response && error.response.data && error.response.data.fields) {
@@ -47,7 +47,7 @@ class SignUpPage extends Component {
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <Card>
             <CardContent>
-              <Typography type="headline">Sign Up</Typography>
+              <Typography type="headline">Sign up</Typography>
               <TextField
                 id="email"
                 label="Email"

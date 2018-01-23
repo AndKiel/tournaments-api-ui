@@ -13,12 +13,14 @@ const SessionStore = types
         return await apiClient.post(apiRoutes.signUpUsers(), { data: data });
       },
 
-      async signIn(email, password) {
-        return await apiClient.requestToken(email, password);
+      async signIn({ email, password }) {
+        await apiClient.requestToken(email, password);
+        this.isSignedIn = true;
       },
 
       async signOut() {
-        return await apiClient.revokeToken();
+        await apiClient.revokeToken();
+        this.isSignedIn = false;
       }
     };
   });
