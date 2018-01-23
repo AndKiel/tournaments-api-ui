@@ -1,4 +1,4 @@
-import { types, getEnv } from 'mobx-state-tree';
+import { types, getEnv, flow } from 'mobx-state-tree';
 import apiRoutes from '../utils/api_routes';
 
 const SessionStore = types
@@ -9,27 +9,19 @@ const SessionStore = types
     const { apiClient } = getEnv(self);
 
     return {
-      async signUp(data) {
-        return await apiClient.post(apiRoutes.signUpUsers(), { data: data });
-      },
+      signUp: flow(function* signUp(data) {
+        return yield apiClient.post(apiRoutes.signUpUsers(), { data: data });
+      }),
 
-      async signIn({ email, password }) {
-        await apiClient.requestToken(email, password);
-        self.markAsSignedIn();
-      },
-
-      async signOut() {
-        await apiClient.revokeToken();
-        self.markAsSignedOud();
-      },
-
-      markAsSignedIn() {
+      signIn: flow(function* signIn({ email, password }) {
+        yield apiClient.requestToken(email, password);
         self.isSignedIn = true;
-      },
+      }),
 
-      markAsSignedOut() {
+      signOut: flow(function* signOut() {
+        yield apiClient.revokeToken();
         self.isSignedIn = false;
-      }
+      })
     };
   });
 
