@@ -1,12 +1,20 @@
 import assign from 'lodash/assign';
 import axios from 'axios';
+import { observable } from 'mobx';
 import apiRoutes from './api_routes';
 import AccessToken from '../models/access_token';
 
+import cookie from 'js-cookie';
+
 class ApiClient {
+  @observable token = null;
+
   constructor() {
     this.client = axios.create({ baseURL: process.env.REACT_APP_API_URL });
-    this.token = null;
+    const cookieToken = cookie.getJSON('token');
+    if (cookieToken) {
+      this.token = AccessToken.create(cookieToken);
+    }
   }
 
   // Requests
@@ -27,18 +35,14 @@ class ApiClient {
   async send(opts) {
     const request = assign({ authenticate: false }, opts);
 
-    if (request.authenticate === true && this.token !== null) {
+    if (request.authenticate === true && this.hasToken()) {
       request.headers = { Authorization: `Bearer ${this.token.access_token}` };
     }
 
     try {
       return await this.client.request(request);
     } catch (error) {
-      if (
-        error.response &&
-        error.response.status === 401 &&
-        this.token !== null
-      ) {
+      if (error.response && error.response.status === 401 && this.hasToken()) {
         try {
           await this.refreshToken();
           return this.send(request);
@@ -87,10 +91,16 @@ class ApiClient {
   // Helpers
 
   setToken(token) {
+    cookie.set('token', token);
     this.token = AccessToken.create(token);
   }
 
+  hasToken() {
+    return this.token !== null;
+  }
+
   nullifyToken() {
+    cookie.remove('token');
     this.token = null;
   }
 }
