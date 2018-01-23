@@ -32,8 +32,7 @@ class ApiClient {
     }
 
     try {
-      const response = await this.client.request(request);
-      return response.data;
+      return await this.client.request(request);
     } catch (error) {
       if (
         error.response &&

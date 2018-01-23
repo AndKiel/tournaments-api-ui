@@ -38,6 +38,8 @@ class SignInPage extends Component {
         error.response.data.error_description
       ) {
         this.error = error.response.data.error_description;
+      } else {
+        throw error;
       }
     }
   }

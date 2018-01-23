@@ -15,12 +15,20 @@ const SessionStore = types
 
       async signIn({ email, password }) {
         await apiClient.requestToken(email, password);
-        this.isSignedIn = true;
+        self.markAsSignedIn();
       },
 
       async signOut() {
         await apiClient.revokeToken();
-        this.isSignedIn = false;
+        self.markAsSignedOud();
+      },
+
+      markAsSignedIn() {
+        self.isSignedIn = true;
+      },
+
+      markAsSignedOut() {
+        self.isSignedIn = false;
       }
     };
   });

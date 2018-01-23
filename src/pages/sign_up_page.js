@@ -37,6 +37,8 @@ class SignUpPage extends Component {
     } catch (error) {
       if (error.response && error.response.data && error.response.data.fields) {
         this.errors = error.response.data.fields;
+      } else {
+        throw error;
       }
     }
   }
