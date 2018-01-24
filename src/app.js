@@ -10,6 +10,14 @@ import ApiClient from './utils/api_client';
 import AppStore from './stores/app_store';
 import AppSwitch from './app_switch';
 
+import fontawesome from '@fortawesome/fontawesome';
+import {
+  faSignOutAlt,
+  faSpinner,
+  faUserCircle
+} from '@fortawesome/fontawesome-free-solid';
+fontawesome.library.add(faSignOutAlt, faSpinner, faUserCircle);
+
 const apiClient = new ApiClient();
 const appStore = AppStore.create({}, { apiClient });
 

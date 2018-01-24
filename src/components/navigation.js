@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
-import { AppBar, Button, Toolbar, Typography } from 'material-ui';
+import {
+  AppBar,
+  Button,
+  IconButton,
+  Toolbar,
+  Tooltip,
+  Typography
+} from 'material-ui';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import routes from '../utils/routes';
 import styles from './navigation.scss';
@@ -30,12 +38,20 @@ class Navigation extends Component {
           </Typography>
           {this.props.store.sessionStore.isSignedIn ? (
             <div>
-              <Button color="contrast" component={Link} to={routes.account()}>
-                Account
-              </Button>
-              <Button color="contrast" onClick={this.signOut}>
-                Sign out
-              </Button>
+              <Tooltip title="Account">
+                <IconButton
+                  color="contrast"
+                  component={Link}
+                  to={routes.account()}
+                >
+                  <FontAwesomeIcon icon="user-circle" fixedWidth />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Sign out">
+                <IconButton color="contrast" onClick={this.signOut}>
+                  <FontAwesomeIcon icon="sign-out-alt" fixedWidth />
+                </IconButton>
+              </Tooltip>
             </div>
           ) : (
             <div>
