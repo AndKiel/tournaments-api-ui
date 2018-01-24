@@ -8,7 +8,7 @@ const SessionStore = types
 
     return {
       get isSignedIn() {
-        return apiClient.hasToken();
+        return apiClient.hasToken() && getRoot(self).userStore.user;
       }
     };
   })
@@ -22,11 +22,12 @@ const SessionStore = types
 
       signIn: flow(function* signIn({ email, password }) {
         yield apiClient.requestToken(email, password);
+        getRoot(self).userStore.getUser();
       }),
 
       signOut: flow(function* signOut() {
         yield apiClient.revokeToken();
-        yield getRoot(self).userStore.nullifyUser();
+        getRoot(self).userStore.nullifyUser();
       })
     };
   });

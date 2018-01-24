@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
 import { AppBar, Button, Toolbar, Typography } from 'material-ui';
@@ -6,6 +7,7 @@ import { Link } from 'react-router-dom';
 import routes from '../utils/routes';
 import styles from './navigation.scss';
 
+@withRouter
 @inject('store')
 @observer
 class Navigation extends Component {
@@ -13,6 +15,7 @@ class Navigation extends Component {
   async signOut() {
     try {
       await this.props.store.sessionStore.signOut();
+      this.props.history.push(routes.signIn());
     } catch (error) {
       throw error;
     }

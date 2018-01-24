@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
@@ -10,7 +11,9 @@ import {
   TextField,
   Typography
 } from 'material-ui';
+import routes from '../utils/routes';
 
+@withRouter
 @inject('store')
 @observer
 class SignInForm extends Component {
@@ -26,6 +29,7 @@ class SignInForm extends Component {
     try {
       this.error = null;
       await this.props.store.sessionStore.signIn(this.formData);
+      this.props.history.push(routes.root());
       this.props.store.uiStore.setAlert(
         'success',
         'You have successfully signed in.'
