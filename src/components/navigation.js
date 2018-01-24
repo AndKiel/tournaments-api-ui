@@ -34,7 +34,7 @@ class Navigation extends Component {
       <AppBar position="static" className={styles.navbar}>
         <Toolbar>
           <Typography type="title" color="inherit" style={{ flex: 1 }}>
-            Tournaments
+            <Link to={routes.root()}>Tournaments</Link>
           </Typography>
           {this.props.store.sessionStore.isSignedIn ? (
             <div>
