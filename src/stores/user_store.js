@@ -14,7 +14,7 @@ const UserStore = types
         const response = yield apiClient.get(apiRoutes.user(), {
           authenticate: true
         });
-        self.user = User.create(response.data.user);
+        self.user = response.data.user;
       }),
 
       updateUser: flow(function* updateUser(data) {
@@ -22,7 +22,7 @@ const UserStore = types
           authenticate: true,
           data: data
         });
-        self.user = User.create(response.data.user);
+        self.user = response.data.user;
       }),
 
       nullifyUser() {

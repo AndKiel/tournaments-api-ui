@@ -3,6 +3,7 @@ import { inject } from 'mobx-react/index';
 import { Switch, Route } from 'react-router-dom';
 import AuthenticatedRoute from './utils/authenticated_route';
 
+import TournamentsPage from './pages/tournaments_page';
 import SignInPage from './pages/sign_in_page';
 import SignUpPage from './pages/sign_up_page';
 import AccountPage from './pages/account_page';
@@ -15,7 +16,7 @@ class AppSwitch extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path={routes.root()} />
+        <Route exact path={routes.root()} component={TournamentsPage} />
         <Route path={routes.signIn()} component={SignInPage} />
         <Route path={routes.signUp()} component={SignUpPage} />
         <AuthenticatedRoute

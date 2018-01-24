@@ -8,7 +8,7 @@ const Tournament = types.model('Tournament', {
   description: types.string,
   name: types.string,
   result_names: types.array(types.string),
-  starts_at: types.Date,
+  starts_at: types.string,
   status: types.enumeration(['created', 'in_progress', 'ended']),
   competitors: types.maybe(types.array(Competitor)),
   rounds: types.maybe(types.array(Round))
