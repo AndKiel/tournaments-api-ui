@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
 import { Grid } from 'material-ui';
 import AccountForm from '../forms/account_form';
 
-@inject('store')
-@observer
 class AccountPage extends Component {
   render() {
     return (

@@ -8,6 +8,7 @@ import Alert from './components/alert';
 import SignInPage from './pages/sign_in_page';
 import SignUpPage from './pages/sign_up_page';
 import AccountPage from './pages/account_page';
+import NotFoundPage from './pages/not_found_page';
 import ApiClient from './utils/api_client';
 import AppStore from './stores/app_store';
 import AuthenticatedRoute from './utils/authenticated_route';
@@ -40,7 +41,7 @@ class App extends Component {
                   component={AccountPage}
                   store={appStore}
                 />
-                {/*TODO: 404*/}
+                <Route component={NotFoundPage} />
               </Switch>
             )}
             <Alert />
