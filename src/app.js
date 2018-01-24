@@ -5,6 +5,7 @@ import { Provider } from 'mobx-react';
 
 import Navigation from './components/navigation';
 import Alert from './components/alert';
+import Loading from './components/loading';
 import SignInPage from './pages/sign_in_page';
 import SignUpPage from './pages/sign_up_page';
 import AccountPage from './pages/account_page';
@@ -30,7 +31,7 @@ class App extends Component {
           <div>
             <Navigation />
             {appStore.sessionStore.state !== 'ready' ? (
-              'Loading'
+              <Loading />
             ) : (
               <Switch>
                 <Route exact path={routes.root()} />
