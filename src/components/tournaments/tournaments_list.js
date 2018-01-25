@@ -16,7 +16,7 @@ import {
 class TournamentsList extends Component {
   render() {
     return (
-      <Grid container spacing="24">
+      <Grid container spacing={24}>
         {this.props.store.tournamentStore.collection.map(t => {
           return (
             <Grid item xs={12} md={6} lg={4} xl={3} key={t.id}>
@@ -37,7 +37,6 @@ class TournamentsList extends Component {
           <TableFooter>
             <TableRow>
               <TablePagination
-                colSpan={4}
                 count={this.props.store.tournamentStore.totalCount}
                 rowsPerPage={12}
                 rowsPerPageOptions={[12]}

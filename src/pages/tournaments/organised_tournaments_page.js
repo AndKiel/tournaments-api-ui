@@ -8,7 +8,6 @@ import TournamentsList from '../../components/tournaments/tournaments_list';
 @observer
 class OrganisedTournamentsPage extends Component {
   componentWillMount() {
-    this.props.store.tournamentStore.resetCollection();
     this.props.store.tournamentStore.getOrganisedTournaments();
   }
 

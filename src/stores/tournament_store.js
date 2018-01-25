@@ -12,14 +12,16 @@ const TournamentStore = types
     const { apiClient } = getEnv(self);
 
     const getTournaments = flow(function* getTournaments(url, opts) {
-      const response = yield apiClient.get(url, opts);
       const { params: { page } } = opts;
       self.page = page;
+      const response = yield apiClient.get(url, opts);
       self.totalCount = response.data.meta.total_count;
       self.collection = response.data.tournaments;
     });
 
     return {
+      createTournament: flow(function* createTournament(data) {}),
+
       getAllTournaments: flow(function* getAllTournaments(page = 1) {
         yield getTournaments(apiRoutes.tournaments(), {
           params: { page }
