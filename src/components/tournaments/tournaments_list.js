@@ -16,7 +16,7 @@ import {
 class TournamentsList extends Component {
   render() {
     return (
-      <Grid container>
+      <Grid container spacing="24">
         {this.props.store.tournamentStore.collection.map(t => {
           return (
             <Grid item xs={12} md={6} lg={4} xl={3} key={t.id}>

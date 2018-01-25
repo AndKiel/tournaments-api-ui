@@ -40,7 +40,13 @@ const TournamentStore = types
           authenticate: true,
           params: { page }
         });
-      })
+      }),
+
+      resetCollection() {
+        self.collection = [];
+        self.page = 1;
+        self.total_count = 0;
+      }
     };
   });
 
