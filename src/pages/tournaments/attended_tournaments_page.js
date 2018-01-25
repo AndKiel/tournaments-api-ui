@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
-import { Grid, Card, CardContent, Typography } from 'material-ui';
+import { Typography } from 'material-ui';
 import TournamentsList from '../../components/tournaments/tournaments_list';
 
 @inject('store')
@@ -18,16 +18,10 @@ class AttendedTournamentsPage extends Component {
 
   render() {
     return (
-      <Grid container>
-        <Grid item xs={12}>
-          <Card>
-            <CardContent>
-              <Typography type="headline">Attended tournaments</Typography>
-              <TournamentsList onChangePage={this.onChangePage} />
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+      <div>
+        <Typography type="headline">Attended tournaments</Typography>
+        <TournamentsList onChangePage={this.onChangePage} />
+      </div>
     );
   }
 }
