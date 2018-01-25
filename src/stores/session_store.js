@@ -32,8 +32,8 @@ const SessionStore = types
       }),
 
       signIn: flow(function* signIn({ email, password }) {
-        self.state = 'loading';
         yield apiClient.requestToken(email, password);
+        self.state = 'loading';
         yield getRoot(self).userStore.getUser();
         self.state = 'ready';
       }),
