@@ -1,0 +1,11 @@
+.dropdown-menu {
+  margin-right: 20px;
+}
+
+.dropdown-list-closed {
+  pointer-events: none;
+}
+
+.dropdown-list-open {
+  z-index: 1;
+}

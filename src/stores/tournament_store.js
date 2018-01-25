@@ -11,14 +11,35 @@ const TournamentStore = types
   .actions(self => {
     const { apiClient } = getEnv(self);
 
+    const getTournaments = flow(function* getTournaments(url, opts) {
+      const response = yield apiClient.get(url, opts);
+      const { params: { page } } = opts;
+      self.page = page;
+      self.totalCount = response.data.meta.total_count;
+      self.collection = response.data.tournaments;
+    });
+
     return {
-      getCollection: flow(function* getCollection(page = 1) {
-        const response = yield apiClient.get(apiRoutes.tournaments(), {
+      getAllTournaments: flow(function* getAllTournaments(page = 1) {
+        yield getTournaments(apiRoutes.tournaments(), {
           params: { page }
         });
-        self.page = page;
-        self.totalCount = response.data.meta.total_count;
-        self.collection = response.data.tournaments;
+      }),
+
+      getOrganisedTournaments: flow(function* getOrganisedTournaments(
+        page = 1
+      ) {
+        yield getTournaments(apiRoutes.tournaments(), {
+          authenticate: true,
+          params: { page }
+        });
+      }),
+
+      getAttendedTournaments: flow(function* getAttendedTournaments(page = 1) {
+        yield getTournaments(apiRoutes.enlistedTournaments(), {
+          authenticate: true,
+          params: { page }
+        });
       })
     };
   });

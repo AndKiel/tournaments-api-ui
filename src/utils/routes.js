@@ -3,7 +3,9 @@ const routes = {
   signIn: () => '/sign_in',
   signUp: () => '/sign_up',
   account: () => '/account',
-  tournaments: () => '/tournaments'
+  tournaments: () => '/tournaments',
+  organisedTournaments: () => '/tournaments/organised',
+  attendedTournaments: () => '/tournaments/attended'
 };
 
 export default routes;

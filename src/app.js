@@ -12,11 +12,12 @@ import AppSwitch from './app_switch';
 
 import fontawesome from '@fortawesome/fontawesome';
 import {
+  faBars,
   faSignOutAlt,
   faSpinner,
   faUserCircle
 } from '@fortawesome/fontawesome-free-solid';
-fontawesome.library.add(faSignOutAlt, faSpinner, faUserCircle);
+fontawesome.library.add(faBars, faSignOutAlt, faSpinner, faUserCircle);
 
 const apiClient = new ApiClient();
 const appStore = AppStore.create({}, { apiClient });

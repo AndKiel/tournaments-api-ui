@@ -10,6 +10,7 @@ import {
   Tooltip,
   Typography
 } from 'material-ui';
+import DropdownMenu from './navigation/dropdown_menu';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import routes from '../utils/routes';
@@ -33,6 +34,7 @@ class Navigation extends Component {
     return (
       <AppBar position="static" className={styles.navbar}>
         <Toolbar>
+          {this.props.store.sessionStore.isSignedIn && <DropdownMenu />}
           <Typography type="title" color="inherit" style={{ flex: 1 }}>
             <Link to={routes.tournaments()}>Tournaments</Link>
           </Typography>

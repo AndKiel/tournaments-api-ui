@@ -19,12 +19,12 @@ import {
 @observer
 class TournamentsPage extends Component {
   componentWillMount() {
-    this.props.store.tournamentStore.getCollection();
+    this.props.store.tournamentStore.getAllTournaments();
   }
 
   @autobind
   onChangePage(event, page) {
-    this.props.store.tournamentStore.getCollection(page + 1);
+    this.props.store.tournamentStore.getAllTournaments(page + 1);
   }
 
   render() {

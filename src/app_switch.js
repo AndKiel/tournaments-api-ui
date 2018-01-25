@@ -3,10 +3,12 @@ import { inject } from 'mobx-react/index';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import AuthenticatedRoute from './utils/authenticated_route';
 
-import TournamentsPage from './pages/tournaments_page';
 import SignInPage from './pages/sign_in_page';
 import SignUpPage from './pages/sign_up_page';
 import AccountPage from './pages/account_page';
+import OrganisedTournamentsPage from './pages/tournaments/organised_tournaments_page';
+import AttendedTournamentsPage from './pages/tournaments/attended_tournaments_page';
+import TournamentsPage from './pages/tournaments/tournaments_page';
 import NotFoundPage from './pages/not_found_page';
 
 import routes from './utils/routes';
@@ -23,6 +25,14 @@ class AppSwitch extends Component {
           path={routes.account()}
           component={AccountPage}
           store={this.props.store}
+        />
+        <Route
+          path={routes.organisedTournaments()}
+          component={OrganisedTournamentsPage}
+        />
+        <Route
+          path={routes.attendedTournaments()}
+          component={AttendedTournamentsPage}
         />
         <Route path={routes.tournaments()} component={TournamentsPage} />
         <Route component={NotFoundPage} />
