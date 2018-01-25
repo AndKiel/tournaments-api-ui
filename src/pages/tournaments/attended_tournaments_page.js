@@ -1,25 +1,14 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
-import {
-  Grid,
-  Card,
-  CardContent,
-  Table,
-  TableHead,
-  TableBody,
-  TableFooter,
-  TableRow,
-  TableCell,
-  TablePagination,
-  Typography
-} from 'material-ui';
+import { Grid, Card, CardContent, Typography } from 'material-ui';
+import TournamentsList from '../../components/tournaments/tournaments_list';
 
 @inject('store')
 @observer
 class AttendedTournamentsPage extends Component {
   componentWillMount() {
-    this.props.store.tournamentStore.getAttendedTournaments();
+    this.props.store.tournamentStore.getAttendedTournaments(1);
   }
 
   @autobind
@@ -34,58 +23,7 @@ class AttendedTournamentsPage extends Component {
           <Card>
             <CardContent>
               <Typography type="headline">Attended tournaments</Typography>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>
-                      <Typography>Name</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography>Starts at</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography align="center">Competitors limit</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography align="center">Status</Typography>
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {this.props.store.tournamentStore.collection.map(t => {
-                    return (
-                      <TableRow key={t.id}>
-                        <TableCell>
-                          <Typography>{t.name}</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography>{t.starts_at}</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography align="center">
-                            {t.competitors_limit}
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Typography align="center">{t.status}</Typography>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-                <TableFooter>
-                  <TableRow>
-                    <TablePagination
-                      colSpan={4}
-                      count={this.props.store.tournamentStore.totalCount}
-                      rowsPerPage={25}
-                      rowsPerPageOptions={[25]}
-                      page={this.props.store.tournamentStore.page - 1}
-                      onChangePage={this.onChangePage}
-                    />
-                  </TableRow>
-                </TableFooter>
-              </Table>
+              <TournamentsList onChangePage={this.onChangePage} />
             </CardContent>
           </Card>
         </Grid>
