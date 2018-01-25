@@ -39,8 +39,8 @@ class TournamentsList extends Component {
               <TablePagination
                 colSpan={4}
                 count={this.props.store.tournamentStore.totalCount}
-                rowsPerPage={10}
-                rowsPerPageOptions={[10]}
+                rowsPerPage={12}
+                rowsPerPageOptions={[12]}
                 page={this.props.store.tournamentStore.page - 1}
                 onChangePage={this.props.onChangePage}
               />
