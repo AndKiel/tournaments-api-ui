@@ -20,7 +20,12 @@ const TournamentStore = types
     });
 
     return {
-      createTournament: flow(function* createTournament(data) {}),
+      createTournament: flow(function* createTournament(data) {
+        return yield apiClient.post(apiRoutes.tournaments(), {
+          authenticate: true,
+          data: data
+        });
+      }),
 
       getAllTournaments: flow(function* getAllTournaments(page = 1) {
         yield getTournaments(apiRoutes.tournaments(), {

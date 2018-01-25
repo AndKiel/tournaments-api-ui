@@ -40,6 +40,15 @@ class Navigation extends Component {
           </Typography>
           {this.props.store.sessionStore.isSignedIn ? (
             <div>
+              <Tooltip title="New tournament">
+                <IconButton
+                  color="contrast"
+                  component={Link}
+                  to={routes.newTournament()}
+                >
+                  <FontAwesomeIcon icon="calendar-plus" fixedWidth />
+                </IconButton>
+              </Tooltip>
               <Tooltip title="Account">
                 <IconButton
                   color="contrast"

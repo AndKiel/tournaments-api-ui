@@ -5,7 +5,8 @@ const routes = {
   account: () => '/account',
   tournaments: () => '/tournaments',
   organisedTournaments: () => '/tournaments/organised',
-  attendedTournaments: () => '/tournaments/attended'
+  attendedTournaments: () => '/tournaments/attended',
+  newTournament: () => '/tournaments/new'
 };
 
 export default routes;
