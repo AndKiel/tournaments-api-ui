@@ -5,7 +5,8 @@ import apiRoutes from '../utils/api_routes';
 const TournamentStore = types
   .model('TournamentStore', {
     collection: types.optional(types.array(Tournament), []),
-    page: types.optional(types.number, 1)
+    page: types.optional(types.number, 1),
+    totalCount: types.optional(types.number, 0)
   })
   .actions(self => {
     const { apiClient } = getEnv(self);
@@ -16,6 +17,7 @@ const TournamentStore = types
           params: { page }
         });
         self.page = page;
+        self.totalCount = response.data.meta.total_count;
         self.collection = response.data.tournaments;
       })
     };

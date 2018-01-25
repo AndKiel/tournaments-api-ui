@@ -54,7 +54,7 @@ class TournamentsPage extends Component {
                 <TableBody>
                   {this.props.store.tournamentStore.collection.map(t => {
                     return (
-                      <TableRow>
+                      <TableRow key={t.id}>
                         <TableCell>
                           <Typography>{t.name}</Typography>
                         </TableCell>
@@ -77,7 +77,7 @@ class TournamentsPage extends Component {
                   <TableRow>
                     <TablePagination
                       colSpan={4}
-                      count={this.props.store.tournamentStore.collection.length}
+                      count={this.props.store.tournamentStore.totalCount}
                       rowsPerPage={25}
                       rowsPerPageOptions={[25]}
                       page={this.props.store.tournamentStore.page - 1}
