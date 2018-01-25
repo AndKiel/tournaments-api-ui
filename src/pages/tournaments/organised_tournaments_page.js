@@ -8,7 +8,7 @@ import TournamentsList from '../../components/tournaments/tournaments_list';
 @observer
 class OrganisedTournamentsPage extends Component {
   componentWillMount() {
-    this.props.store.tournamentStore.getOrganisedTournaments(1);
+    this.props.store.tournamentStore.getOrganisedTournaments();
   }
 
   @autobind

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
 import {
+  Card,
+  CardContent,
+  Grid,
+  Typography,
   Table,
-  TableHead,
-  TableBody,
   TableFooter,
   TableRow,
-  TableCell,
-  TablePagination,
-  Typography
+  TablePagination
 } from 'material-ui';
 
 @inject('store')
@@ -16,56 +16,38 @@ import {
 class TournamentsList extends Component {
   render() {
     return (
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>
-              <Typography>Name</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>Starts at</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography align="center">Competitors limit</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography align="center">Status</Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {this.props.store.tournamentStore.collection.map(t => {
-            return (
-              <TableRow key={t.id}>
-                <TableCell>
-                  <Typography>{t.name}</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography>{t.starts_at}</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography align="center">{t.competitors_limit}</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography align="center">{t.status}</Typography>
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              colSpan={4}
-              count={this.props.store.tournamentStore.totalCount}
-              rowsPerPage={25}
-              rowsPerPageOptions={[25]}
-              page={this.props.store.tournamentStore.page - 1}
-              onChangePage={this.props.onChangePage}
-            />
-          </TableRow>
-        </TableFooter>
-      </Table>
+      <Grid container>
+        {this.props.store.tournamentStore.collection.map(t => {
+          return (
+            <Grid item xs={12} md={6} lg={4} xl={3} key={t.id}>
+              <Card>
+                <CardContent>
+                  <Typography type="title">{t.name}</Typography>
+                  <Typography>Starts at: {t.starts_at}</Typography>
+                  <Typography>
+                    Competitors limit: {t.competitors_limit}
+                  </Typography>
+                  <Typography>Status: {t.status}</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          );
+        })}
+        <Table>
+          <TableFooter>
+            <TableRow>
+              <TablePagination
+                colSpan={4}
+                count={this.props.store.tournamentStore.totalCount}
+                rowsPerPage={10}
+                rowsPerPageOptions={[10]}
+                page={this.props.store.tournamentStore.page - 1}
+                onChangePage={this.props.onChangePage}
+              />
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </Grid>
     );
   }
 }

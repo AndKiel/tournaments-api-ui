@@ -26,13 +26,15 @@ class AppSwitch extends Component {
           component={AccountPage}
           store={this.props.store}
         />
-        <Route
+        <AuthenticatedRoute
           path={routes.organisedTournaments()}
           component={OrganisedTournamentsPage}
+          store={this.props.store}
         />
-        <Route
+        <AuthenticatedRoute
           path={routes.attendedTournaments()}
           component={AttendedTournamentsPage}
+          store={this.props.store}
         />
         <Route path={routes.tournaments()} component={TournamentsPage} />
         <Route component={NotFoundPage} />
