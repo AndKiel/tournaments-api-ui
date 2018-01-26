@@ -1,0 +1,23 @@
+.calendar-icon {
+  display: block;
+  width: 50px;
+  text-align: center;
+}
+
+.calendar-icon-month {
+  background: #B71C1C;
+  padding: 0.3rem 0 0.1rem;
+  color: #ffffff !important;
+  box-shadow: inset 0 -1px 0 0 #666;
+}
+
+.calendar-icon-day {
+  padding: 0.2rem 0 0;
+  font-size: 1.75rem !important;
+  box-shadow: 0 0 3px #ccc;
+}
+
+.calendar-icon-dow {
+  color: #757575 !important;
+  font-size: 0.75rem !important;
+}
