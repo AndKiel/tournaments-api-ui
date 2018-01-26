@@ -8,19 +8,24 @@ import TournamentsList from '../../components/tournaments/tournaments_list';
 @observer
 class AttendedTournamentsPage extends Component {
   componentWillMount() {
-    this.props.store.tournamentStore.getAttendedTournaments();
+    this.props.store.attendedTournamentsStore.getTournaments();
   }
 
   @autobind
   onChangePage(event, page) {
-    this.props.store.tournamentStore.getAttendedTournaments(page + 1);
+    this.props.store.attendedTournamentsStore.getTournaments(page + 1);
   }
 
   render() {
     return (
       <div>
         <Typography type="headline">Attended tournaments</Typography>
-        <TournamentsList onChangePage={this.onChangePage} />
+        <TournamentsList
+          collection={this.props.store.attendedTournamentsStore.collection}
+          count={this.props.store.attendedTournamentsStore.totalCount}
+          page={this.props.store.attendedTournamentsStore.page}
+          onChangePage={this.onChangePage}
+        />
       </div>
     );
   }

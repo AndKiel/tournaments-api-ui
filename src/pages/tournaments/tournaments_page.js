@@ -8,19 +8,24 @@ import TournamentsList from '../../components/tournaments/tournaments_list';
 @observer
 class TournamentsPage extends Component {
   componentWillMount() {
-    this.props.store.tournamentStore.getAllTournaments();
+    this.props.store.tournamentsStore.getTournaments();
   }
 
   @autobind
   onChangePage(event, page) {
-    this.props.store.tournamentStore.getAllTournaments(page + 1);
+    this.props.store.tournamentsStore.getTournaments(page + 1);
   }
 
   render() {
     return (
       <div>
         <Typography type="headline">Tournaments</Typography>
-        <TournamentsList onChangePage={this.onChangePage} />
+        <TournamentsList
+          collection={this.props.store.tournamentsStore.collection}
+          count={this.props.store.tournamentsStore.totalCount}
+          page={this.props.store.tournamentsStore.page}
+          onChangePage={this.onChangePage}
+        />
       </div>
     );
   }

@@ -30,7 +30,9 @@ class TournamentForm extends Component {
   async submitForm() {
     try {
       this.errors = {};
-      await this.props.store.tournamentStore.createTournament(this.formData);
+      await this.props.store.organisedTournamentsStore.createTournament(
+        this.formData
+      );
       this.props.store.uiStore.setAlert(
         'success',
         'You have successfully created a tournament.'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react/index';
+import { observer } from 'mobx-react/index';
 import {
   Card,
   CardContent,
@@ -11,13 +11,12 @@ import {
   TablePagination
 } from 'material-ui';
 
-@inject('store')
 @observer
 class TournamentsList extends Component {
   render() {
     return (
       <Grid container spacing={24}>
-        {this.props.store.tournamentStore.collection.map(t => {
+        {this.props.collection.map(t => {
           return (
             <Grid item xs={12} md={6} lg={4} xl={3} key={t.id}>
               <Card>
@@ -37,10 +36,10 @@ class TournamentsList extends Component {
           <TableFooter>
             <TableRow>
               <TablePagination
-                count={this.props.store.tournamentStore.totalCount}
+                count={this.props.count}
                 rowsPerPage={12}
                 rowsPerPageOptions={[12]}
-                page={this.props.store.tournamentStore.page - 1}
+                page={this.props.page - 1}
                 onChangePage={this.props.onChangePage}
               />
             </TableRow>
