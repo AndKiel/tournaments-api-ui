@@ -12,7 +12,7 @@ class CalendarIcon extends Component {
     return (
       <div className={styles['calendar-icon']}>
         <Typography component="span" className={styles['calendar-icon-month']}>
-          {date.format('MMM')}
+          {date.format('MMM').toUpperCase()}
         </Typography>
         <Typography component="span" className={styles['calendar-icon-day']}>
           {date.format('D')}
