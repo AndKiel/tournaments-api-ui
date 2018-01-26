@@ -12,9 +12,11 @@ import TournamentCard from './tournament_card';
 @observer
 class TournamentsList extends Component {
   render() {
+    const { collection, count, page, onChangePage } = this.props;
+
     return (
       <Grid container spacing={24}>
-        {this.props.collection.map(t => {
+        {collection.map(t => {
           return (
             <Grid item xs={12} md={6} lg={4} xl={3} key={t.id}>
               <TournamentCard tournament={t} />
@@ -25,11 +27,11 @@ class TournamentsList extends Component {
           <TableFooter>
             <TableRow>
               <TablePagination
-                count={this.props.count}
+                count={count}
                 rowsPerPage={12}
                 rowsPerPageOptions={[12]}
-                page={this.props.page - 1}
-                onChangePage={this.props.onChangePage}
+                page={page - 1}
+                onChangePage={onChangePage}
               />
             </TableRow>
           </TableFooter>

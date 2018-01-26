@@ -5,15 +5,20 @@ import { Card, CardContent, Typography } from 'material-ui';
 @observer
 class TournamentCard extends Component {
   render() {
+    const {
+      name,
+      starts_at,
+      competitors_limit,
+      status
+    } = this.props.tournament;
+
     return (
       <Card>
         <CardContent>
-          <Typography type="title">{this.props.tournament.name}</Typography>
-          <Typography>Starts at: {this.props.tournament.starts_at}</Typography>
-          <Typography>
-            Competitors limit: {this.props.tournament.competitors_limit}
-          </Typography>
-          <Typography>Status: {this.props.tournament.status}</Typography>
+          <Typography type="title">{name}</Typography>
+          <Typography>Starts at: {starts_at}</Typography>
+          <Typography>Competitors limit: {competitors_limit}</Typography>
+          <Typography>Status: {status}</Typography>
         </CardContent>
       </Card>
     );
