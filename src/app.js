@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 
-import Navigation from './components/navigation';
+import Navbar from './components/navigation/navbar';
 import Alert from './components/alert';
 import Loading from './components/loading';
 import ApiClient from './utils/api_client';
@@ -40,7 +40,7 @@ class App extends Component {
       <Provider store={appStore}>
         <BrowserRouter>
           <div>
-            <Navigation />
+            <Navbar />
             {appStore.sessionStore.state !== 'ready' ? (
               <Loading />
             ) : (
