@@ -65,9 +65,9 @@ class DropdownMenu extends Component {
                   <MenuItem
                     onClick={this.closeMenu}
                     component={Link}
-                    to={routes.attendedTournaments()}
+                    to={routes.enlistedTournaments()}
                   >
-                    Attended tournaments
+                    Enlisted tournaments
                   </MenuItem>
                 </MenuList>
               </Paper>

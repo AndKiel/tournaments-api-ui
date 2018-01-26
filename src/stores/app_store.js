@@ -4,7 +4,7 @@ import UIStore from './ui_store';
 import UserStore from './user_store';
 import TournamentsStore from './tournaments_store';
 import OrganisedTournamentsStore from './organised_tournaments_store';
-import AttendedTournamentsStore from './attended_tournaments_store';
+import EnlistedTournamentsStore from './enlisted_tournaments_store';
 
 const AppStore = types.model('AppStore', {
   sessionStore: types.optional(SessionStore, {}),
@@ -12,7 +12,7 @@ const AppStore = types.model('AppStore', {
   userStore: types.optional(UserStore, {}),
   tournamentsStore: types.optional(TournamentsStore, {}),
   organisedTournamentsStore: types.optional(OrganisedTournamentsStore, {}),
-  attendedTournamentsStore: types.optional(AttendedTournamentsStore, {})
+  enlistedTournamentsStore: types.optional(EnlistedTournamentsStore, {})
 });
 
 export default AppStore;

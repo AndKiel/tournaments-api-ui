@@ -5,7 +5,7 @@ const routes = {
   account: () => '/account',
   tournaments: () => '/tournaments',
   organisedTournaments: () => '/tournaments/organised',
-  attendedTournaments: () => '/tournaments/attended',
+  enlistedTournaments: () => '/tournaments/enlisted',
   newTournament: () => '/tournaments/new'
 };
 

@@ -2,8 +2,8 @@ import { types, getEnv, flow } from 'mobx-state-tree';
 import Tournament from '../models/tournament';
 import apiRoutes from '../utils/api_routes';
 
-const AttendedTournamentsStore = types
-  .model('AttendedTournamentsStore', {
+const EnlistedTournamentsStore = types
+  .model('EnlistedTournamentsStore', {
     collection: types.optional(types.array(Tournament), []),
     page: types.optional(types.number, 1),
     totalCount: types.optional(types.number, 0)
@@ -24,4 +24,4 @@ const AttendedTournamentsStore = types
     };
   });
 
-export default AttendedTournamentsStore;
+export default EnlistedTournamentsStore;
