@@ -1,24 +1,15 @@
 %alert {
-  bottom: 0;
-  left: 0;
-  margin: 1rem;
-  max-width: 300px;
-  padding: .75rem 1.25rem;
-  position: absolute;
+  max-width: 350px !important;
 }
 
 .alert-success {
   @extend %alert;
   background-color: #DCEDC8 !important;
-  > p {
-    color: #33691E;
-  }
+  color: #33691E !important;
 }
 
 .alert-error {
   @extend %alert;
   background-color: #FF8A80 !important;
-  > p {
-    color: #B71C1C;
-  }
+  color: #B71C1C !important;
 }
