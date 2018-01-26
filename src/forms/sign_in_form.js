@@ -47,6 +47,14 @@ class SignInForm extends Component {
     }
   }
 
+  @autobind
+  async onEnterKeyPressed(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      await this.submitForm();
+    }
+  }
+
   render() {
     return (
       <Card>
@@ -58,6 +66,7 @@ class SignInForm extends Component {
             value={this.formData.email}
             error={!!this.error}
             onChange={e => (this.formData.email = e.target.value)}
+            onKeyPress={this.onEnterKeyPressed}
             margin="normal"
             autoFocus
             required
@@ -70,6 +79,7 @@ class SignInForm extends Component {
             error={!!this.error}
             helperText={this.error}
             onChange={e => (this.formData.password = e.target.value)}
+            onKeyPress={this.onEnterKeyPressed}
             type="password"
             margin="normal"
             required

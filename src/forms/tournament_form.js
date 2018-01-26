@@ -46,6 +46,14 @@ class TournamentForm extends Component {
     }
   }
 
+  @autobind
+  async onEnterKeyPressed(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      await this.submitForm();
+    }
+  }
+
   render() {
     return (
       <Card>
@@ -58,6 +66,7 @@ class TournamentForm extends Component {
             error={this.errors.name}
             helperText={this.errors.name ? this.errors.name.join(', ') : ''}
             onChange={e => (this.formData.tournament.name = e.target.value)}
+            onKeyPress={this.onEnterKeyPressed}
             margin="normal"
             autoFocus
             required
