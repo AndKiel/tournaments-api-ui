@@ -1,11 +1,26 @@
 import { Form } from 'mobx-react-form';
+import moment from 'moment';
 
 class TournamentForm extends Form {
   setup() {
     return {
-      fields: ['tournament.name'],
+      fields: [
+        'tournament.competitors_limit',
+        'tournament.description',
+        'tournament.name',
+        'tournament.result_names[]',
+        'tournament.starts_at'
+      ],
       labels: {
-        'tournament.name': 'Name'
+        'tournament.competitors_limit': 'Competitors limit',
+        'tournament.description': 'Description',
+        'tournament.name': 'Name',
+        'tournament.result_names': 'Result names',
+        'tournament.starts_at': 'Starts at'
+      },
+      initials: {
+        'tournament.starts_at': moment(),
+        'tournament.result_names': ['Win', 'Points']
       }
     };
   }

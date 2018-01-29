@@ -15,14 +15,22 @@ import styles from './app.scss';
 import fontawesome from '@fortawesome/fontawesome';
 import {
   faBars,
+  faCalendarAlt,
   faCalendarPlus,
+  faChevronLeft,
+  faChevronRight,
+  faClock,
   faSignOutAlt,
   faSpinner,
   faUserCircle
 } from '@fortawesome/fontawesome-free-solid';
 fontawesome.library.add(
   faBars,
+  faCalendarAlt,
   faCalendarPlus,
+  faChevronLeft,
+  faChevronRight,
+  faClock,
   faSignOutAlt,
   faSpinner,
   faUserCircle
