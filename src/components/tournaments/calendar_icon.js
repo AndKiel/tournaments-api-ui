@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react/index';
 import { Typography } from 'material-ui';
-import moment from 'moment';
 import styles from './calendar_icon.scss';
 
 @observer
 class CalendarIcon extends Component {
   render() {
-    const date = moment(this.props.date);
+    const { date } = this.props;
 
     return (
       <div className={styles['calendar-icon']}>
