@@ -15,10 +15,9 @@ import TextInput from '../components/forms/text_input';
 @inject('store')
 class AccountPage extends Component {
   componentWillMount() {
-    this.form = new AccountForm();
-    this.form.update({
-      user: {
-        email: this.props.store.userStore.user.email
+    this.form = new AccountForm({
+      initials: {
+        'user.email': this.props.store.userStore.user.email
       }
     });
   }
