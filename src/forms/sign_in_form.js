@@ -15,6 +15,29 @@ class SignInForm extends Form {
       ]
     };
   }
+
+  hooks() {
+    return {
+      async onSubmit(form) {
+        try {
+          form.validate();
+          await form.submit();
+        } catch (error) {
+          if (
+            error.response &&
+            error.response.data &&
+            error.response.data.error_description
+          ) {
+            form
+              .$('password')
+              .invalidate(error.response.data.error_description);
+          } else {
+            throw error;
+          }
+        }
+      }
+    };
+  }
 }
 
 export default SignInForm;

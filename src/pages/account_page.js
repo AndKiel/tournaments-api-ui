@@ -20,27 +20,16 @@ class AccountPage extends Component {
         'user.email': this.props.store.userStore.user.email
       }
     });
+    this.form.submit = this.submit;
   }
 
   @autobind
-  async submitForm(e) {
-    try {
-      e.preventDefault();
-      await this.form.validate();
-      await this.props.store.userStore.updateUser(this.form.values());
-      this.props.store.uiStore.setAlert(
-        'success',
-        'You have successfully updated your account.'
-      );
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.fields) {
-        for (let pair of Object.entries(error.response.data.fields)) {
-          this.form.$(`user.${pair[0]}`).invalidate(pair[1].join(', '));
-        }
-      } else {
-        throw error;
-      }
-    }
+  async submit() {
+    await this.props.store.userStore.updateUser(this.form.values());
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have successfully updated your account.'
+    );
   }
 
   render() {
@@ -48,7 +37,7 @@ class AccountPage extends Component {
       <Grid container justify="center">
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <Card>
-            <form onSubmit={this.submitForm}>
+            <form onSubmit={this.form.onSubmit}>
               <CardContent>
                 <Typography type="headline">Account</Typography>
                 <TextInput

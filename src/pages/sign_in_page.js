@@ -19,32 +19,17 @@ import routes from '../utils/routes';
 class SignInPage extends Component {
   componentWillMount() {
     this.form = new SignInForm();
+    this.form.submit = this.submit;
   }
 
   @autobind
-  async submitForm(e) {
-    try {
-      e.preventDefault();
-      await this.form.validate();
-      await this.props.store.sessionStore.signIn(this.form.values());
-      this.props.history.push(routes.tournaments());
-      this.props.store.uiStore.setAlert(
-        'success',
-        'You have successfully signed in.'
-      );
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.error_description
-      ) {
-        this.form
-          .$('password')
-          .invalidate(error.response.data.error_description);
-      } else {
-        throw error;
-      }
-    }
+  async submit() {
+    await this.props.store.sessionStore.signIn(this.form.values());
+    this.props.history.push(routes.tournaments());
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have successfully signed in.'
+    );
   }
 
   render() {
@@ -52,7 +37,7 @@ class SignInPage extends Component {
       <Grid container justify="center">
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <Card>
-            <form onSubmit={this.submitForm}>
+            <form onSubmit={this.form.onSubmit}>
               <CardContent>
                 <Typography type="headline">Sign in</Typography>
                 <TextInput field={this.form.$('email')} autoFocus required />

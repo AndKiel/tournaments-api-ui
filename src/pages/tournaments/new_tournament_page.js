@@ -16,29 +16,18 @@ import TextInput from '../../components/forms/text_input';
 class NewTournamentPage extends Component {
   componentWillMount() {
     this.form = new TournamentForm();
+    this.form.submit = this.submit;
   }
 
   @autobind
-  async submitForm(e) {
-    try {
-      e.preventDefault();
-      await this.form.validate();
-      await this.props.store.organisedTournamentsStore.createTournament(
-        this.form.values()
-      );
-      this.props.store.uiStore.setAlert(
-        'success',
-        'You have successfully created a tournament.'
-      );
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.fields) {
-        for (let pair of Object.entries(error.response.data.fields)) {
-          this.form.$(`tournament.${pair[0]}`).invalidate(pair[1].join(', '));
-        }
-      } else {
-        throw error;
-      }
-    }
+  async submit() {
+    await this.props.store.organisedTournamentsStore.createTournament(
+      this.form.values()
+    );
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have successfully created a tournament.'
+    );
   }
 
   render() {
@@ -46,7 +35,7 @@ class NewTournamentPage extends Component {
       <Grid container justify="center">
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <Card>
-            <form onSubmit={this.submitForm}>
+            <form onSubmit={this.form.onSubmit}>
               <CardContent>
                 <Typography type="headline">New tournament</Typography>
                 <TextInput

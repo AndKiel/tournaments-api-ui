@@ -19,28 +19,17 @@ import routes from '../utils/routes';
 class SignUpPage extends Component {
   componentWillMount() {
     this.form = new SignUpForm();
+    this.form.submit = this.submit;
   }
 
   @autobind
-  async submitForm(e) {
-    try {
-      e.preventDefault();
-      await this.form.validate();
-      await this.props.store.sessionStore.signUp(this.form.values());
-      this.props.history.push(routes.signIn());
-      this.props.store.uiStore.setAlert(
-        'success',
-        'You have successfully signed up.'
-      );
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.fields) {
-        for (let pair of Object.entries(error.response.data.fields)) {
-          this.form.$(`user.${pair[0]}`).invalidate(pair[1].join(', '));
-        }
-      } else {
-        throw error;
-      }
-    }
+  async submit() {
+    await this.props.store.sessionStore.signUp(this.form.values());
+    this.props.history.push(routes.signIn());
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have successfully signed up.'
+    );
   }
 
   render() {
@@ -48,7 +37,7 @@ class SignUpPage extends Component {
       <Grid container justify="center">
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <Card>
-            <form onSubmit={this.submitForm}>
+            <form onSubmit={this.form.onSubmit}>
               <CardContent>
                 <Typography type="headline">Sign up</Typography>
                 <TextInput
