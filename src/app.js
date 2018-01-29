@@ -10,6 +10,8 @@ import ApiClient from './utils/api_client';
 import AppStore from './stores/app_store';
 import AppSwitch from './app_switch';
 
+import styles from './app.scss';
+
 import fontawesome from '@fortawesome/fontawesome';
 import {
   faBars,
@@ -41,12 +43,14 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Navbar />
-            {appStore.sessionStore.state !== 'ready' ? (
-              <Loading />
-            ) : (
-              <AppSwitch />
-            )}
-            <Alert />
+            <main>
+              {appStore.sessionStore.state !== 'ready' ? (
+                <Loading />
+              ) : (
+                <AppSwitch />
+              )}
+              <Alert />
+            </main>
           </div>
         </BrowserRouter>
       </Provider>

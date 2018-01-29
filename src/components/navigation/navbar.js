@@ -4,12 +4,11 @@ import { AppBar, Toolbar, Typography } from 'material-ui';
 import DrawerMenu from './drawer_menu';
 import UserMenu from './user_menu';
 import routes from '../../utils/routes';
-import styles from './navbar.scss';
 
 class Navbar extends Component {
   render() {
     return (
-      <AppBar position="static" className={styles.navbar}>
+      <AppBar position="static">
         <Toolbar>
           <DrawerMenu />
           <Typography type="title" color="inherit" style={{ flex: 1 }}>
