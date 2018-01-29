@@ -27,8 +27,9 @@ class TournamentForm extends Component {
   @observable errors = {};
 
   @autobind
-  async submitForm() {
+  async submitForm(e) {
     try {
+      e.preventDefault();
       this.errors = {};
       await this.props.store.organisedTournamentsStore.createTournament(
         this.formData
@@ -46,38 +47,31 @@ class TournamentForm extends Component {
     }
   }
 
-  @autobind
-  async onEnterKeyPressed(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      await this.submitForm();
-    }
-  }
-
   render() {
     return (
       <Card>
-        <CardContent>
-          <Typography type="headline">New tournament</Typography>
-          <TextField
-            id="name"
-            label="Name"
-            value={this.formData.tournament.name}
-            error={this.errors.name}
-            helperText={this.errors.name ? this.errors.name.join(', ') : ''}
-            onChange={e => (this.formData.tournament.name = e.target.value)}
-            onKeyPress={this.onEnterKeyPressed}
-            margin="normal"
-            autoFocus
-            required
-            fullWidth
-          />
-        </CardContent>
-        <CardActions>
-          <Button color="primary" style={{ flex: 1 }} onClick={this.submitForm}>
-            Create
-          </Button>
-        </CardActions>
+        <form onSubmit={this.submitForm}>
+          <CardContent>
+            <Typography type="headline">New tournament</Typography>
+            <TextField
+              id="name"
+              label="Name"
+              value={this.formData.tournament.name}
+              error={this.errors.name}
+              helperText={this.errors.name ? this.errors.name.join(', ') : ''}
+              onChange={e => (this.formData.tournament.name = e.target.value)}
+              margin="normal"
+              autoFocus
+              required
+              fullWidth
+            />
+          </CardContent>
+          <CardActions>
+            <Button color="primary" style={{ flex: 1 }} type="submit">
+              Create
+            </Button>
+          </CardActions>
+        </form>
       </Card>
     );
   }

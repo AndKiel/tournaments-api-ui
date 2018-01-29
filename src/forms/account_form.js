@@ -25,8 +25,9 @@ class AccountForm extends Component {
   @observable errors = {};
 
   @autobind
-  async submitForm() {
+  async submitForm(e) {
     try {
+      e.preventDefault();
       this.errors = {};
       await this.props.store.userStore.updateUser(this.formData);
       this.props.store.uiStore.setAlert(
@@ -42,72 +43,61 @@ class AccountForm extends Component {
     }
   }
 
-  @autobind
-  async onEnterKeyPressed(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      await this.submitForm();
-    }
-  }
-
   render() {
     return (
       <Card>
-        <CardContent>
-          <Typography type="headline">Account</Typography>
-          <TextField
-            id="email"
-            label="Email"
-            value={this.formData.user.email}
-            error={this.errors.email}
-            helperText={this.errors.email ? this.errors.email.join(', ') : ''}
-            onChange={e => (this.formData.user.email = e.target.value)}
-            onKeyPress={this.onEnterKeyPressed}
-            margin="normal"
-            autoFocus
-            required
-            fullWidth
-          />
-          <TextField
-            id="password"
-            label="Password"
-            value={this.formData.user.password}
-            error={this.errors.password}
-            helperText={
-              this.errors.password ? this.errors.password.join(', ') : ''
-            }
-            onChange={e => (this.formData.user.password = e.target.value)}
-            onKeyPress={this.onEnterKeyPressed}
-            type="password"
-            margin="normal"
-            required
-            fullWidth
-          />
-          <TextField
-            id="password_confirmation"
-            label="Password confirmation"
-            value={this.formData.user.password_confirmation}
-            error={this.errors.password_confirmation}
-            helperText={
-              this.errors.password_confirmation
-                ? this.errors.password_confirmation.join(', ')
-                : ''
-            }
-            onChange={e =>
-              (this.formData.user.password_confirmation = e.target.value)
-            }
-            onKeyPress={this.onEnterKeyPressed}
-            type="password"
-            margin="normal"
-            required
-            fullWidth
-          />
-        </CardContent>
-        <CardActions>
-          <Button color="primary" style={{ flex: 1 }} onClick={this.submitForm}>
-            Update
-          </Button>
-        </CardActions>
+        <form onSubmit={this.submitForm}>
+          <CardContent>
+            <Typography type="headline">Account</Typography>
+            <TextField
+              id="email"
+              label="Email"
+              value={this.formData.user.email}
+              error={this.errors.email}
+              helperText={this.errors.email ? this.errors.email.join(', ') : ''}
+              onChange={e => (this.formData.user.email = e.target.value)}
+              margin="normal"
+              autoFocus
+              required
+              fullWidth
+            />
+            <TextField
+              id="password"
+              label="Password"
+              value={this.formData.user.password}
+              error={this.errors.password}
+              helperText={
+                this.errors.password ? this.errors.password.join(', ') : ''
+              }
+              onChange={e => (this.formData.user.password = e.target.value)}
+              type="password"
+              margin="normal"
+              fullWidth
+            />
+            <TextField
+              id="password_confirmation"
+              label="Password confirmation"
+              value={this.formData.user.password_confirmation}
+              error={this.errors.password_confirmation}
+              helperText={
+                this.errors.password_confirmation
+                  ? this.errors.password_confirmation.join(', ')
+                  : ''
+              }
+              onChange={e =>
+                (this.formData.user.password_confirmation = e.target.value)
+              }
+              type="password"
+              margin="normal"
+              fullWidth
+            />
+          </CardContent>
+          <CardActions>
+            <Button color="primary" style={{ flex: 1 }} type="submit">
+              Update
+            </Button>
+          </CardActions>
+        </form>
       </Card>
     );
   }
