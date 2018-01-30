@@ -19,8 +19,12 @@ class TournamentForm extends Form {
         'tournament.starts_at': 'Starts at'
       },
       initials: {
-        'tournament.starts_at': moment(),
-        'tournament.result_names': ['Win', 'Points']
+        'tournament.starts_at': moment()
+      },
+      values: {
+        tournament: {
+          result_names: ['Win', 'Points']
+        }
       }
     };
   }

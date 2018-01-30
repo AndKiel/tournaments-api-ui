@@ -12,6 +12,7 @@ import {
 import TournamentForm from '../../forms/tournament_form';
 import TextInput from '../../components/forms/text_input';
 import DatetimeInput from '../../components/forms/datetime_input';
+import ArrayInput from '../../components/forms/array_input';
 
 @inject('store')
 class NewTournamentPage extends Component {
@@ -58,7 +59,7 @@ class NewTournamentPage extends Component {
                   type="number"
                   required
                 />
-                <TextInput field={this.form.$('tournament.result_names')} />
+                <ArrayInput field={this.form.$('tournament.result_names')} />
               </CardContent>
               <CardActions>
                 <Button color="primary" style={{ flex: 1 }} type="submit">
