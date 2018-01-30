@@ -16,6 +16,13 @@ class ArrayInput extends Component {
     this.props.field.value.splice(index, 1);
   }
 
+  @autobind
+  async onKeyPress(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  }
+
   render() {
     const { field, ...rest } = this.props;
 
@@ -29,6 +36,7 @@ class ArrayInput extends Component {
         helperText={field.error}
         onAdd={this.onAdd}
         onDelete={this.onDel}
+        onKeyPress={this.onKeyPress}
         fullWidth
         {...rest}
       />
