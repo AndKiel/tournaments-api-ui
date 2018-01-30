@@ -6,7 +6,8 @@ const TournamentsStore = types
   .model('TournamentsStore', {
     collection: types.optional(types.array(Tournament), []),
     page: types.optional(types.number, 1),
-    totalCount: types.optional(types.number, 0)
+    totalCount: types.optional(types.number, 0),
+    item: types.maybe(Tournament)
   })
   .actions(self => {
     const { apiClient } = getEnv(self);
@@ -19,6 +20,12 @@ const TournamentsStore = types
         });
         self.totalCount = response.data.meta.total_count;
         self.collection = response.data.tournaments;
+      }),
+
+      getTournament: flow(function* getTournament(id) {
+        self.item = null;
+        const response = yield apiClient.get(apiRoutes.tournament(id));
+        self.item = response.data.tournament;
       })
     };
   });

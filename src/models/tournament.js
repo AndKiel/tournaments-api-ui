@@ -21,6 +21,10 @@ const Tournament = types
     return {
       get parsedStartsAt() {
         return moment(self.starts_at);
+      },
+
+      get competitorsCount() {
+        return self.competitors.size || 0;
       }
     };
   });
