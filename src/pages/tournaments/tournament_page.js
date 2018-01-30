@@ -14,6 +14,7 @@ import {
 import Loading from '../../components/loading';
 import CalendarIcon from '../../components/tournaments/calendar_icon';
 import TimeIcon from '../../components/tournaments/time_icon';
+import StatusIcon from '../../components/tournaments/status_icon';
 import CompetitorsList from '../../components/competitors/competitors_list';
 import RoundsList from '../../components/rounds/rounds_list';
 import ResultsList from '../../components/results/results_list';
@@ -46,8 +47,10 @@ class TournamentPage extends Component {
                 <TimeIcon date={tournament.parsedStartsAt} />
               </CardContent>
               <CardContent className={styles.content}>
-                <Typography type="headline">{tournament.name}</Typography>
-                <Typography>Status: {tournament.status}</Typography>
+                <Typography type="headline">
+                  {tournament.name}
+                  <StatusIcon status={tournament.status} />
+                </Typography>
                 {tournament.description.split('\n').map(p => {
                   return <Typography>{p}</Typography>;
                 })}
