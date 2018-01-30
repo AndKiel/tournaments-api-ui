@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { inject } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import {
@@ -13,7 +14,9 @@ import TournamentForm from '../../forms/tournament_form';
 import TextInput from '../../components/forms/text_input';
 import DatetimeInput from '../../components/forms/datetime_input';
 import ArrayInput from '../../components/forms/array_input';
+import routes from '../../utils/routes';
 
+@withRouter
 @inject('store')
 class NewTournamentPage extends Component {
   componentWillMount() {
@@ -23,9 +26,10 @@ class NewTournamentPage extends Component {
 
   @autobind
   async submit() {
-    await this.props.store.organisedTournamentsStore.createTournament(
+    const response = await this.props.store.organisedTournamentsStore.createTournament(
       this.form.values()
     );
+    this.props.history.push(routes.tournament(response.data.tournament.id));
     this.props.store.uiStore.setAlert(
       'success',
       'You have successfully created a tournament.'
