@@ -1,3 +1,11 @@
 .tournament-card {
   display: flex;
 }
+
+.tournament-card-content {
+  flex: 1;
+}
+
+.action-details {
+  margin-left: auto !important;
+}

@@ -1,6 +1,7 @@
 import { types } from 'mobx-state-tree';
 import Competitor from './competitor';
 import Round from './round';
+import User from './user';
 import moment from 'moment';
 
 const Tournament = types
@@ -9,6 +10,7 @@ const Tournament = types
     competitors_limit: types.number,
     description: types.string,
     name: types.string,
+    organiser_id: types.reference(User),
     result_names: types.array(types.string),
     starts_at: types.string,
     status: types.enumeration(['created', 'in_progress', 'ended']),
