@@ -9,6 +9,7 @@ import {
   Typography
 } from 'material-ui';
 import CalendarIcon from './calendar_icon';
+import TimeIcon from './time_icon';
 import routes from '../../utils/routes';
 import styles from './tournament_card.scss';
 
@@ -27,10 +28,10 @@ class TournamentCard extends Component {
       <Card className={styles['tournament-card']}>
         <CardContent>
           <CalendarIcon date={parsedStartsAt} />
+          <TimeIcon date={parsedStartsAt} />
         </CardContent>
         <CardContent className={styles['tournament-card-content']}>
           <Typography type="title">{name}</Typography>
-          <Typography>Starts at {parsedStartsAt.format('HH:mm')}</Typography>
           <Typography>Competitors limit: {competitors_limit}</Typography>
           <Typography>Status: {status}</Typography>
         </CardContent>

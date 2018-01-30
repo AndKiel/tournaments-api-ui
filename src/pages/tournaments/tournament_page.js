@@ -5,8 +5,6 @@ import autobind from 'autobind-decorator';
 import {
   Card,
   CardContent,
-  CardHeader,
-  Divider,
   Grid,
   Paper,
   Tabs,
@@ -15,6 +13,7 @@ import {
 } from 'material-ui';
 import Loading from '../../components/loading';
 import CalendarIcon from '../../components/tournaments/calendar_icon';
+import TimeIcon from '../../components/tournaments/time_icon';
 import CompetitorsList from '../../components/competitors/competitors_list';
 import RoundsList from '../../components/rounds/rounds_list';
 import ResultsList from '../../components/results/results_list';
@@ -44,9 +43,7 @@ class TournamentPage extends Component {
             <Card className={styles.details}>
               <CardContent>
                 <CalendarIcon date={tournament.parsedStartsAt} />
-                <Typography align="center">
-                  {tournament.parsedStartsAt.format('HH:mm')}
-                </Typography>
+                <TimeIcon date={tournament.parsedStartsAt} />
               </CardContent>
               <CardContent className={styles.content}>
                 <Typography type="headline">{tournament.name}</Typography>

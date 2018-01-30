@@ -24,6 +24,7 @@ import {
   faSpinner,
   faUserCircle
 } from '@fortawesome/fontawesome-free-solid';
+import { faClock as farClock } from '@fortawesome/fontawesome-free-regular';
 fontawesome.library.add(
   faBars,
   faCalendarAlt,
@@ -33,7 +34,8 @@ fontawesome.library.add(
   faClock,
   faSignOutAlt,
   faSpinner,
-  faUserCircle
+  faUserCircle,
+  farClock
 );
 
 const apiClient = new ApiClient();
