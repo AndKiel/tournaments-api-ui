@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react/index';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardContent, Typography } from 'material-ui';
+import {
+  Card,
+  CardContent,
+  IconButton,
+  Tooltip,
+  Typography
+} from 'material-ui';
 import CalendarIcon from './calendar_icon';
 import TimeIcon from './time_icon';
 import StatusIcon from './status_icon';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../utils/routes';
 import styles from './tournament_card.scss';
 
@@ -40,18 +47,19 @@ class TournamentCard extends Component {
                 return <Typography key={`p${idx}`}>{p}</Typography>;
               })}
           </div>
-          {this.props.withActions && (
-            <div className={styles.actions}>
-              <Button
-                size="small"
-                color="primary"
-                component={Link}
-                to={routes.tournament(id)}
-              >
-                Details
-              </Button>
-            </div>
-          )}
+          <div className={styles.actions}>
+            {this.props.withActions && (
+              <Tooltip title="Details">
+                <IconButton
+                  color="primary"
+                  component={Link}
+                  to={routes.tournament(id)}
+                >
+                  <FontAwesomeIcon icon="info-circle" />
+                </IconButton>
+              </Tooltip>
+            )}
+          </div>
         </CardContent>
       </Card>
     );

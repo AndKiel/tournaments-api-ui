@@ -23,6 +23,7 @@ import {
   faHourglassStart,
   faHourglassHalf,
   faHourglassEnd,
+  faInfoCircle,
   faSignOutAlt,
   faSpinner,
   faUserCircle
@@ -38,6 +39,7 @@ fontawesome.library.add(
   faHourglassStart,
   faHourglassHalf,
   faHourglassEnd,
+  faInfoCircle,
   faSignOutAlt,
   faSpinner,
   faUserCircle,
