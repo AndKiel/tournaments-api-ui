@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
-import { Typography } from 'material-ui';
-import TournamentsList from '../../components/tournaments/tournaments_list';
+import { Grid, Typography } from 'material-ui';
+import TournamentCard from '../../components/tournaments/tournament_card';
+import Pagination from '../../components/tournaments/pagination';
 
 @inject('store')
 @observer
@@ -17,15 +18,29 @@ class EnlistedTournamentsPage extends Component {
   }
 
   render() {
+    const {
+      collection,
+      totalCount,
+      page
+    } = this.props.store.enlistedTournamentsStore;
+
     return (
       <div>
         <Typography type="headline">Enlisted tournaments</Typography>
-        <TournamentsList
-          collection={this.props.store.enlistedTournamentsStore.collection}
-          count={this.props.store.enlistedTournamentsStore.totalCount}
-          page={this.props.store.enlistedTournamentsStore.page}
-          onChangePage={this.onChangePage}
-        />
+        <Grid container spacing={24}>
+          {collection.map(t => {
+            return (
+              <Grid item xs={12} md={6} lg={4} xl={3} key={t.id}>
+                <TournamentCard tournament={t} withLimit withActions />
+              </Grid>
+            );
+          })}
+          <Pagination
+            count={totalCount}
+            page={page}
+            onChangePage={this.onChangePage}
+          />
+        </Grid>
       </div>
     );
   }
