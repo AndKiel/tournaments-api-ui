@@ -51,7 +51,7 @@ class TournamentCard extends Component {
             {this.props.withActions && (
               <Tooltip title="Details">
                 <IconButton
-                  color="primary"
+                  className={styles.details}
                   component={Link}
                   to={routes.tournament(id)}
                 >
