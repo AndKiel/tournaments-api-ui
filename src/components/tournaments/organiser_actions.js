@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { Link } from 'react-router-dom';
-import { IconButton, Tooltip } from 'material-ui';
+import {
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem
+} from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../utils/routes';
 import styles from './organiser_actions.scss';
@@ -12,6 +19,17 @@ import styles from './organiser_actions.scss';
 @inject('store')
 @observer
 class OrganiserActions extends Component {
+  @observable anchorEl = null;
+
+  @autobind
+  openMenu(e) {
+    this.anchorEl = e.currentTarget;
+  }
+  @autobind
+  closeMenu() {
+    this.anchorEl = null;
+  }
+
   @autobind
   async deleteTournament() {
     await this.props.store.organisedTournamentsStore.deleteTournament(
@@ -39,23 +57,30 @@ class OrganiserActions extends Component {
     ) {
       return (
         <div className={styles.container}>
-          <Tooltip title="Delete">
-            <IconButton
-              className={styles.delete}
-              onClick={this.deleteTournament}
-            >
-              <FontAwesomeIcon size="sm" icon="trash-alt" />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Edit">
-            <IconButton
-              className={styles.edit}
-              component={Link}
-              to={routes.editTournament(id)}
-            >
-              <FontAwesomeIcon size="sm" icon="edit" />
-            </IconButton>
-          </Tooltip>
+          <IconButton className={styles.icon} onClick={this.openMenu}>
+            <FontAwesomeIcon size="sm" icon="ellipsis-v" />
+          </IconButton>
+          <Menu
+            anchorEl={this.anchorEl}
+            open={Boolean(this.anchorEl)}
+            onClose={this.closeMenu}
+          >
+            <MenuItem component={Link} to={routes.editTournament(id)}>
+              <ListItemIcon>
+                <FontAwesomeIcon className={styles['menu-icon']} icon="edit" />
+              </ListItemIcon>
+              <ListItemText primary="Edit" />
+            </MenuItem>
+            <MenuItem onClick={this.deleteTournament}>
+              <ListItemIcon>
+                <FontAwesomeIcon
+                  className={styles['menu-icon']}
+                  icon="trash-alt"
+                />
+              </ListItemIcon>
+              <ListItemText primary="Delete" />
+            </MenuItem>
+          </Menu>
         </div>
       );
     } else {
