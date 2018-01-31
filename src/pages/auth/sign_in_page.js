@@ -10,25 +10,25 @@ import {
   Grid,
   Typography
 } from 'material-ui';
-import SignUpForm from '../forms/sign_up_form';
-import TextInput from '../components/forms/text_input';
-import routes from '../utils/routes';
+import SignInForm from '../../forms/sign_in_form';
+import TextInput from '../../components/forms/text_input';
+import routes from '../../utils/routes';
 
 @withRouter
 @inject('store')
-class SignUpPage extends Component {
+class SignInPage extends Component {
   componentWillMount() {
-    this.form = new SignUpForm();
+    this.form = new SignInForm();
     this.form.submit = this.submit;
   }
 
   @autobind
   async submit() {
-    await this.props.store.sessionStore.signUp(this.form.values());
-    this.props.history.push(routes.signIn());
+    await this.props.store.sessionStore.signIn(this.form.values());
+    this.props.history.push(routes.tournaments());
     this.props.store.uiStore.setAlert(
       'success',
-      'You have successfully signed up.'
+      'You have successfully signed in.'
     );
   }
 
@@ -39,19 +39,10 @@ class SignUpPage extends Component {
           <Card>
             <form onSubmit={this.form.onSubmit}>
               <CardContent>
-                <Typography type="headline">Sign up</Typography>
+                <Typography type="headline">Sign in</Typography>
+                <TextInput field={this.form.$('email')} autoFocus required />
                 <TextInput
-                  field={this.form.$('user.email')}
-                  autoFocus
-                  required
-                />
-                <TextInput
-                  field={this.form.$('user.password')}
-                  type="password"
-                  required
-                />
-                <TextInput
-                  field={this.form.$('user.password_confirmation')}
+                  field={this.form.$('password')}
                   type="password"
                   required
                 />
@@ -69,4 +60,4 @@ class SignUpPage extends Component {
   }
 }
 
-export default SignUpPage;
+export default SignInPage;

@@ -9,8 +9,8 @@ import {
   Grid,
   Typography
 } from 'material-ui';
-import AccountForm from '../forms/account_form';
-import TextInput from '../components/forms/text_input';
+import AccountForm from '../../forms/account_form';
+import TextInput from '../../components/forms/text_input';
 
 @inject('store')
 class AccountPage extends Component {

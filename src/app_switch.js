@@ -3,16 +3,16 @@ import { inject } from 'mobx-react/index';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import AuthenticatedRoute from './utils/authenticated_route';
 
-import SignInPage from './pages/sign_in_page';
-import SignUpPage from './pages/sign_up_page';
-import AccountPage from './pages/account_page';
+import SignInPage from './pages/auth/sign_in_page';
+import SignUpPage from './pages/auth/sign_up_page';
+import AccountPage from './pages/auth/account_page';
 import OrganisedTournamentsPage from './pages/tournaments/organised_tournaments_page';
 import EnlistedTournamentsPage from './pages/tournaments/enlisted_tournaments_page';
 import NewTournamentPage from './pages/tournaments/new_tournament_page';
 import EditTournamentPage from './pages/tournaments/edit_tournament_page';
 import TournamentsPage from './pages/tournaments/tournaments_page';
 import TournamentPage from './pages/tournaments/tournament_page';
-import NotFoundPage from './pages/not_found_page';
+import NotFoundPage from './pages/errors/not_found_page';
 
 import routes from './utils/routes';
 
