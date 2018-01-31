@@ -1,11 +1,16 @@
-.tournament-card {
+.card {
   display: flex;
 }
 
-.tournament-card-content {
+.card-content {
   flex: 1;
+  padding-bottom: 16px !important;
 }
 
-.action-details {
-  margin-left: auto !important;
+.info {
+  min-height: calc(100% - 36px);
+}
+
+.actions {
+  text-align: right;
 }

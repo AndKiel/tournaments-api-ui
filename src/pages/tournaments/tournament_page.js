@@ -2,23 +2,12 @@ import React, { Component } from 'react';
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
-import {
-  Card,
-  CardContent,
-  Grid,
-  Paper,
-  Tabs,
-  Tab,
-  Typography
-} from 'material-ui';
+import { Card, CardContent, Grid, Paper, Tabs, Tab } from 'material-ui';
 import Loading from '../../components/loading';
-import CalendarIcon from '../../components/tournaments/calendar_icon';
-import TimeIcon from '../../components/tournaments/time_icon';
-import StatusIcon from '../../components/tournaments/status_icon';
+import TournamentCard from '../../components/tournaments/tournament_card';
 import CompetitorsList from '../../components/competitors/competitors_list';
 import RoundsList from '../../components/rounds/rounds_list';
 import ResultsList from '../../components/results/results_list';
-import styles from './tournament_page.scss';
 
 @inject('store')
 @observer
@@ -41,21 +30,7 @@ class TournamentPage extends Component {
       return (
         <Grid container>
           <Grid item xs={12} md={5} lg={4}>
-            <Card className={styles.details}>
-              <CardContent>
-                <CalendarIcon date={tournament.parsedStartsAt} />
-                <TimeIcon date={tournament.parsedStartsAt} />
-              </CardContent>
-              <CardContent className={styles.content}>
-                <Typography type="headline">
-                  {tournament.name}
-                  <StatusIcon status={tournament.status} />
-                </Typography>
-                {tournament.description.split('\n').map(p => {
-                  return <Typography>{p}</Typography>;
-                })}
-              </CardContent>
-            </Card>
+            <TournamentCard tournament={tournament} withDescription />
             <CompetitorsList />
           </Grid>
           <Grid item xs={12} md={7} lg={8}>
