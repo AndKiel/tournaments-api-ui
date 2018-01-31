@@ -7,13 +7,17 @@ import ChipInput from 'material-ui-chip-input';
 class ArrayInput extends Component {
   @autobind
   onAdd(chip) {
-    this.props.field.value.push(chip);
+    const array = this.props.field.value;
+    array.push(chip);
+    this.props.field.set(array);
   }
 
   @autobind
   onDel(chip) {
     const index = this.props.field.value.indexOf(chip);
-    this.props.field.value.splice(index, 1);
+    const array = this.props.field.value;
+    array.splice(index, 1);
+    this.props.field.set(array);
   }
 
   @autobind

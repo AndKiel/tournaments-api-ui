@@ -35,6 +35,7 @@ const OrganisedTournamentsStore = types
           data: data
         });
         self.item = response.data.tournament;
+        return response;
       }),
 
       deleteTournament: flow(function* deleteTournament(id) {
