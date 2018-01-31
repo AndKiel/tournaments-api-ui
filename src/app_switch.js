@@ -9,6 +9,7 @@ import AccountPage from './pages/account_page';
 import OrganisedTournamentsPage from './pages/tournaments/organised_tournaments_page';
 import EnlistedTournamentsPage from './pages/tournaments/enlisted_tournaments_page';
 import NewTournamentPage from './pages/tournaments/new_tournament_page';
+import EditTournamentPage from './pages/tournaments/edit_tournament_page';
 import TournamentsPage from './pages/tournaments/tournaments_page';
 import TournamentPage from './pages/tournaments/tournament_page';
 import NotFoundPage from './pages/not_found_page';
@@ -41,6 +42,11 @@ class AppSwitch extends Component {
         <AuthenticatedRoute
           path={routes.newTournament()}
           component={NewTournamentPage}
+          store={this.props.store}
+        />
+        <AuthenticatedRoute
+          path={routes.editTournament()}
+          component={EditTournamentPage}
           store={this.props.store}
         />
         <Route path={routes.tournaments()} component={TournamentsPage} />

@@ -27,6 +27,21 @@ const OrganisedTournamentsStore = types
         });
         self.totalCount = response.data.meta.total_count;
         self.collection = response.data.tournaments;
+      }),
+
+      updateTournament: flow(function* updateTournament(id, data) {
+        const response = yield apiClient.patch(apiRoutes.tournament(id), {
+          authenticate: true,
+          data: data
+        });
+        self.item = response.data.tournament;
+      }),
+
+      deleteTournament: flow(function* deleteTournament(id) {
+        yield apiClient.delete(apiRoutes.tournament(id), {
+          authenticate: true
+        });
+        self.item = null;
       })
     };
   });
