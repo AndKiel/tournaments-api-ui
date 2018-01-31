@@ -30,19 +30,16 @@ const OrganisedTournamentsStore = types
       }),
 
       updateTournament: flow(function* updateTournament(id, data) {
-        const response = yield apiClient.patch(apiRoutes.tournament(id), {
+        return yield apiClient.patch(apiRoutes.tournament(id), {
           authenticate: true,
           data: data
         });
-        self.item = response.data.tournament;
-        return response;
       }),
 
       deleteTournament: flow(function* deleteTournament(id) {
         yield apiClient.delete(apiRoutes.tournament(id), {
           authenticate: true
         });
-        self.item = null;
       })
     };
   });
