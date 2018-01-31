@@ -20,12 +20,14 @@ import {
   faChevronLeft,
   faChevronRight,
   faClock,
+  faEdit,
   faHourglassStart,
   faHourglassHalf,
   faHourglassEnd,
   faInfoCircle,
   faSignOutAlt,
   faSpinner,
+  faTrashAlt,
   faUserCircle
 } from '@fortawesome/fontawesome-free-solid';
 import { faClock as farClock } from '@fortawesome/fontawesome-free-regular';
@@ -36,12 +38,14 @@ fontawesome.library.add(
   faChevronLeft,
   faChevronRight,
   faClock,
+  faEdit,
   faHourglassStart,
   faHourglassHalf,
   faHourglassEnd,
   faInfoCircle,
   faSignOutAlt,
   faSpinner,
+  faTrashAlt,
   faUserCircle,
   farClock
 );
