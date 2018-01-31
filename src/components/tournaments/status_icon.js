@@ -16,7 +16,7 @@ class StatusIcon extends Component {
         this.title = 'In progress';
         this.icon = 'hourglass-half';
         break;
-      case 'ended':
+      default:
         this.title = 'Ended';
         this.icon = 'hourglass-end';
     }
