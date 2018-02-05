@@ -1,4 +1,4 @@
-import { types } from 'mobx-state-tree';
+import { types, getRoot } from 'mobx-state-tree';
 import Competitor from './competitor';
 import Round from './round';
 import moment from 'moment';
@@ -24,6 +24,15 @@ const Tournament = types
 
       get competitorsCount() {
         return self.competitors.size || 0;
+      },
+
+      get isUserEnlisted() {
+        const currentUserId = getRoot(self).userStore.user.id;
+        return self.competitors
+          .map(c => {
+            return c.user_id;
+          })
+          .includes(currentUserId);
       }
     };
   })

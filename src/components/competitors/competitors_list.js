@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
-import { Card, CardContent, Typography } from 'material-ui';
+import { Card, CardContent, List, Typography } from 'material-ui';
+import Actions from './actions';
+import Competitor from './competitor';
+import styles from './competitors_list.scss';
 
 @inject('store')
 @observer
@@ -11,12 +14,21 @@ class CompetitorsList extends Component {
     return (
       <Card>
         <CardContent>
-          <Typography type="title">
-            {`Competitors (${tournament.competitorsCount}/${
-              tournament.competitors_limit
-            })`}
-          </Typography>
-          <Typography>Competitors list placeholder</Typography>
+          <div className={styles.header}>
+            <Typography type="title" className={styles.title}>
+              <span className={styles.title}>
+                {`Competitors (${tournament.competitorsCount}/${
+                  tournament.competitors_limit
+                })`}
+              </span>
+            </Typography>
+            {this.props.store.sessionStore.isSignedIn && <Actions />}
+          </div>
+          <List>
+            {tournament.competitors.map(competitor => {
+              return <Competitor key={competitor.id} competitor={competitor} />;
+            })}
+          </List>
         </CardContent>
       </Card>
     );

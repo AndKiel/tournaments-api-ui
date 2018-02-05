@@ -10,6 +10,7 @@ import ApiClient from './utils/api_client';
 import AppStore from './stores/app_store';
 import AppSwitch from './app_switch';
 
+// eslint-disable-next-line
 import styles from './app.scss';
 
 import fontawesome from '@fortawesome/fontawesome';
@@ -17,6 +18,7 @@ import {
   faBars,
   faCalendarAlt,
   faCalendarPlus,
+  faCheck,
   faChevronLeft,
   faChevronRight,
   faClock,
@@ -31,11 +33,16 @@ import {
   faTrashAlt,
   faUserCircle
 } from '@fortawesome/fontawesome-free-solid';
-import { faClock as farClock } from '@fortawesome/fontawesome-free-regular';
+import {
+  faCalendarMinus as farCalendarMinus,
+  faCalendarPlus as farCalendarPlus,
+  faClock as farClock
+} from '@fortawesome/fontawesome-free-regular';
 fontawesome.library.add(
   faBars,
   faCalendarAlt,
   faCalendarPlus,
+  faCheck,
   faChevronLeft,
   faChevronRight,
   faClock,
@@ -49,6 +56,8 @@ fontawesome.library.add(
   faSpinner,
   faTrashAlt,
   faUserCircle,
+  farCalendarMinus,
+  farCalendarPlus,
   farClock
 );
 
