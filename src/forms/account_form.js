@@ -17,7 +17,7 @@ class AccountForm extends Form {
       async onSubmit(form) {
         try {
           form.validate();
-          await form.submit();
+          await form.submitImpl();
         } catch (error) {
           if (
             error.response &&

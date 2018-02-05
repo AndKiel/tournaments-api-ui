@@ -21,11 +21,11 @@ import routes from '../../utils/routes';
 class NewTournamentPage extends Component {
   componentWillMount() {
     this.form = new TournamentForm();
-    this.form.submit = this.submit;
+    this.form.submitImpl = this.submitImpl;
   }
 
   @autobind
-  async submit() {
+  async submitImpl() {
     const response = await this.props.store.organisedTournamentsStore.createTournament(
       this.form.values()
     );

@@ -19,11 +19,11 @@ import routes from '../../utils/routes';
 class SignUpPage extends Component {
   componentWillMount() {
     this.form = new SignUpForm();
-    this.form.submit = this.submit;
+    this.form.submitImpl = this.submitImpl;
   }
 
   @autobind
-  async submit() {
+  async submitImpl() {
     await this.props.store.sessionStore.signUp(this.form.values());
     this.props.history.push(routes.signIn());
     this.props.store.uiStore.setAlert(

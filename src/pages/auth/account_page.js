@@ -20,11 +20,11 @@ class AccountPage extends Component {
         'user.email': this.props.store.userStore.user.email
       }
     });
-    this.form.submit = this.submit;
+    this.form.submitImpl = this.submitImpl;
   }
 
   @autobind
-  async submit() {
+  async submitImpl() {
     await this.props.store.userStore.updateUser(this.form.values());
     this.props.store.uiStore.setAlert(
       'success',

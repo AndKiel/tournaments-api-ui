@@ -28,7 +28,7 @@ class EditTournamentPage extends Component {
   @autobind
   async setup() {
     this.form = new TournamentForm();
-    this.form.submit = this.submit;
+    this.form.submitImpl = this.submitImpl;
     await this.props.store.tournamentsStore.getTournament(
       this.props.match.params.id
     );
@@ -36,7 +36,7 @@ class EditTournamentPage extends Component {
   }
 
   @autobind
-  async submit() {
+  async submitImpl() {
     const response = await this.props.store.organisedTournamentsStore.updateTournament(
       this.props.match.params.id,
       this.form.values()
