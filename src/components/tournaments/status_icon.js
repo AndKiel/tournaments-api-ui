@@ -6,33 +6,42 @@ import styles from './status_icon.scss';
 
 @observer
 class StatusIcon extends Component {
-  componentWillMount() {
+  render() {
     switch (this.props.status) {
       case 'created':
-        this.title = 'Created';
-        this.icon = 'hourglass-start';
-        break;
+        return (
+          <Tooltip title="Created">
+            <FontAwesomeIcon
+              className={styles['status-icon']}
+              icon="hourglass-start"
+              size="xs"
+              fixedWidth
+            />
+          </Tooltip>
+        );
       case 'in_progress':
-        this.title = 'In progress';
-        this.icon = 'hourglass-half';
-        break;
+        return (
+          <Tooltip title="In progress">
+            <FontAwesomeIcon
+              className={styles['status-icon']}
+              icon="hourglass-half"
+              size="xs"
+              fixedWidth
+            />
+          </Tooltip>
+        );
       default:
-        this.title = 'Ended';
-        this.icon = 'hourglass-end';
+        return (
+          <Tooltip title="Ended">
+            <FontAwesomeIcon
+              className={styles['status-icon']}
+              icon="hourglass-end"
+              size="xs"
+              fixedWidth
+            />
+          </Tooltip>
+        );
     }
-  }
-
-  render() {
-    return (
-      <Tooltip title={this.title}>
-        <FontAwesomeIcon
-          className={styles['status-icon']}
-          icon={this.icon}
-          size="xs"
-          fixedWidth
-        />
-      </Tooltip>
-    );
   }
 }
 

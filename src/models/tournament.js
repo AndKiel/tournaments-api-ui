@@ -26,6 +26,13 @@ const Tournament = types
         return self.competitors.size || 0;
       }
     };
+  })
+  .actions(self => {
+    return {
+      setStatus(status) {
+        self.status = status;
+      }
+    };
   });
 
 export default Tournament;

@@ -31,6 +31,45 @@ class OrganiserActions extends Component {
   }
 
   @autobind
+  async startTournament() {
+    try {
+      await this.props.store.organisedTournamentsStore.startTournament(
+        this.props.tournament.id
+      );
+      this.props.tournament.setStatus('in_progress');
+      this.props.store.uiStore.setAlert(
+        'success',
+        'You have successfully started a tournament.'
+      );
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.error_description
+      ) {
+        this.props.store.uiStore.setAlert(
+          'error',
+          error.response.data.error_description
+        );
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  @autobind
+  async endTournament() {
+    await this.props.store.organisedTournamentsStore.endTournament(
+      this.props.tournament.id
+    );
+    this.props.tournament.setStatus('ended');
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have successfully ended a tournament.'
+    );
+  }
+
+  @autobind
   async deleteTournament() {
     await this.props.store.organisedTournamentsStore.deleteTournament(
       this.props.tournament.id
@@ -49,7 +88,7 @@ class OrganiserActions extends Component {
   }
 
   render() {
-    const { id, organiser_id } = this.props.tournament;
+    const { id, organiser_id, status } = this.props.tournament;
 
     if (
       this.props.store.sessionStore.isSignedIn &&
@@ -65,9 +104,37 @@ class OrganiserActions extends Component {
             open={Boolean(this.anchorEl)}
             onClose={this.closeMenu}
           >
+            {status === 'created' && (
+              <MenuItem onClick={this.startTournament}>
+                <ListItemIcon>
+                  <FontAwesomeIcon
+                    className={styles['menu-icon']}
+                    icon="hourglass-half"
+                    fixedWidth
+                  />
+                </ListItemIcon>
+                <ListItemText primary="Start" />
+              </MenuItem>
+            )}
+            {status === 'in_progress' && (
+              <MenuItem onClick={this.endTournament}>
+                <ListItemIcon>
+                  <FontAwesomeIcon
+                    className={styles['menu-icon']}
+                    icon="hourglass-end"
+                    fixedWidth
+                  />
+                </ListItemIcon>
+                <ListItemText primary="End" />
+              </MenuItem>
+            )}
             <MenuItem component={Link} to={routes.editTournament(id)}>
               <ListItemIcon>
-                <FontAwesomeIcon className={styles['menu-icon']} icon="edit" />
+                <FontAwesomeIcon
+                  className={styles['menu-icon']}
+                  icon="edit"
+                  fixedWidth
+                />
               </ListItemIcon>
               <ListItemText primary="Edit" />
             </MenuItem>
@@ -76,6 +143,7 @@ class OrganiserActions extends Component {
                 <FontAwesomeIcon
                   className={styles['menu-icon']}
                   icon="trash-alt"
+                  fixedWidth
                 />
               </ListItemIcon>
               <ListItemText primary="Delete" />

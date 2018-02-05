@@ -29,6 +29,18 @@ const OrganisedTournamentsStore = types
         self.collection = response.data.tournaments;
       }),
 
+      startTournament: flow(function* startTournament(id) {
+        return yield apiClient.post(apiRoutes.startTournament(id), {
+          authenticate: true
+        });
+      }),
+
+      endTournament: flow(function* endTournament(id) {
+        return yield apiClient.post(apiRoutes.endTournament(id), {
+          authenticate: true
+        });
+      }),
+
       updateTournament: flow(function* updateTournament(id, data) {
         return yield apiClient.patch(apiRoutes.tournament(id), {
           authenticate: true,
