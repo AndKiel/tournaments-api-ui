@@ -1,0 +1,13 @@
+%competitor {
+  font-size: 1rem !important;
+}
+
+.enlisted {
+  @extend %competitor;
+  color: #757575 !important;
+}
+
+.confirmed {
+  @extend %competitor;
+  color: #212121 !important;
+}

@@ -5,29 +5,41 @@ import {
   IconButton,
   ListItem,
   ListItemText,
-  ListItemSecondaryAction
+  ListItemSecondaryAction,
+  Typography
 } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import styles from './competitor.scss';
 
 @inject('store')
 @observer
 class Competitor extends Component {
   @autobind
-  async confirmCompetitor() {}
+  async confirmCompetitor() {
+    await this.props.competitor.confirm();
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have successfully confirmed a competitor.'
+    );
+  }
 
   render() {
     const { name, status } = this.props.competitor;
 
     return (
       <ListItem>
-        <ListItemText primary={name} />
-        {status === 'enlisted' && (
-          <ListItemSecondaryAction>
-            <IconButton>
-              <FontAwesomeIcon icon="check" onClick={this.confirmCompetitor} />
-            </IconButton>
-          </ListItemSecondaryAction>
-        )}
+        <ListItemText
+          disableTypography={true}
+          primary={<Typography className={styles[status]}>{name}</Typography>}
+        />
+        {this.props.store.sessionStore.isSignedIn &&
+          status === 'enlisted' && (
+            <ListItemSecondaryAction>
+              <IconButton onClick={this.confirmCompetitor}>
+                <FontAwesomeIcon size="sm" icon="check" />
+              </IconButton>
+            </ListItemSecondaryAction>
+          )}
       </ListItem>
     );
   }
