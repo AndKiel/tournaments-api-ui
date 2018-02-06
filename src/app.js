@@ -31,7 +31,8 @@ import {
   faSignOutAlt,
   faSpinner,
   faTrashAlt,
-  faUserCircle
+  faUserCircle,
+  faUserPlus
 } from '@fortawesome/fontawesome-free-solid';
 import {
   faCalendarMinus as farCalendarMinus,
@@ -56,6 +57,7 @@ fontawesome.library.add(
   faSpinner,
   faTrashAlt,
   faUserCircle,
+  faUserPlus,
   farCalendarMinus,
   farCalendarPlus,
   farClock

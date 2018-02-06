@@ -4,21 +4,34 @@ import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import AddCompetitorModal from './add_competitor_modal';
 import EnlistModal from './enlist_modal';
+import styles from './actions.scss';
 
 @inject('store')
 @observer
 class Actions extends Component {
-  @observable isModalOpen = false;
+  @observable isAddCompetitorModalOpen = false;
+  @observable isEnlistModalOpen = false;
 
   @autobind
-  openModal() {
-    this.isModalOpen = true;
+  openAddCompetitorModal() {
+    this.isAddCompetitorModalOpen = true;
   }
 
   @autobind
-  closeModal() {
-    this.isModalOpen = false;
+  closeAddCompetitorModal() {
+    this.isAddCompetitorModalOpen = false;
+  }
+
+  @autobind
+  openEnlistModal() {
+    this.isEnlistModalOpen = true;
+  }
+
+  @autobind
+  closeEnlistModal() {
+    this.isEnlistModalOpen = false;
   }
 
   @autobind
@@ -36,14 +49,30 @@ class Actions extends Component {
 
     return (
       <div>
+        {tournament.isUserOrganiser && (
+          <div className={styles.button}>
+            <Tooltip title="Add competitor">
+              <IconButton onClick={this.openAddCompetitorModal}>
+                <FontAwesomeIcon size="sm" icon="user-plus" />
+              </IconButton>
+            </Tooltip>
+            <AddCompetitorModal
+              open={this.isAddCompetitorModalOpen}
+              onClose={this.closeAddCompetitorModal}
+            />
+          </div>
+        )}
         {!tournament.isUserEnlisted && (
-          <div>
+          <div className={styles.button}>
             <Tooltip title="Enlist">
-              <IconButton onClick={this.openModal}>
+              <IconButton onClick={this.openEnlistModal}>
                 <FontAwesomeIcon size="sm" icon={['far', 'calendar-plus']} />
               </IconButton>
             </Tooltip>
-            <EnlistModal open={this.isModalOpen} onClose={this.closeModal} />
+            <EnlistModal
+              open={this.isEnlistModalOpen}
+              onClose={this.closeEnlistModal}
+            />
           </div>
         )}
         {tournament.isUserEnlisted && (

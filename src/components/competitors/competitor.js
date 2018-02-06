@@ -6,6 +6,7 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
+  Tooltip,
   Typography
 } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -35,9 +36,11 @@ class Competitor extends Component {
         {this.props.store.sessionStore.isSignedIn &&
           status === 'enlisted' && (
             <ListItemSecondaryAction>
-              <IconButton onClick={this.confirmCompetitor}>
-                <FontAwesomeIcon size="sm" icon="check" />
-              </IconButton>
+              <Tooltip title="Confirm">
+                <IconButton onClick={this.confirmCompetitor}>
+                  <FontAwesomeIcon size="xs" icon="check" />
+                </IconButton>
+              </Tooltip>
             </ListItemSecondaryAction>
           )}
       </ListItem>

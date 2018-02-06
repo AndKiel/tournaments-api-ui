@@ -18,6 +18,8 @@ const Tournament = types
     rounds: types.maybe(types.array(Round))
   })
   .views(self => {
+    const { userStore } = getRoot(self);
+
     return {
       get parsedStartsAt() {
         return moment(self.starts_at);
@@ -27,13 +29,16 @@ const Tournament = types
         return self.competitors.length;
       },
 
+      get isUserOrganiser() {
+        return self.organiser_id === userStore.user.id;
+      },
+
       get isUserEnlisted() {
-        const currentUserId = getRoot(self).userStore.user.id;
         return self.competitors
           .map(c => {
             return c.user_id;
           })
-          .includes(currentUserId);
+          .includes(userStore.user.id);
       }
     };
   })
@@ -68,6 +73,17 @@ const Tournament = types
           return c.user_id === user_id;
         });
         self.competitors.splice(index, 1);
+      }),
+
+      addCompetitor: flow(function* addCompetitor(data) {
+        const response = yield apiClient.post(apiRoutes.addCompetitor(), {
+          authenticate: true,
+          params: {
+            tournament_id: self.id
+          },
+          data: data
+        });
+        self.competitors.push(response.data.competitor);
       })
     };
   });

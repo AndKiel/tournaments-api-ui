@@ -15,7 +15,7 @@ import TextInput from '../forms/text_input';
 
 @inject('store')
 @observer
-class EnlistModal extends Component {
+class AddCompetitorModal extends Component {
   componentWillMount() {
     this.form = new CompetitorForm();
     this.form.submitImpl = this.submitImpl;
@@ -24,10 +24,10 @@ class EnlistModal extends Component {
   @autobind
   async submitImpl() {
     const tournament = this.props.store.tournamentsStore.item;
-    await tournament.enlist(this.form.values());
+    await tournament.addCompetitor(this.form.values());
     this.props.store.uiStore.setAlert(
       'success',
-      'You have successfully enlisted in a tournament.'
+      'You have successfully added a competitor to a tournament.'
     );
     this.props.onClose();
   }
@@ -38,7 +38,7 @@ class EnlistModal extends Component {
         <Card className={styles.contents}>
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
-              <Typography type="headline">Enlist</Typography>
+              <Typography type="headline">Add competitor</Typography>
               <TextInput
                 field={this.form.$('competitor.name')}
                 autoFocus
@@ -57,4 +57,4 @@ class EnlistModal extends Component {
   }
 }
 
-export default EnlistModal;
+export default AddCompetitorModal;

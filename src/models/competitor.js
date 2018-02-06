@@ -6,7 +6,7 @@ const Competitor = types
     id: types.identifier(types.string),
     name: types.string,
     status: types.enumeration(['enlisted', 'confirmed']),
-    user_id: types.string
+    user_id: types.maybe(types.string)
   })
   .actions(self => {
     const { apiClient } = getEnv(self);

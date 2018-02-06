@@ -14,6 +14,7 @@ const apiRoutes = {
   endTournament: id => `/tournaments/${id}/end`,
 
   competitor: () => '/competitor',
+  addCompetitor: () => '/competitor/add',
   confirmCompetitor: id => `/competitors/${id}/confirm`,
 
   rounds: () => '/rounds',
