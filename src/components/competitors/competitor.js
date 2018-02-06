@@ -24,6 +24,15 @@ class Competitor extends Component {
     );
   }
 
+  @autobind
+  async rejectCompetitor() {
+    await this.props.competitor.reject();
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have successfully rejected a competitor.'
+    );
+  }
+
   render() {
     const { name, status } = this.props.competitor;
 
@@ -34,7 +43,8 @@ class Competitor extends Component {
           primary={<Typography className={styles[status]}>{name}</Typography>}
         />
         {this.props.store.sessionStore.isSignedIn &&
-          status === 'enlisted' && (
+          this.props.store.tournamentsStore.item.status === 'created' &&
+          (status === 'enlisted' ? (
             <ListItemSecondaryAction>
               <Tooltip title="Confirm">
                 <IconButton onClick={this.confirmCompetitor}>
@@ -42,7 +52,15 @@ class Competitor extends Component {
                 </IconButton>
               </Tooltip>
             </ListItemSecondaryAction>
-          )}
+          ) : (
+            <ListItemSecondaryAction>
+              <Tooltip title="Reject">
+                <IconButton onClick={this.rejectCompetitor}>
+                  <FontAwesomeIcon size="xs" icon="times" />
+                </IconButton>
+              </Tooltip>
+            </ListItemSecondaryAction>
+          ))}
       </ListItem>
     );
   }

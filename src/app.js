@@ -30,6 +30,7 @@ import {
   faInfoCircle,
   faSignOutAlt,
   faSpinner,
+  faTimes,
   faTrashAlt,
   faUserCircle,
   faUserPlus
@@ -55,6 +56,7 @@ fontawesome.library.add(
   faInfoCircle,
   faSignOutAlt,
   faSpinner,
+  faTimes,
   faTrashAlt,
   faUserCircle,
   faUserPlus,

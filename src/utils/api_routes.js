@@ -16,6 +16,7 @@ const apiRoutes = {
   competitor: () => '/competitor',
   addCompetitor: () => '/competitor/add',
   confirmCompetitor: id => `/competitors/${id}/confirm`,
+  rejectCompetitor: id => `/competitors/${id}/reject`,
 
   rounds: () => '/rounds',
   round: id => `/rounds/${id}`,

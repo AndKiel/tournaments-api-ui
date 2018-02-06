@@ -17,6 +17,13 @@ const Competitor = types
           authenticate: true
         });
         self.status = 'confirmed';
+      }),
+
+      reject: flow(function* reject() {
+        yield apiClient.post(apiRoutes.rejectCompetitor(self.id), {
+          authenticate: true
+        });
+        self.status = 'enlisted';
       })
     };
   });

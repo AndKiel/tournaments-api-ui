@@ -22,7 +22,10 @@ class CompetitorsList extends Component {
                 })`}
               </span>
             </Typography>
-            {this.props.store.sessionStore.isSignedIn && <Actions />}
+            {this.props.store.sessionStore.isSignedIn &&
+              this.props.store.tournamentsStore.item.status === 'created' && (
+                <Actions />
+              )}
           </div>
           <List>
             {tournament.competitors.map(competitor => {
