@@ -21,7 +21,6 @@ class Competitor extends Component {
       this.props.competitor.id
     );
     this.props.store.uiStore.setAlert(
-      'success',
       'You have seuccessfully removed a competitor from a tournament.'
     );
   }
@@ -30,7 +29,6 @@ class Competitor extends Component {
   async confirmCompetitor() {
     await this.props.competitor.confirm();
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully confirmed a competitor.'
     );
   }
@@ -39,7 +37,6 @@ class Competitor extends Component {
   async rejectCompetitor() {
     await this.props.competitor.reject();
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully rejected a competitor.'
     );
   }

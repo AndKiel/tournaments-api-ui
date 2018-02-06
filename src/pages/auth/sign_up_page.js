@@ -26,10 +26,7 @@ class SignUpPage extends Component {
   async submitImpl() {
     await this.props.store.sessionStore.signUp(this.form.values());
     this.props.history.push(routes.signIn());
-    this.props.store.uiStore.setAlert(
-      'success',
-      'You have successfully signed up.'
-    );
+    this.props.store.uiStore.setAlert('You have successfully signed up.');
   }
 
   render() {

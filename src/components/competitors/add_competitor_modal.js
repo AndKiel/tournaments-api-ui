@@ -26,7 +26,6 @@ class AddCompetitorModal extends Component {
     const tournament = this.props.store.tournamentsStore.item;
     await tournament.addCompetitor(this.form.values());
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully added a competitor to a tournament.'
     );
     this.props.onClose();

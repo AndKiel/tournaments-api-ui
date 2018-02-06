@@ -26,7 +26,6 @@ class EnlistModal extends Component {
     const tournament = this.props.store.tournamentsStore.item;
     await tournament.enlist(this.form.values());
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully enlisted in a tournament.'
     );
     this.props.onClose();

@@ -39,7 +39,6 @@ class Actions extends Component {
     const tournament = this.props.store.tournamentsStore.item;
     await tournament.resign();
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully resigned from a tournament.'
     );
   }

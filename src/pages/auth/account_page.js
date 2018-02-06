@@ -27,7 +27,6 @@ class AccountPage extends Component {
   async submitImpl() {
     await this.props.store.userStore.updateUser(this.form.values());
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully updated your account.'
     );
   }

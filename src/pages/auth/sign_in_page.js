@@ -26,10 +26,7 @@ class SignInPage extends Component {
   async submitImpl() {
     await this.props.store.sessionStore.signIn(this.form.values());
     this.props.history.push(routes.tournaments());
-    this.props.store.uiStore.setAlert(
-      'success',
-      'You have successfully signed in.'
-    );
+    this.props.store.uiStore.setAlert('You have successfully signed in.');
   }
 
   render() {

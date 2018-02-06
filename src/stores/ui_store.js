@@ -12,9 +12,9 @@ const UIStore = types
         self.isAlertOpen = false;
       },
 
-      setAlert(type, text) {
-        self.alertType = type;
+      setAlert(text, type = 'success') {
         self.alertText = text;
+        self.alertType = type;
         self.isAlertOpen = true;
         setTimeout(() => self.closeAlert(), 5000);
       }

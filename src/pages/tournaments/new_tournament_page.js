@@ -31,7 +31,6 @@ class NewTournamentPage extends Component {
     );
     this.props.history.push(routes.tournament(response.data.tournament.id));
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully created a tournament.'
     );
   }

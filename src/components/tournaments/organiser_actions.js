@@ -38,7 +38,6 @@ class OrganiserActions extends Component {
       );
       this.props.tournament.setStatus('in_progress');
       this.props.store.uiStore.setAlert(
-        'success',
         'You have successfully started a tournament.'
       );
     } catch (error) {
@@ -48,8 +47,8 @@ class OrganiserActions extends Component {
         error.response.data.error_description
       ) {
         this.props.store.uiStore.setAlert(
-          'error',
-          error.response.data.error_description
+          error.response.data.error_description,
+          'error'
         );
       } else {
         throw error;
@@ -64,7 +63,6 @@ class OrganiserActions extends Component {
     );
     this.props.tournament.setStatus('ended');
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully ended a tournament.'
     );
   }
@@ -82,7 +80,6 @@ class OrganiserActions extends Component {
       this.props.history.push(routes.organisedTournaments());
     }
     this.props.store.uiStore.setAlert(
-      'success',
       'You have successfully deleted a tournament.'
     );
   }
