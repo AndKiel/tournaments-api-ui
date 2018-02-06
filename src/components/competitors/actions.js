@@ -5,7 +5,6 @@ import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import EnlistModal from './enlist_modal';
-import styles from './actions.scss';
 
 @inject('store')
 @observer
@@ -23,7 +22,14 @@ class Actions extends Component {
   }
 
   @autobind
-  async resign() {}
+  async resign() {
+    const tournament = this.props.store.tournamentsStore.item;
+    await tournament.resign();
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have successfully resigned from a tournament.'
+    );
+  }
 
   render() {
     const tournament = this.props.store.tournamentsStore.item;
@@ -33,7 +39,7 @@ class Actions extends Component {
         {!tournament.isUserEnlisted && (
           <div>
             <Tooltip title="Enlist">
-              <IconButton className={styles.button} onClick={this.openModal}>
+              <IconButton onClick={this.openModal}>
                 <FontAwesomeIcon size="sm" icon={['far', 'calendar-plus']} />
               </IconButton>
             </Tooltip>
@@ -42,7 +48,7 @@ class Actions extends Component {
         )}
         {tournament.isUserEnlisted && (
           <Tooltip title="Resign">
-            <IconButton className={styles.button} onClick={this.resign}>
+            <IconButton onClick={this.resign}>
               <FontAwesomeIcon size="sm" icon={['far', 'calendar-minus']} />
             </IconButton>
           </Tooltip>
