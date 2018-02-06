@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 
 import Navbar from './components/navigation/navbar';
-import Alert from './components/alert';
-import Loading from './components/loading';
+import Alert from './components/utils/alert';
+import Loading from './components/utils/loading';
 import ApiClient from './utils/api_client';
 import AppStore from './stores/app_store';
 import AppSwitch from './app_switch';

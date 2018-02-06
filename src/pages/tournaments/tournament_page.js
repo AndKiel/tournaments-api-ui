@@ -3,7 +3,7 @@ import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { Card, CardContent, Grid, Paper, Tabs, Tab } from 'material-ui';
-import Loading from '../../components/loading';
+import Loading from '../../components/utils/loading';
 import TournamentCard from '../../components/tournaments/tournament_card';
 import CompetitorsList from '../../components/competitors/competitors_list';
 import RoundsList from '../../components/rounds/rounds_list';

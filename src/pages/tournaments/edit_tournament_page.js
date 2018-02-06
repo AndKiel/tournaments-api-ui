@@ -10,7 +10,7 @@ import {
   Grid,
   Typography
 } from 'material-ui';
-import Loading from '../../components/loading';
+import Loading from '../../components/utils/loading';
 import TournamentForm from '../../forms/tournament_form';
 import TextInput from '../../components/forms/text_input';
 import DatetimeInput from '../../components/forms/datetime_input';
