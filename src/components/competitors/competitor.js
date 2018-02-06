@@ -16,6 +16,17 @@ import styles from './competitor.scss';
 @observer
 class Competitor extends Component {
   @autobind
+  async removeCompetitor() {
+    await this.props.store.tournamentsStore.item.removeCompetitor(
+      this.props.competitor.id
+    );
+    this.props.store.uiStore.setAlert(
+      'success',
+      'You have seuccessfully removed a competitor from a tournament.'
+    );
+  }
+
+  @autobind
   async confirmCompetitor() {
     await this.props.competitor.confirm();
     this.props.store.uiStore.setAlert(
@@ -42,25 +53,31 @@ class Competitor extends Component {
           disableTypography={true}
           primary={<Typography className={styles[status]}>{name}</Typography>}
         />
-        {this.props.store.sessionStore.isSignedIn &&
-          this.props.store.tournamentsStore.item.status === 'created' &&
-          (status === 'enlisted' ? (
-            <ListItemSecondaryAction>
-              <Tooltip title="Confirm">
-                <IconButton onClick={this.confirmCompetitor}>
-                  <FontAwesomeIcon size="xs" icon="check" />
+        {this.props.store.sessionStore.isSignedIn && (
+          <ListItemSecondaryAction>
+            {this.props.competitor.user_id === null && (
+              <Tooltip title="Remove competitor">
+                <IconButton onClick={this.removeCompetitor}>
+                  <FontAwesomeIcon size="xs" icon="user-times" />
                 </IconButton>
               </Tooltip>
-            </ListItemSecondaryAction>
-          ) : (
-            <ListItemSecondaryAction>
-              <Tooltip title="Reject">
-                <IconButton onClick={this.rejectCompetitor}>
-                  <FontAwesomeIcon size="xs" icon="times" />
-                </IconButton>
-              </Tooltip>
-            </ListItemSecondaryAction>
-          ))}
+            )}
+            {this.props.store.tournamentsStore.item.status === 'created' &&
+              (status === 'enlisted' ? (
+                <Tooltip title="Confirm">
+                  <IconButton onClick={this.confirmCompetitor}>
+                    <FontAwesomeIcon size="xs" icon="check" />
+                  </IconButton>
+                </Tooltip>
+              ) : (
+                <Tooltip title="Reject">
+                  <IconButton onClick={this.rejectCompetitor}>
+                    <FontAwesomeIcon size="xs" icon="times" />
+                  </IconButton>
+                </Tooltip>
+              ))}
+          </ListItemSecondaryAction>
+        )}
       </ListItem>
     );
   }

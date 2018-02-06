@@ -84,6 +84,16 @@ const Tournament = types
           data: data
         });
         self.competitors.push(response.data.competitor);
+      }),
+
+      removeCompetitor: flow(function* removeCompetitor(id) {
+        yield apiClient.delete(apiRoutes.removeCompetitor(id), {
+          authenticate: true
+        });
+        const index = self.competitors.findIndex(c => {
+          return c.id === id;
+        });
+        self.competitors.splice(index, 1);
       })
     };
   });

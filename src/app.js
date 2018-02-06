@@ -33,7 +33,8 @@ import {
   faTimes,
   faTrashAlt,
   faUserCircle,
-  faUserPlus
+  faUserPlus,
+  faUserTimes
 } from '@fortawesome/fontawesome-free-solid';
 import {
   faCalendarMinus as farCalendarMinus,
@@ -60,6 +61,7 @@ fontawesome.library.add(
   faTrashAlt,
   faUserCircle,
   faUserPlus,
+  faUserTimes,
   farCalendarMinus,
   farCalendarPlus,
   farClock
