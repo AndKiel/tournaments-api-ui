@@ -24,7 +24,7 @@ const Tournament = types
       },
 
       get competitorsCount() {
-        return self.competitors.size || 0;
+        return self.competitors.length;
       },
 
       get isUserEnlisted() {
