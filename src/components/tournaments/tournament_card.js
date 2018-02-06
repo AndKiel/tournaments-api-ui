@@ -8,9 +8,9 @@ import {
   Tooltip,
   Typography
 } from 'material-ui';
-import CalendarIcon from './calendar_icon';
-import TimeIcon from './time_icon';
-import StatusIcon from './status_icon';
+import CalendarIcon from './icons/calendar_icon';
+import TimeIcon from './icons/time_icon';
+import StatusIcon from './icons/status_icon';
 import OrganiserActions from './organiser_actions';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../utils/routes';

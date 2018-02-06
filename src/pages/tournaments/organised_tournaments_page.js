@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { Grid, Typography } from 'material-ui';
 import TournamentCard from '../../components/tournaments/tournament_card';
-import Pagination from '../../components/tournaments/pagination';
+import Pagination from '../../components/utils/pagination';
 
 @inject('store')
 @observer
