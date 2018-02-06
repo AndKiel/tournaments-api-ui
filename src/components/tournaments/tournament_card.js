@@ -11,7 +11,7 @@ import {
 import CalendarIcon from './icons/calendar_icon';
 import TimeIcon from './icons/time_icon';
 import StatusIcon from './icons/status_icon';
-import OrganiserActions from './organiser_actions';
+import OrganiserMenu from './organiser_menu';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../utils/routes';
 import styles from './tournament_card.scss';
@@ -49,7 +49,7 @@ class TournamentCard extends Component {
               })}
           </div>
           <div className={styles.actions}>
-            <OrganiserActions tournament={this.props.tournament} />
+            <OrganiserMenu tournament={this.props.tournament} />
             {this.props.withActions && (
               <Tooltip title="Details">
                 <IconButton
