@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
 import { Card, CardContent, List, Typography } from 'material-ui';
-import Actions from './actions';
+import AddCompetitorButton from './buttons/add_competitor_button';
+import EnlistButton from './buttons/enlist_button';
+import ResignButton from './buttons/resign_button';
 import Competitor from './competitor';
 import styles from './competitors_list.scss';
 
@@ -16,15 +18,17 @@ class CompetitorsList extends Component {
         <CardContent>
           <div className={styles.header}>
             <Typography type="title" className={styles.title}>
-              <span className={styles.title}>
-                {`Competitors (${tournament.competitorsCount}/${
-                  tournament.competitors_limit
-                })`}
-              </span>
+              {`Competitors (${tournament.competitorsCount}/${
+                tournament.competitors_limit
+              })`}
             </Typography>
             {this.props.store.sessionStore.isSignedIn &&
-              this.props.store.tournamentsStore.item.status === 'created' && (
-                <Actions />
+              tournament.status === 'created' && (
+                <div>
+                  <AddCompetitorButton />
+                  <EnlistButton />
+                  <ResignButton />
+                </div>
               )}
           </div>
           <List>

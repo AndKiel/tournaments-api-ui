@@ -1,48 +1,22 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
 import {
-  IconButton,
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-  Tooltip,
   Typography
 } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import RemoveCompetitorButton from './buttons/remove_competitor_button';
+import ConfirmCompetitorButton from './buttons/confirm_competitor_button';
+import RejectCompetitorButton from './buttons/reject_competitor_button';
 import styles from './competitor.scss';
 
 @inject('store')
 @observer
 class Competitor extends Component {
-  @autobind
-  async removeCompetitor() {
-    await this.props.store.tournamentsStore.item.removeCompetitor(
-      this.props.competitor.id
-    );
-    this.props.store.uiStore.setAlert(
-      'You have seuccessfully removed a competitor from a tournament.'
-    );
-  }
-
-  @autobind
-  async confirmCompetitor() {
-    await this.props.competitor.confirm();
-    this.props.store.uiStore.setAlert(
-      'You have successfully confirmed a competitor.'
-    );
-  }
-
-  @autobind
-  async rejectCompetitor() {
-    await this.props.competitor.reject();
-    this.props.store.uiStore.setAlert(
-      'You have successfully rejected a competitor.'
-    );
-  }
-
   render() {
     const { name, status } = this.props.competitor;
+    const tournament = this.props.store.tournamentsStore.item;
 
     return (
       <ListItem>
@@ -50,31 +24,15 @@ class Competitor extends Component {
           disableTypography={true}
           primary={<Typography className={styles[status]}>{name}</Typography>}
         />
-        {this.props.store.sessionStore.isSignedIn && (
-          <ListItemSecondaryAction>
-            {this.props.competitor.user_id === null && (
-              <Tooltip title="Remove competitor">
-                <IconButton onClick={this.removeCompetitor}>
-                  <FontAwesomeIcon size="xs" icon="user-times" />
-                </IconButton>
-              </Tooltip>
-            )}
-            {this.props.store.tournamentsStore.item.status === 'created' &&
-              (status === 'enlisted' ? (
-                <Tooltip title="Confirm">
-                  <IconButton onClick={this.confirmCompetitor}>
-                    <FontAwesomeIcon size="xs" icon="check" />
-                  </IconButton>
-                </Tooltip>
-              ) : (
-                <Tooltip title="Reject">
-                  <IconButton onClick={this.rejectCompetitor}>
-                    <FontAwesomeIcon size="xs" icon="times" />
-                  </IconButton>
-                </Tooltip>
-              ))}
-          </ListItemSecondaryAction>
-        )}
+        {this.props.store.sessionStore.isSignedIn &&
+          tournament.isUserOrganiser &&
+          tournament.status === 'created' && (
+            <ListItemSecondaryAction>
+              <RemoveCompetitorButton competitor={this.props.competitor} />
+              <ConfirmCompetitorButton competitor={this.props.competitor} />
+              <RejectCompetitorButton competitor={this.props.competitor} />
+            </ListItemSecondaryAction>
+          )}
       </ListItem>
     );
   }

@@ -9,9 +9,9 @@ import {
   Modal,
   Typography
 } from 'material-ui';
-import styles from './modal.scss';
-import CompetitorForm from '../../forms/competitor_form';
-import TextInput from '../forms/text_input';
+import styles from './modals.scss';
+import CompetitorForm from '../../../forms/competitor_form';
+import TextInput from '../../forms/text_input';
 
 @inject('store')
 @observer
