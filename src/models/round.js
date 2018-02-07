@@ -20,6 +20,16 @@ const Round = types
           data: data
         });
         Object.assign(self, response.data.round);
+      }),
+
+      assignPlayers: flow(function* assignPlayers() {
+        const response = yield apiClient.post(apiRoutes.players(), {
+          authenticate: true,
+          params: {
+            round_id: self.id
+          }
+        });
+        self.players = response.data.players;
       })
     };
   });

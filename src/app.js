@@ -32,6 +32,7 @@ import {
   faSpinner,
   faTimes,
   faTrashAlt,
+  faUsers,
   faUserCircle,
   faUserPlus,
   faUserTimes
@@ -60,6 +61,7 @@ fontawesome.library.add(
   faSpinner,
   faTimes,
   faTrashAlt,
+  faUsers,
   faUserCircle,
   faUserPlus,
   faUserTimes,
