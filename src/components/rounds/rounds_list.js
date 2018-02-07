@@ -8,7 +8,7 @@ import Round from './round';
 @observer
 class RoundsList extends Component {
   render() {
-    const tournament = this.props.store.tournamentsStore.item;
+    const rounds = this.props.store.tournamentsStore.item.rounds;
 
     return (
       <div>
@@ -16,8 +16,8 @@ class RoundsList extends Component {
           Rounds
           <NewRoundButton />
         </Typography>
-        {tournament.rounds.map(round => {
-          return <Round key={round.id} round={round} />;
+        {rounds.map((round, idx) => {
+          return <Round key={round.id} number={idx + 1} round={round} />;
         })}
       </div>
     );
