@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
-import { Card, CardContent, Grid, Paper, Tabs, Tab } from 'material-ui';
+import { Button, Grid } from 'material-ui';
 import Loading from '../../components/utils/loading';
 import TournamentCard from '../../components/tournaments/tournament_card';
 import CompetitorsList from '../../components/competitors/competitors_list';
 import RoundsList from '../../components/rounds/rounds_list';
 import ResultsList from '../../components/results/results_list';
+import styles from './tournament_page.scss';
 
 @inject('store')
 @observer
 class TournamentPage extends Component {
-  @observable activeTab = 0;
+  @observable activeContents = 0;
 
   componentWillMount() {
     this.props.store.tournamentsStore.getTournament(this.props.match.params.id);
   }
 
   @autobind
-  onTabChange(e, value) {
-    this.activeTab = value;
+  toggleContents() {
+    this.activeContents = this.activeContents ? 0 : 1;
   }
 
   render() {
@@ -34,23 +35,17 @@ class TournamentPage extends Component {
             <CompetitorsList />
           </Grid>
           <Grid item xs={12} md={7} lg={8}>
-            <Paper>
-              <Tabs
-                value={this.activeTab}
-                onChange={this.onTabChange}
-                textColor="primary"
-                centered
-              >
-                <Tab label="Rounds" />
-                <Tab label="Results" />
-              </Tabs>
-            </Paper>
-            <Card>
-              <CardContent>
-                {this.activeTab === 0 && <RoundsList />}
-                {this.activeTab === 1 && <ResultsList />}
-              </CardContent>
-            </Card>
+            <Button
+              className={styles['toggle-button']}
+              color="primary"
+              variant="raised"
+              onClick={this.toggleContents}
+            >
+              {this.activeContents === 0 && 'See results'}
+              {this.activeContents === 1 && 'See rounds'}
+            </Button>
+            {this.activeContents === 0 && <RoundsList />}
+            {this.activeContents === 1 && <ResultsList />}
           </Grid>
         </Grid>
       );

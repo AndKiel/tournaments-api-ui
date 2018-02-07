@@ -3,7 +3,7 @@ import { Typography } from 'material-ui';
 
 class RoundsList extends Component {
   render() {
-    return <Typography>Rounds list placeholder</Typography>;
+    return <Typography type="title">Rounds</Typography>;
   }
 }
 
