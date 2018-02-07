@@ -26,7 +26,9 @@ class OrganisedTournamentsPage extends Component {
 
     return (
       <div>
-        <Typography type="headline">Organised tournaments</Typography>
+        <Typography type="headline" paragraph>
+          Organised tournaments
+        </Typography>
         <Grid container spacing={24}>
           {collection.map(t => {
             return (

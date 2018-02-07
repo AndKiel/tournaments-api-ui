@@ -26,7 +26,9 @@ class EnlistedTournamentsPage extends Component {
 
     return (
       <div>
-        <Typography type="headline">Enlisted tournaments</Typography>
+        <Typography type="headline" paragraph>
+          Enlisted tournaments
+        </Typography>
         <Grid container spacing={24}>
           {collection.map(t => {
             return (
