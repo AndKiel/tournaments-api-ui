@@ -25,7 +25,7 @@ class NewRoundButton extends Component {
   render() {
     const tournament = this.props.store.tournamentsStore.item;
 
-    if (tournament.isUserOrganiser) {
+    if (tournament.isUserOrganiser && tournament.status !== 'ended') {
       return (
         <span className={styles.button}>
           <Tooltip title="New round">

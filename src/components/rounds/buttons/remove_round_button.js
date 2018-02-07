@@ -19,7 +19,7 @@ class RemoveRoundButton extends Component {
   render() {
     const tournament = this.props.store.tournamentsStore.item;
 
-    if (tournament.isUserOrganiser) {
+    if (tournament.isUserOrganiser && tournament.status !== 'ended') {
       return (
         <Tooltip title="Remove round">
           <IconButton className={styles.remove} onClick={this.removeRound}>
