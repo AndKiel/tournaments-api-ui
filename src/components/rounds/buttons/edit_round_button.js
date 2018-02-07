@@ -28,7 +28,7 @@ class EditRoundButton extends Component {
     if (tournament.isUserOrganiser && tournament.status !== 'ended') {
       return (
         <span className={styles.button}>
-          <Tooltip title="Edit round">
+          <Tooltip title="Edit">
             <IconButton onClick={this.openModal}>
               <FontAwesomeIcon size="xs" icon="edit" />
             </IconButton>

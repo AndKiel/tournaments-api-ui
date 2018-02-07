@@ -20,7 +20,7 @@ class AssignPlayersButton extends Component {
 
     if (tournament.isUserOrganiser && tournament.status !== 'ended') {
       return (
-        <Tooltip title="Assign players">
+        <Tooltip title="Assign players to tables">
           <IconButton onClick={this.assignPlayers}>
             <FontAwesomeIcon size="sm" icon="users" />
           </IconButton>
