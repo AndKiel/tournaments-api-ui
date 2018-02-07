@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Typography } from 'material-ui';
 import DrawerMenu from './drawer_menu';
 import UserMenu from './user_menu';
 import routes from '../../utils/routes';
+import styles from './navbar.scss';
 
 class Navbar extends Component {
   render() {
@@ -12,7 +13,9 @@ class Navbar extends Component {
         <Toolbar>
           <DrawerMenu />
           <Typography type="title" color="inherit" style={{ flex: 1 }}>
-            <Link to={routes.tournaments()}>Tournaments</Link>
+            <Link className={styles.link} to={routes.tournaments()}>
+              Tournaments
+            </Link>
           </Typography>
           <UserMenu />
         </Toolbar>

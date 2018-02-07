@@ -10,7 +10,6 @@ import ApiClient from './utils/api_client';
 import AppStore from './stores/app_store';
 import AppSwitch from './app_switch';
 
-// eslint-disable-next-line
 import styles from './app.scss';
 
 import fontawesome from '@fortawesome/fontawesome';
@@ -84,7 +83,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Navbar />
-            <main>
+            <main className={styles.main}>
               {appStore.sessionStore.state !== 'ready' ? (
                 <Loading />
               ) : (

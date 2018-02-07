@@ -9,7 +9,7 @@ import {
   Modal,
   Typography
 } from 'material-ui';
-import styles from './modals.scss';
+import styles from '../../../styles/modals.scss';
 import CompetitorForm from '../../../forms/competitor_form';
 import TextInput from '../../forms/text_input';
 
