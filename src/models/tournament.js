@@ -105,6 +105,27 @@ const Tournament = types
           return c.id === id;
         });
         self.competitors.splice(index, 1);
+      }),
+
+      addRound: flow(function* addRound(data) {
+        const response = yield apiClient.post(apiRoutes.rounds(), {
+          authenticate: true,
+          params: {
+            tournament_id: self.id
+          },
+          data: data
+        });
+        self.rounds.push(response.data.round);
+      }),
+
+      removeRound: flow(function* removeRound(id) {
+        yield apiClient.delete(apiRoutes.round(id), {
+          authenticate: true
+        });
+        const index = self.rounds.findIndex(r => {
+          return r.id === id;
+        });
+        self.rounds.splice(index, 1);
       })
     };
   });
