@@ -29,6 +29,12 @@ const Tournament = types
         return self.competitors.length;
       },
 
+      get confirmedCompetitorsCount() {
+        return self.competitors.filter(c => {
+          return c.status === 'confirmed';
+        }).length;
+      },
+
       get isUserOrganiser() {
         return self.organiser_id === userStore.user.id;
       },

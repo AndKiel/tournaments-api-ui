@@ -31,6 +31,9 @@ class CompetitorsList extends Component {
                 </div>
               )}
           </div>
+          <Typography paragraph>
+            Confirmed: {tournament.confirmedCompetitorsCount}
+          </Typography>
           <List>
             {tournament.competitors.map(competitor => {
               return <Competitor key={competitor.id} competitor={competitor} />;
