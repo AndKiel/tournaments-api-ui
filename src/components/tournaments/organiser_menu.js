@@ -25,10 +25,7 @@ class OrganiserActions extends Component {
   }
 
   render() {
-    if (
-      this.props.store.sessionStore.isSignedIn &&
-      this.props.tournament.isUserOrganiser
-    ) {
+    if (this.props.tournament.isUserOrganiser) {
       return (
         <div className={styles.container}>
           <IconButton className={styles.icon} onClick={this.openMenu}>

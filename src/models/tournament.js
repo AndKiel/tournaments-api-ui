@@ -18,7 +18,7 @@ const Tournament = types
     rounds: types.maybe(types.array(Round))
   })
   .views(self => {
-    const { userStore } = getRoot(self);
+    const { sessionStore, userStore } = getRoot(self);
 
     return {
       get parsedStartsAt() {
@@ -36,15 +36,20 @@ const Tournament = types
       },
 
       get isUserOrganiser() {
-        return self.organiser_id === userStore.user.id;
+        return (
+          sessionStore.isSignedIn && self.organiser_id === userStore.user.id
+        );
       },
 
       get isUserEnlisted() {
-        return self.competitors
-          .map(c => {
-            return c.user_id;
-          })
-          .includes(userStore.user.id);
+        return (
+          sessionStore.isSignedIn &&
+          self.competitors
+            .map(c => {
+              return c.user_id;
+            })
+            .includes(userStore.user.id)
+        );
       }
     };
   })

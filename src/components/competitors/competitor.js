@@ -24,8 +24,7 @@ class Competitor extends Component {
           disableTypography={true}
           primary={<Typography className={styles[status]}>{name}</Typography>}
         />
-        {this.props.store.sessionStore.isSignedIn &&
-          tournament.isUserOrganiser &&
+        {tournament.isUserOrganiser &&
           tournament.status === 'created' && (
             <ListItemSecondaryAction>
               <RemoveCompetitorButton competitor={this.props.competitor} />
