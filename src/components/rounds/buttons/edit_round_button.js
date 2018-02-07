@@ -29,7 +29,7 @@ class EditRoundButton extends Component {
       return (
         <span className={styles.button}>
           <Tooltip title="Edit round">
-            <IconButton color="primary" onClick={this.openModal}>
+            <IconButton onClick={this.openModal}>
               <FontAwesomeIcon size="xs" icon="edit" />
             </IconButton>
           </Tooltip>

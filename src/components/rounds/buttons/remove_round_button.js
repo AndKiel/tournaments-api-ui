@@ -22,7 +22,7 @@ class RemoveRoundButton extends Component {
     if (tournament.isUserOrganiser) {
       return (
         <Tooltip title="Remove round">
-          <IconButton onClick={this.removeRound}>
+          <IconButton className={styles.remove} onClick={this.removeRound}>
             <FontAwesomeIcon size="xs" icon="trash-alt" />
           </IconButton>
         </Tooltip>

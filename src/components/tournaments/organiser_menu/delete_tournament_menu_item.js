@@ -31,7 +31,7 @@ class DeleteTournamentMenuItem extends Component {
   render() {
     return (
       <MenuItem onClick={this.deleteTournament}>
-        <ListItemIcon>
+        <ListItemIcon className={styles.delete}>
           <FontAwesomeIcon
             className={styles['menu-icon']}
             icon="trash-alt"

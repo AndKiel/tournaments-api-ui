@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react/index';
 import { Typography } from 'material-ui';
 import NewRoundButton from './buttons/new_round_button';
 import Round from './round';
+import styles from './rounds_list.scss';
 
 @inject('store')
 @observer
@@ -11,7 +12,7 @@ class RoundsList extends Component {
     const rounds = this.props.store.tournamentsStore.item.rounds;
 
     return (
-      <div>
+      <div className={styles.container}>
         <Typography component="span" type="title" paragraph>
           Rounds
           <NewRoundButton />
