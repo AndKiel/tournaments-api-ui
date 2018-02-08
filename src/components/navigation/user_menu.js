@@ -27,7 +27,7 @@ class UserMenu extends Component {
         <div>
           <Tooltip title="New tournament">
             <IconButton
-              color="contrast"
+              color="inherit"
               component={Link}
               to={routes.newTournament()}
             >
@@ -35,12 +35,12 @@ class UserMenu extends Component {
             </IconButton>
           </Tooltip>
           <Tooltip title="Account">
-            <IconButton color="contrast" component={Link} to={routes.account()}>
+            <IconButton color="inherit" component={Link} to={routes.account()}>
               <FontAwesomeIcon icon="user-circle" fixedWidth />
             </IconButton>
           </Tooltip>
           <Tooltip title="Sign out">
-            <IconButton color="contrast" onClick={this.signOut}>
+            <IconButton color="inherit" onClick={this.signOut}>
               <FontAwesomeIcon icon="sign-out-alt" fixedWidth />
             </IconButton>
           </Tooltip>
@@ -49,10 +49,10 @@ class UserMenu extends Component {
     } else {
       return (
         <div>
-          <Button color="contrast" component={Link} to={routes.signIn()}>
+          <Button color="inherit" component={Link} to={routes.signIn()}>
             Sign in
           </Button>
-          <Button color="contrast" component={Link} to={routes.signUp()}>
+          <Button color="inherit" component={Link} to={routes.signUp()}>
             Sign up
           </Button>
         </div>

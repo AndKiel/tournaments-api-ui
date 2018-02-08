@@ -38,7 +38,7 @@ class TournamentPage extends Component {
             <Button
               className={styles['toggle-button']}
               color="primary"
-              variant="raised"
+              type="raised"
               onClick={this.toggleContents}
             >
               {this.activeContents === 0 && 'See results'}

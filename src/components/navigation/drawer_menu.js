@@ -40,7 +40,7 @@ class DrawerMenu extends Component {
             </List>
           </Drawer>
           <IconButton
-            color="contrast"
+            color="inherit"
             className={styles['bars-icon']}
             onClick={this.openMenu}
           >
