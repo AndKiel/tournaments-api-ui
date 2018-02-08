@@ -4,6 +4,9 @@ class PlayerForm extends Form {
   setup() {
     return {
       fields: ['player.result_values[]'],
+      labels: {
+        'player.result_values': 'Result values'
+      },
       values: {
         player: {
           result_values: []
