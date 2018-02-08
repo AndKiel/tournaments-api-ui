@@ -1,6 +1,7 @@
 import { types, getEnv, getRoot, flow } from 'mobx-state-tree';
 import Competitor from './competitor';
 import Round from './round';
+import Result from './result';
 import moment from 'moment';
 import apiRoutes from '../utils/api_routes';
 
@@ -14,8 +15,9 @@ const Tournament = types
     result_names: types.array(types.string),
     starts_at: types.string,
     status: types.enumeration(['created', 'in_progress', 'ended']),
-    competitors: types.maybe(types.array(Competitor)),
-    rounds: types.maybe(types.array(Round))
+    competitors: types.optional(types.array(Competitor), []),
+    rounds: types.optional(types.array(Round), []),
+    results: types.optional(types.array(Result), [])
   })
   .views(self => {
     const { sessionStore, userStore } = getRoot(self);
@@ -126,6 +128,15 @@ const Tournament = types
           return r.id === id;
         });
         self.rounds.splice(index, 1);
+      }),
+
+      getResults: flow(function* getResults() {
+        const response = yield apiClient.get(apiRoutes.results(), {
+          params: {
+            tournament_id: self.id
+          }
+        });
+        self.results = response.data.results;
       })
     };
   });

@@ -13,6 +13,8 @@ const apiRoutes = {
   startTournament: id => `/tournaments/${id}/start`,
   endTournament: id => `/tournaments/${id}/end`,
 
+  results: () => '/results',
+
   competitor: () => '/competitor',
   addCompetitor: () => '/competitor/add',
   removeCompetitor: id => `/competitors/${id}/remove`,

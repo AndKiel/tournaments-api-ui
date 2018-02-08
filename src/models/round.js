@@ -8,7 +8,7 @@ const Round = types
     competitors_limit: types.number,
     created_at: types.string,
     tables_count: types.number,
-    players: types.maybe(types.array(Player))
+    players: types.optional(types.array(Player), [])
   })
   .actions(self => {
     const { apiClient } = getEnv(self);
