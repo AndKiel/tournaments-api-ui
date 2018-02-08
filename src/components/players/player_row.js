@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react/index';
 import { TableRow, TableCell } from 'material-ui';
+import EditResultsButton from './buttons/edit_results_button';
 
 @observer
 class PlayerRow extends Component {
@@ -9,7 +10,10 @@ class PlayerRow extends Component {
 
     return (
       <TableRow>
-        <TableCell>{competitor_id.name}</TableCell>
+        <TableCell>
+          <EditResultsButton player={this.props.player} />
+          {competitor_id.name}
+        </TableCell>
         {result_values.map((value, index) => {
           return <TableCell key={index}>{value}</TableCell>;
         })}
