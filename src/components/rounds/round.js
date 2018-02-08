@@ -4,6 +4,7 @@ import { Typography } from 'material-ui';
 import EditRoundButton from './buttons/edit_round_button';
 import AssignPlayersButton from './buttons/assign_players_button';
 import RemoveRoundButton from './buttons/remove_round_button';
+import TableList from '../players/table_list';
 import styles from './round.scss';
 
 @inject('store')
@@ -29,7 +30,7 @@ class Round extends Component {
           </Typography>
         </div>
         <div className={styles.main}>
-          <Typography>Player-table assignment placeholder</Typography>
+          <TableList players={round.players} />
         </div>
       </div>
     );
