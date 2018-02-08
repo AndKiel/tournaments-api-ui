@@ -22,7 +22,9 @@ class Round extends Component {
           <Typography align="center">
             {round.competitors_limit} competitors
           </Typography>
-          <Typography align="center">on {round.tables_count} tables</Typography>
+          <Typography align="center">
+            on {round.tables_count} table{round.tables_count > 1 ? 's' : ''}
+          </Typography>
           <Typography align="center" component="span">
             <EditRoundButton round={round} />
             <AssignPlayersButton round={round} />
