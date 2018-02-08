@@ -36,7 +36,7 @@ class TournamentCard extends Component {
         </CardContent>
         <CardContent className={styles['card-content']}>
           <div className={styles.info}>
-            <Typography type="title">
+            <Typography type="title" paragraph>
               {name}
               <StatusIcon status={status} />
             </Typography>
@@ -45,7 +45,11 @@ class TournamentCard extends Component {
             )}
             {this.props.withDescription &&
               description.split('\n').map((p, idx) => {
-                return <Typography key={`p${idx}`}>{p}</Typography>;
+                return (
+                  <Typography key={`p${idx}`} paragraph={p.length === 0}>
+                    {p}
+                  </Typography>
+                );
               })}
           </div>
           <div className={styles.actions}>
