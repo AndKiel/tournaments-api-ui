@@ -42,10 +42,14 @@ class ResultsList extends Component {
                 {tournament.results.map((result, idx) => {
                   return (
                     <TableRow key={idx}>
-                      <TableCell>{idx + 1}</TableCell>
+                      <TableCell numeric>{idx + 1}</TableCell>
                       <TableCell>{result.competitor_id.name}</TableCell>
                       {result.total.map((value, index) => {
-                        return <TableCell key={index}>{value}</TableCell>;
+                        return (
+                          <TableCell key={index} numeric>
+                            {value}
+                          </TableCell>
+                        );
                       })}
                     </TableRow>
                   );

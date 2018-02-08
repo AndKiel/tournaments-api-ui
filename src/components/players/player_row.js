@@ -15,7 +15,11 @@ class PlayerRow extends Component {
           {competitor_id.name}
         </TableCell>
         {result_values.map((value, index) => {
-          return <TableCell key={index}>{value}</TableCell>;
+          return (
+            <TableCell key={index} numeric>
+              {value}
+            </TableCell>
+          );
         })}
       </TableRow>
     );
