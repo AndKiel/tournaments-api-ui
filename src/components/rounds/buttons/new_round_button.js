@@ -29,7 +29,7 @@ class NewRoundButton extends Component {
         <span>
           <Tooltip title="New round">
             <IconButton color="primary" onClick={this.openModal}>
-              <FontAwesomeIcon size="sm" icon="plus-circle" />
+              <FontAwesomeIcon size="sm" icon="plus-circle" fixedWidth />
             </IconButton>
           </Tooltip>
           <NewRoundModal open={this.isModalOpen} onClose={this.closeModal} />

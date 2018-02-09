@@ -10,7 +10,7 @@ class CompetitorsList extends Component {
     const groupedPlayers = groupBy(this.props.players, 'table_number');
 
     return (
-      <Grid container>
+      <Grid container justify="center">
         {Object.entries(groupedPlayers).map(pair => {
           return (
             <Grid item key={pair[0]}>

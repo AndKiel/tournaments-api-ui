@@ -20,11 +20,13 @@ class AssignPlayersButton extends Component {
 
     if (tournament.isUserOrganiser && tournament.status === 'in_progress') {
       return (
-        <Tooltip title="Assign players to tables">
-          <IconButton onClick={this.assignPlayers}>
-            <FontAwesomeIcon size="sm" icon="users" />
-          </IconButton>
-        </Tooltip>
+        <div>
+          <Tooltip title="Assign players to tables">
+            <IconButton onClick={this.assignPlayers}>
+              <FontAwesomeIcon size="sm" icon="users" fixedWidth />
+            </IconButton>
+          </Tooltip>
+        </div>
       );
     } else {
       return null;

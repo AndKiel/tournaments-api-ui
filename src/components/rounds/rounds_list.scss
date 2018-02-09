@@ -1,12 +1,25 @@
+.wrap {
+  position: relative;
+}
+
 .container {
-  display: flex;
+  position: absolute;
 }
 
-.side {
-  padding-right: 10px;
-  padding-top: 10px;
+.navigation {
+  text-align: center;
+  padding-bottom: 20px;
 }
 
-.main {
-  flex: 1;
+.button {
+  width: 30px !important;
+  height: 30px !important;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.active {
+  background-color: #E0E0E0 !important;
 }

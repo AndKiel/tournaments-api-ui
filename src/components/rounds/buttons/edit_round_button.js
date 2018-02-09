@@ -5,7 +5,6 @@ import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import EditRoundModal from '../modals/edit_round_modal';
-import styles from './buttons.scss';
 
 @inject('store')
 @observer
@@ -27,10 +26,10 @@ class EditRoundButton extends Component {
 
     if (tournament.isUserOrganiser && tournament.status !== 'ended') {
       return (
-        <span className={styles.button}>
+        <div>
           <Tooltip title="Edit">
             <IconButton onClick={this.openModal}>
-              <FontAwesomeIcon size="xs" icon="edit" />
+              <FontAwesomeIcon size="xs" icon="edit" fixedWidth />
             </IconButton>
           </Tooltip>
           <EditRoundModal
@@ -38,7 +37,7 @@ class EditRoundButton extends Component {
             open={this.isModalOpen}
             onClose={this.closeModal}
           />
-        </span>
+        </div>
       );
     } else {
       return null;
