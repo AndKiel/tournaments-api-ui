@@ -73,6 +73,7 @@ const Tournament = types
           data: data
         });
         self.competitors.push(response.data.competitor);
+        self.orderCompetitors();
       }),
 
       resign: flow(function* resign() {
