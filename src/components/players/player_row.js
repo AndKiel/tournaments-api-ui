@@ -10,13 +10,13 @@ class PlayerRow extends Component {
 
     return (
       <TableRow>
-        <TableCell>
+        <TableCell padding="dense">
           <EditResultsButton player={this.props.player} />
           {competitor_id.name}
         </TableCell>
         {result_values.map((value, index) => {
           return (
-            <TableCell key={index} numeric>
+            <TableCell key={index} padding="dense" numeric>
               {value}
             </TableCell>
           );

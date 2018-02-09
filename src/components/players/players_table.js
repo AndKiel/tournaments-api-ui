@@ -22,11 +22,15 @@ class PlayersTable extends Component {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>
+              <TableCell padding="dense">
                 Table {String.fromCharCode(64 + parseInt(number, 10))}
               </TableCell>
               {tournament.result_names.map((name, index) => {
-                return <TableCell key={index}>{name}</TableCell>;
+                return (
+                  <TableCell key={index} padding="dense">
+                    {name}
+                  </TableCell>
+                );
               })}
             </TableRow>
           </TableHead>
