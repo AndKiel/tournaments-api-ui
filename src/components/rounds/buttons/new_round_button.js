@@ -5,7 +5,6 @@ import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import NewRoundModal from '../modals/new_round_modal';
-import styles from './buttons.scss';
 
 @inject('store')
 @observer
@@ -27,7 +26,7 @@ class NewRoundButton extends Component {
 
     if (tournament.isUserOrganiser && tournament.status !== 'ended') {
       return (
-        <span className={styles.button}>
+        <span>
           <Tooltip title="New round">
             <IconButton color="primary" onClick={this.openModal}>
               <FontAwesomeIcon size="sm" icon="plus-circle" />
