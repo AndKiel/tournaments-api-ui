@@ -20,11 +20,13 @@ class RemoveCompetitorButton extends Component {
   render() {
     if (this.props.competitor.user_id === null) {
       return (
-        <Tooltip title="Remove competitor">
-          <IconButton onClick={this.removeCompetitor}>
-            <FontAwesomeIcon size="xs" icon="user-times" />
-          </IconButton>
-        </Tooltip>
+        <div>
+          <Tooltip title="Remove competitor">
+            <IconButton onClick={this.removeCompetitor}>
+              <FontAwesomeIcon size="xs" icon="user-times" />
+            </IconButton>
+          </Tooltip>
+        </div>
       );
     } else {
       return null;

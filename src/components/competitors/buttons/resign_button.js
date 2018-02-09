@@ -21,15 +21,17 @@ class ResignButton extends Component {
 
     if (tournament.isUserEnlisted) {
       return (
-        <Tooltip title="Resign">
-          <IconButton onClick={this.resign}>
-            <FontAwesomeIcon
-              size="sm"
-              icon={['far', 'calendar-minus']}
-              fixedWidth
-            />
-          </IconButton>
-        </Tooltip>
+        <div>
+          <Tooltip title="Resign">
+            <IconButton onClick={this.resign}>
+              <FontAwesomeIcon
+                size="sm"
+                icon={['far', 'calendar-minus']}
+                fixedWidth
+              />
+            </IconButton>
+          </Tooltip>
+        </div>
       );
     } else {
       return null;
