@@ -32,6 +32,8 @@ class AddCompetitorModal extends Component {
   }
 
   render() {
+    this.form.clear();
+
     return (
       <Modal open={this.props.open} onClose={this.props.onClose}>
         <Card className={styles.contents}>
