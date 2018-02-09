@@ -42,6 +42,7 @@ class EditResultsModal extends Component {
               <ArrayInput
                 field={this.form.$('player.result_values')}
                 allowDuplicates={true}
+                autoFocus
               />
             </CardContent>
             <CardActions>
