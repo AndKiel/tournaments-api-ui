@@ -4,6 +4,7 @@ import { Grid, Typography } from 'material-ui';
 import AddCompetitorButton from './buttons/add_competitor_button';
 import EnlistButton from './buttons/enlist_button';
 import ResignButton from './buttons/resign_button';
+import OrderButton from './buttons/order_button';
 import Competitor from './competitor';
 import styles from './competitors_list.scss';
 
@@ -15,14 +16,17 @@ class CompetitorsList extends Component {
 
     return (
       <div className={styles.container}>
-        {this.props.store.sessionStore.isSignedIn &&
-          tournament.status === 'created' && (
-            <div className={styles.side}>
-              <AddCompetitorButton />
-              <EnlistButton />
-              <ResignButton />
-            </div>
-          )}
+        <div className={styles.side}>
+          {this.props.store.sessionStore.isSignedIn &&
+            tournament.status === 'created' && (
+              <div>
+                <AddCompetitorButton />
+                <EnlistButton />
+                <ResignButton />
+              </div>
+            )}
+          <OrderButton />
+        </div>
         <div className={styles.main}>
           <Typography>
             Competitors limit: {tournament.competitors_limit}

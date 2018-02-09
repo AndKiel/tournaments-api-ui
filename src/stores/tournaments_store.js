@@ -26,6 +26,7 @@ const TournamentsStore = types
         self.item = null;
         const response = yield apiClient.get(apiRoutes.tournament(id));
         self.item = response.data.tournament;
+        self.item.orderCompetitors();
       })
     };
   });

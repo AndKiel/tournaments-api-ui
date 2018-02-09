@@ -4,6 +4,7 @@ import Round from './round';
 import Result from './result';
 import moment from 'moment';
 import apiRoutes from '../utils/api_routes';
+import orderBy from 'lodash/orderBy';
 
 const Tournament = types
   .model('Tournament', {
@@ -97,6 +98,7 @@ const Tournament = types
           data: data
         });
         self.competitors.push(response.data.competitor);
+        self.orderCompetitors();
       }),
 
       removeCompetitor: flow(function* removeCompetitor(id) {
@@ -108,6 +110,10 @@ const Tournament = types
         });
         self.competitors.splice(index, 1);
       }),
+
+      orderCompetitors(order = getRoot(self).uiStore.competitorsOrder) {
+        self.competitors = orderBy(self.competitors, order);
+      },
 
       addRound: flow(function* addRound(data) {
         const response = yield apiClient.post(apiRoutes.rounds(), {

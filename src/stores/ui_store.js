@@ -4,7 +4,11 @@ const UIStore = types
   .model('UIStore', {
     alertText: types.optional(types.string, ''),
     alertType: types.optional(types.string, ''),
-    isAlertOpen: types.optional(types.boolean, false)
+    isAlertOpen: types.optional(types.boolean, false),
+    competitorsOrder: types.optional(
+      types.enumeration(['created_at', 'name']),
+      'created_at'
+    )
   })
   .actions(self => {
     return {
@@ -17,6 +21,10 @@ const UIStore = types
         self.alertType = type;
         self.isAlertOpen = true;
         setTimeout(() => self.closeAlert(), 5000);
+      },
+
+      setCompetitorsOrder(order) {
+        self.competitorsOrder = order;
       }
     };
   });
