@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
-import { List, Typography } from 'material-ui';
+import { Grid, Typography } from 'material-ui';
 import AddCompetitorButton from './buttons/add_competitor_button';
 import EnlistButton from './buttons/enlist_button';
 import ResignButton from './buttons/resign_button';
@@ -31,11 +31,18 @@ class CompetitorsList extends Component {
             Confirmed {tournament.confirmedCompetitorsCount} out of{' '}
             {tournament.competitorsCount} competitors
           </Typography>
-          <List>
+          {tournament.isUserOrganiser &&
+            tournament.status === 'created' && (
+              <Typography paragraph>
+                Click on a name to confirm or reject a competitor. Only
+                confirmed competitors can be assigned to tables in rounds.
+              </Typography>
+            )}
+          <Grid container>
             {tournament.competitors.map(competitor => {
               return <Competitor key={competitor.id} competitor={competitor} />;
             })}
-          </List>
+          </Grid>
         </div>
       </div>
     );

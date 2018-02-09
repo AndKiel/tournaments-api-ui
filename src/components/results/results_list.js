@@ -6,8 +6,7 @@ import {
   TableHead,
   TableBody,
   TableRow,
-  TableCell,
-  Typography
+  TableCell
 } from 'material-ui';
 
 @inject('store')

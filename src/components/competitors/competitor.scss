@@ -1,13 +1,27 @@
+.container {
+  display: flex;
+  padding: 10px;
+}
+
+.main {
+  padding-right: 10px;
+}
+
 %competitor {
   font-size: 1rem !important;
 }
 
 .enlisted {
   @extend %competitor;
-  color: #757575 !important;
+  color: #9E9E9E !important;
 }
 
 .confirmed {
   @extend %competitor;
   color: #212121 !important;
+}
+
+.date {
+  color: #9E9E9E !important;
+  font-size: 0.8rem !important;
 }
