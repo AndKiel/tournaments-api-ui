@@ -8,6 +8,7 @@ import {
   TableRow,
   TableCell
 } from 'material-ui';
+import styles from './results_list.scss';
 
 @inject('store')
 @observer
@@ -20,7 +21,7 @@ class ResultsList extends Component {
     const tournament = this.props.store.tournamentsStore.item;
 
     return (
-      <Grid container>
+      <Grid container justify="center">
         <Grid item>
           <Table>
             <TableHead>
@@ -41,7 +42,7 @@ class ResultsList extends Component {
             <TableBody>
               {tournament.results.map((result, idx) => {
                 return (
-                  <TableRow key={idx}>
+                  <TableRow key={idx} className={styles[`top-${idx + 1}`]}>
                     <TableCell padding="dense" numeric>
                       {idx + 1}
                     </TableCell>
