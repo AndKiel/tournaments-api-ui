@@ -5,7 +5,6 @@ import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import AddCompetitorModal from '../modals/add_competitor_modal';
-import styles from './buttons.scss';
 
 @inject('store')
 @observer
@@ -27,10 +26,10 @@ class AddCompetitorButton extends Component {
 
     if (tournament.isUserOrganiser) {
       return (
-        <div className={styles.button}>
+        <div>
           <Tooltip title="Add competitor">
             <IconButton onClick={this.openModal}>
-              <FontAwesomeIcon size="sm" icon="user-plus" />
+              <FontAwesomeIcon size="sm" icon="user-plus" fixedWidth />
             </IconButton>
           </Tooltip>
           <AddCompetitorModal

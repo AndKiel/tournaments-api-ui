@@ -23,7 +23,11 @@ class ResignButton extends Component {
       return (
         <Tooltip title="Resign">
           <IconButton onClick={this.resign}>
-            <FontAwesomeIcon size="sm" icon={['far', 'calendar-minus']} />
+            <FontAwesomeIcon
+              size="sm"
+              icon={['far', 'calendar-minus']}
+              fixedWidth
+            />
           </IconButton>
         </Tooltip>
       );

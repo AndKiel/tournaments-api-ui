@@ -5,7 +5,6 @@ import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import EnlistModal from '../modals/enlist_modal';
-import styles from './buttons.scss';
 
 @inject('store')
 @observer
@@ -27,10 +26,14 @@ class EnlistButton extends Component {
 
     if (!tournament.isUserEnlisted) {
       return (
-        <div className={styles.button}>
+        <div>
           <Tooltip title="Enlist">
             <IconButton onClick={this.openModal}>
-              <FontAwesomeIcon size="sm" icon={['far', 'calendar-plus']} />
+              <FontAwesomeIcon
+                size="sm"
+                icon={['far', 'calendar-plus']}
+                fixedWidth
+              />
             </IconButton>
           </Tooltip>
           <EnlistModal open={this.isModalOpen} onClose={this.closeModal} />
