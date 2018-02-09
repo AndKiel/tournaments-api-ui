@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
-import { Button, Grid } from 'material-ui';
+import { Grid, Tabs, Tab } from 'material-ui';
 import Loading from '../../components/utils/loading';
 import TournamentCard from '../../components/tournaments/tournament_card';
 import CompetitorsList from '../../components/competitors/competitors_list';
@@ -13,15 +13,15 @@ import styles from './tournament_page.scss';
 @inject('store')
 @observer
 class TournamentPage extends Component {
-  @observable activeContents = 0;
+  @observable activeTab = 0;
 
   componentWillMount() {
     this.props.store.tournamentsStore.getTournament(this.props.match.params.id);
   }
 
   @autobind
-  toggleContents() {
-    this.activeContents = this.activeContents ? 0 : 1;
+  changeTab(e, value) {
+    this.activeTab = value;
   }
 
   render() {
@@ -32,20 +32,18 @@ class TournamentPage extends Component {
         <Grid container>
           <Grid item xs={12} md={5} lg={4}>
             <TournamentCard tournament={tournament} withDescription />
-            <CompetitorsList />
           </Grid>
           <Grid item xs={12} md={7} lg={8}>
-            <Button
-              className={styles['toggle-button']}
-              color="primary"
-              type="raised"
-              onClick={this.toggleContents}
-            >
-              {this.activeContents === 0 && 'See results'}
-              {this.activeContents === 1 && 'See rounds'}
-            </Button>
-            {this.activeContents === 0 && <RoundsList />}
-            {this.activeContents === 1 && <ResultsList />}
+            <Tabs value={this.activeTab} onChange={this.changeTab} centered>
+              <Tab label="Competitors" disableRipple />
+              <Tab label="Rounds" disableRipple />
+              <Tab label="Results" disableRipple />
+            </Tabs>
+            <div className={styles.contents}>
+              {this.activeTab === 0 && <CompetitorsList />}
+              {this.activeTab === 1 && <RoundsList />}
+              {this.activeTab === 2 && <ResultsList />}
+            </div>
           </Grid>
         </Grid>
       );
