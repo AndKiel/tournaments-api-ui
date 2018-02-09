@@ -38,7 +38,7 @@ class CompetitorsList extends Component {
                 confirmed competitors can be assigned to tables in rounds.
               </Typography>
             )}
-          <Grid container>
+          <Grid className={styles.grid} container>
             {tournament.competitors.map(competitor => {
               return <Competitor key={competitor.id} competitor={competitor} />;
             })}
