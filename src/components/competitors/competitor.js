@@ -44,7 +44,13 @@ class Competitor extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.main}>
-          <ButtonBase onClick={this.toggleCompetitor} disableRipple>
+          <ButtonBase
+            onClick={this.toggleCompetitor}
+            disableRipple
+            disabled={
+              !(tournament.isUserOrganiser && tournament.status === 'created')
+            }
+          >
             <Typography className={styles[status]}>{name}</Typography>
           </ButtonBase>
           <Typography className={styles.date}>
