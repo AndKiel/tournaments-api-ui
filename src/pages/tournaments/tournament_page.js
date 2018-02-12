@@ -16,7 +16,24 @@ class TournamentPage extends Component {
   @observable activeTab = 0;
 
   componentWillMount() {
-    this.props.store.tournamentsStore.getTournament(this.props.match.params.id);
+    this.setup();
+  }
+
+  @autobind
+  async setup() {
+    await this.props.store.tournamentsStore.getTournament(
+      this.props.match.params.id
+    );
+    switch (this.props.store.tournamentsStore.item.status) {
+      case 'in_progress':
+        this.activeTab = 1;
+        break;
+      case 'ended':
+        this.activeTab = 2;
+        break;
+      default:
+      // nothing
+    }
   }
 
   @autobind
