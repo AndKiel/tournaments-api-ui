@@ -34,11 +34,13 @@ class TournamentPage extends Component {
             <TournamentCard tournament={tournament} withDescription />
           </Grid>
           <Grid item xs={12} md={7} lg={8}>
-            <Tabs value={this.activeTab} onChange={this.changeTab} centered>
-              <Tab label="Competitors" disableRipple />
-              <Tab label="Rounds" disableRipple />
-              <Tab label="Results" disableRipple />
-            </Tabs>
+            <div className={styles.tabs}>
+              <Tabs value={this.activeTab} onChange={this.changeTab} centered>
+                <Tab label="Competitors" disableRipple />
+                <Tab label="Rounds" disableRipple />
+                <Tab label="Results" disableRipple />
+              </Tabs>
+            </div>
             <div className={styles.contents}>
               {this.activeTab === 0 && <CompetitorsList />}
               {this.activeTab === 1 && <RoundsList />}

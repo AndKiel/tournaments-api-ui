@@ -19,8 +19,8 @@ class RoundsList extends Component {
     const round = rounds[this.currentRound];
 
     return (
-      <div className={styles.wrap}>
-        <div className={styles.container}>
+      <div className={styles.container}>
+        <div className={styles.side}>
           <div>
             <NewRoundButton />
           </div>
@@ -32,26 +32,30 @@ class RoundsList extends Component {
             </div>
           )}
         </div>
-        <div className={styles.navigation}>
-          {rounds.map((r, idx) => {
-            const isCurrent = this.currentRound === idx;
+        <div className={styles.main}>
+          <div className={styles.navigation}>
+            {rounds.map((r, idx) => {
+              const isCurrent = this.currentRound === idx;
 
-            return (
-              <IconButton
-                key={idx}
-                className={`${styles.button} ${isCurrent ? styles.active : ''}`}
-                disabled={isCurrent}
-                disableRipple
-                onClick={() => {
-                  this.currentRound = idx;
-                }}
-              >
-                <Typography>{idx + 1}</Typography>
-              </IconButton>
-            );
-          })}
+              return (
+                <IconButton
+                  key={idx}
+                  className={`${styles.button} ${
+                    isCurrent ? styles.active : ''
+                  }`}
+                  disabled={isCurrent}
+                  disableRipple
+                  onClick={() => {
+                    this.currentRound = idx;
+                  }}
+                >
+                  <Typography>{idx + 1}</Typography>
+                </IconButton>
+              );
+            })}
+          </div>
+          <div>{round && <Round round={round} />}</div>
         </div>
-        <div>{round && <Round round={round} />}</div>
       </div>
     );
   }

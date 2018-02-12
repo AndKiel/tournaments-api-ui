@@ -23,44 +23,46 @@ class ResultsList extends Component {
     return (
       <Grid container justify="center">
         <Grid item>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell padding="dense" numeric>
-                  #
-                </TableCell>
-                <TableCell padding="dense">Competitor</TableCell>
-                {tournament.result_names.map((name, index) => {
+          <div className={styles.container}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell padding="dense" numeric>
+                    #
+                  </TableCell>
+                  <TableCell padding="dense">Competitor</TableCell>
+                  {tournament.result_names.map((name, index) => {
+                    return (
+                      <TableCell key={index} padding="dense">
+                        {name}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {tournament.results.map((result, idx) => {
                   return (
-                    <TableCell key={index} padding="dense">
-                      {name}
-                    </TableCell>
+                    <TableRow key={idx} className={styles[`top-${idx + 1}`]}>
+                      <TableCell padding="dense" numeric>
+                        {idx + 1}
+                      </TableCell>
+                      <TableCell padding="dense">
+                        {result.competitor_id.name}
+                      </TableCell>
+                      {result.total.map((value, index) => {
+                        return (
+                          <TableCell key={index} padding="dense" numeric>
+                            {value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
                   );
                 })}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {tournament.results.map((result, idx) => {
-                return (
-                  <TableRow key={idx} className={styles[`top-${idx + 1}`]}>
-                    <TableCell padding="dense" numeric>
-                      {idx + 1}
-                    </TableCell>
-                    <TableCell padding="dense">
-                      {result.competitor_id.name}
-                    </TableCell>
-                    {result.total.map((value, index) => {
-                      return (
-                        <TableCell key={index} padding="dense" numeric>
-                          {value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
+              </TableBody>
+            </Table>
+          </div>
         </Grid>
       </Grid>
     );
