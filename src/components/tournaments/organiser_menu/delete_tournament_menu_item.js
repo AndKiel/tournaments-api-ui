@@ -2,16 +2,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react/index';
+import { observable } from 'mobx';
 import autobind from 'autobind-decorator';
 import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../../utils/routes';
+import ConfirmationDialog from '../../utils/confirmation_dialog';
 import styles from './icons.scss';
 
 @withRouter
 @inject('store')
 @observer
 class DeleteTournamentMenuItem extends Component {
+  @observable isDialogOpen = false;
+
+  @autobind
+  openDialog() {
+    this.isDialogOpen = true;
+  }
+
+  @autobind
+  closeDialog() {
+    this.isDialogOpen = false;
+  }
+
   @autobind
   async deleteTournament() {
     await this.props.store.organisedTournamentsStore.deleteTournament(
@@ -31,16 +45,24 @@ class DeleteTournamentMenuItem extends Component {
 
   render() {
     return (
-      <MenuItem onClick={this.deleteTournament}>
-        <ListItemIcon className={styles.delete}>
-          <FontAwesomeIcon
-            className={styles['menu-icon']}
-            icon="trash-alt"
-            fixedWidth
-          />
-        </ListItemIcon>
-        <ListItemText primary="Delete" />
-      </MenuItem>
+      <div>
+        <MenuItem onClick={this.openDialog}>
+          <ListItemIcon className={styles.delete}>
+            <FontAwesomeIcon
+              className={styles['menu-icon']}
+              icon="trash-alt"
+              fixedWidth
+            />
+          </ListItemIcon>
+          <ListItemText primary="Delete" />
+        </MenuItem>
+        <ConfirmationDialog
+          onClose={this.closeDialog}
+          onConfirm={this.deleteTournament}
+          open={this.isDialogOpen}
+          title="Delete this tournament?"
+        />
+      </div>
     );
   }
 }
