@@ -34,7 +34,7 @@ class TournamentCard extends Component {
           <CalendarIcon date={parsedStartsAt} />
           <TimeIcon date={parsedStartsAt} />
         </CardContent>
-        <CardContent className={styles['card-content']}>
+        <CardContent className={styles.content}>
           <div className={styles.info}>
             <Typography type="title" paragraph component="span">
               {name}

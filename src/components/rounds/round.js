@@ -12,7 +12,7 @@ class Round extends Component {
 
     return (
       <div>
-        <div className={styles.top}>
+        <div className={styles.summary}>
           <Typography align="center">
             {round.competitors_limit} competitors
           </Typography>

@@ -1,4 +1,4 @@
-.calendar-icon {
+.container {
   display: block;
   width: 65px;
   margin-bottom: 8px;
@@ -6,7 +6,7 @@
   box-shadow: 0 0 3px #ccc;
 }
 
-.calendar-icon-month {
+.month {
   background: #B71C1C;
   padding: 0.3rem 0 0.1rem;
   color: #ffffff !important;
@@ -14,12 +14,12 @@
   font-weight: bold !important;
 }
 
-.calendar-icon-day {
+.day {
   padding: 0.2rem 0 0;
   font-size: 1.75rem !important;
 }
 
-.calendar-icon-dow {
+.dow {
   color: #757575 !important;
   font-size: 0.75rem !important;
 }

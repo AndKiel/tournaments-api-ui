@@ -9,13 +9,13 @@ class CalendarIcon extends Component {
     const { date } = this.props;
 
     return (
-      <div className={styles['calendar-icon']}>
-        <Typography component="span" className={styles['calendar-icon-month']}>
+      <div className={styles.container}>
+        <Typography component="span" className={styles.month}>
           {date.format('MMM').toUpperCase()}
         </Typography>
-        <Typography component="span" className={styles['calendar-icon-day']}>
+        <Typography component="span" className={styles.day}>
           {date.format('D')}
-          <Typography component="span" className={styles['calendar-icon-dow']}>
+          <Typography component="span" className={styles.dow}>
             {date.format('ddd')}
           </Typography>
         </Typography>

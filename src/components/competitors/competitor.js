@@ -57,12 +57,7 @@ class Competitor extends Component {
             {parsedCreatedAt.format('DD/MM/YYYY HH:mm')}
           </Typography>
         </div>
-        {tournament.isUserOrganiser &&
-          tournament.status === 'created' && (
-            <div>
-              <RemoveCompetitorButton competitor={this.props.competitor} />
-            </div>
-          )}
+        <RemoveCompetitorButton competitor={this.props.competitor} />
       </div>
     );
   }

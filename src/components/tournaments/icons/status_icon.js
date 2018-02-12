@@ -12,7 +12,7 @@ class StatusIcon extends Component {
         return (
           <Tooltip title="Created">
             <FontAwesomeIcon
-              className={styles['status-icon']}
+              className={styles.status}
               icon="hourglass-start"
               size="xs"
               fixedWidth
@@ -23,7 +23,7 @@ class StatusIcon extends Component {
         return (
           <Tooltip title="In progress">
             <FontAwesomeIcon
-              className={styles['status-icon']}
+              className={styles.status}
               icon="hourglass-half"
               size="xs"
               fixedWidth
@@ -34,7 +34,7 @@ class StatusIcon extends Component {
         return (
           <Tooltip title="Ended">
             <FontAwesomeIcon
-              className={styles['status-icon']}
+              className={styles.status}
               icon="hourglass-end"
               size="xs"
               fixedWidth

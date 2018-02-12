@@ -18,7 +18,13 @@ class RemoveCompetitorButton extends Component {
   }
 
   render() {
-    if (this.props.competitor.user_id === null) {
+    const tournament = this.props.store.tournamentsStore.item;
+
+    if (
+      tournament.isUserOrganiser &&
+      tournament.status === 'created' &&
+      this.props.competitor.user_id === null
+    ) {
       return (
         <div>
           <Tooltip title="Remove competitor">
