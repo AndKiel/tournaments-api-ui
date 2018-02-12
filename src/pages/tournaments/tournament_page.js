@@ -52,7 +52,12 @@ class TournamentPage extends Component {
           </Grid>
           <Grid item xs={12} md={7} lg={8}>
             <div className={styles.tabs}>
-              <Tabs value={this.activeTab} onChange={this.changeTab} centered>
+              <Tabs
+                value={this.activeTab}
+                onChange={this.changeTab}
+                centered
+                fullWidth
+              >
                 <Tab label="Competitors" disableRipple />
                 <Tab label="Rounds" disableRipple />
                 <Tab label="Results" disableRipple />
