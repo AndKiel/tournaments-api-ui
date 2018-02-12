@@ -24,7 +24,7 @@ class EditRoundButton extends Component {
   render() {
     const tournament = this.props.store.tournamentsStore.item;
 
-    if (tournament.isUserOrganiser && tournament.status !== 'ended') {
+    if (tournament.status !== 'ended') {
       return (
         <div>
           <Tooltip title="Edit">

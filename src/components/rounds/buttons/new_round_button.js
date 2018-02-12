@@ -24,16 +24,16 @@ class NewRoundButton extends Component {
   render() {
     const tournament = this.props.store.tournamentsStore.item;
 
-    if (tournament.isUserOrganiser && tournament.status !== 'ended') {
+    if (tournament.status !== 'ended') {
       return (
-        <span>
+        <div>
           <Tooltip title="New round">
             <IconButton color="primary" onClick={this.openModal}>
               <FontAwesomeIcon size="sm" icon="plus-circle" fixedWidth />
             </IconButton>
           </Tooltip>
           <NewRoundModal open={this.isModalOpen} onClose={this.closeModal} />
-        </span>
+        </div>
       );
     } else {
       return null;

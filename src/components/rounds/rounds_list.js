@@ -15,26 +15,32 @@ class RoundsList extends Component {
   @observable currentRound = 0;
 
   render() {
-    const rounds = this.props.store.tournamentsStore.item.rounds;
-    const round = rounds[this.currentRound];
+    const tournament = this.props.store.tournamentsStore.item;
+    const round = tournament.rounds[this.currentRound];
 
     return (
       <div className={styles.container}>
-        <div className={styles.side}>
-          <div>
+        {tournament.isUserOrganiser && (
+          <div className={styles.side}>
             <NewRoundButton />
+            {round && (
+              <div>
+                <EditRoundButton round={round} />
+                <AssignPlayersButton round={round} />
+                <RemoveRoundButton round={round} />
+              </div>
+            )}
           </div>
-          {round && (
-            <div>
-              <EditRoundButton round={round} />
-              <AssignPlayersButton round={round} />
-              <RemoveRoundButton round={round} />
-            </div>
-          )}
-        </div>
-        <div className={styles.main}>
+        )}
+        <div
+          className={`${styles.main} ${
+            !this.props.store.sessionStore.isSignedIn
+              ? styles['not-signed-in']
+              : ''
+          }`}
+        >
           <div className={styles.navigation}>
-            {rounds.map((r, idx) => {
+            {tournament.rounds.map((r, idx) => {
               const isCurrent = this.currentRound === idx;
 
               return (

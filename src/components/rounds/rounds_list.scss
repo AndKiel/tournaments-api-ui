@@ -8,6 +8,16 @@
 
 .main {
   flex: 1;
+
+  &.not-signed-in {
+    @media screen and (min-width: 600px) and (max-width: 960px) {
+      padding-left: 28px;
+    }
+
+    @media screen and (min-width: 960px) {
+      padding-left: 58px;
+    }
+  }
 }
 
 .navigation {

@@ -18,7 +18,7 @@ class AssignPlayersButton extends Component {
   render() {
     const tournament = this.props.store.tournamentsStore.item;
 
-    if (tournament.isUserOrganiser && tournament.status === 'in_progress') {
+    if (tournament.status === 'in_progress') {
       return (
         <div>
           <Tooltip title="Assign players to tables">
