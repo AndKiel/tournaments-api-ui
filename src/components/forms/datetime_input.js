@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { DateTimePicker } from 'material-ui-pickers';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -30,5 +31,9 @@ class DatetimeInput extends Component {
     );
   }
 }
+
+DatetimeInput.propTypes = {
+  field: PropTypes.object.isRequired
+};
 
 export default DatetimeInput;

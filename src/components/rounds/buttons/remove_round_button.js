@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
@@ -34,5 +35,9 @@ class RemoveRoundButton extends Component {
     }
   }
 }
+
+RemoveRoundButton.propTypes = {
+  round: PropTypes.object.isRequired
+};
 
 export default RemoveRoundButton;

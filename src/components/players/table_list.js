@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { Grid } from 'material-ui';
 import PlayersTable from './players_table';
@@ -22,5 +23,9 @@ class CompetitorsList extends Component {
     );
   }
 }
+
+CompetitorsList.propTypes = {
+  players: PropTypes.object.isRequired
+};
 
 export default CompetitorsList;

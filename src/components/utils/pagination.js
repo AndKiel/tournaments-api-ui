@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { Table, TableFooter, TableRow, TablePagination } from 'material-ui';
 
@@ -24,5 +25,11 @@ class Pagination extends Component {
     );
   }
 }
+
+Pagination.propTypes = {
+  count: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired
+};
 
 export default Pagination;

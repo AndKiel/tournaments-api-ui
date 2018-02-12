@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { Typography } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -19,5 +20,9 @@ class TimeIcon extends Component {
     );
   }
 }
+
+TimeIcon.propTypes = {
+  date: PropTypes.object.isRequired
+};
 
 export default TimeIcon;

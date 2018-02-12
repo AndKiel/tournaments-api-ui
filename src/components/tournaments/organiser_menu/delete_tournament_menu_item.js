@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
@@ -43,5 +44,9 @@ class DeleteTournamentMenuItem extends Component {
     );
   }
 }
+
+DeleteTournamentMenuItem.propTypes = {
+  tournament: PropTypes.object.isRequired
+};
 
 export default DeleteTournamentMenuItem;

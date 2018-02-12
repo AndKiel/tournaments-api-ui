@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -23,5 +24,9 @@ class EditTournamentMenuItem extends Component {
     );
   }
 }
+
+EditTournamentMenuItem.propTypes = {
+  tournament: PropTypes.object.isRequired
+};
 
 export default EditTournamentMenuItem;

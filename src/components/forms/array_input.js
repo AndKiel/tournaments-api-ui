@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import ChipInput from 'material-ui-chip-input';
@@ -47,5 +48,9 @@ class ArrayInput extends Component {
     );
   }
 }
+
+ArrayInput.propTypes = {
+  field: PropTypes.object.isRequired
+};
 
 export default ArrayInput;

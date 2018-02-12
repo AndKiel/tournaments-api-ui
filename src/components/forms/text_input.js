@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { TextField } from 'material-ui';
 
@@ -23,5 +24,9 @@ class TextInput extends Component {
     );
   }
 }
+
+TextInput.propTypes = {
+  field: PropTypes.object.isRequired
+};
 
 export default TextInput;

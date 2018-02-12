@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { Link } from 'react-router-dom';
 import {
@@ -71,5 +72,12 @@ class TournamentCard extends Component {
     );
   }
 }
+
+TournamentCard.propTypes = {
+  tournament: PropTypes.object.isRequired,
+  withActions: PropTypes.bool,
+  withDescription: PropTypes.bool,
+  withLimit: PropTypes.bool
+};
 
 export default TournamentCard;

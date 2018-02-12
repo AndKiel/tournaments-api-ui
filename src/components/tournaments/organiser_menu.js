@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
@@ -48,5 +49,9 @@ class OrganiserActions extends Component {
     }
   }
 }
+
+OrganiserActions.propTypes = {
+  tournament: PropTypes.object.isRequired
+};
 
 export default OrganiserActions;

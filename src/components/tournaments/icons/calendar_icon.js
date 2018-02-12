@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { Typography } from 'material-ui';
 import styles from './calendar_icon.scss';
@@ -23,5 +24,9 @@ class CalendarIcon extends Component {
     );
   }
 }
+
+CalendarIcon.propTypes = {
+  date: PropTypes.object.isRequired
+};
 
 export default CalendarIcon;

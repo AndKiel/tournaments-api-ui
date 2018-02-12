@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
@@ -53,5 +54,9 @@ class StartTournamentMenuItem extends Component {
     }
   }
 }
+
+StartTournamentMenuItem.propTypes = {
+  tournament: PropTypes.object.isRequired
+};
 
 export default StartTournamentMenuItem;

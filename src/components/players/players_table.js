@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react/index';
 import {
   Paper,
@@ -44,5 +45,10 @@ class PlayersTable extends Component {
     );
   }
 }
+
+PlayersTable.propTypes = {
+  number: PropTypes.string.isRequired,
+  players: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default PlayersTable;

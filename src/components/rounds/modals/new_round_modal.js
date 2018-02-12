@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import {
@@ -61,5 +62,10 @@ class NewRoundModal extends Component {
     );
   }
 }
+
+NewRoundModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired
+};
 
 export default NewRoundModal;

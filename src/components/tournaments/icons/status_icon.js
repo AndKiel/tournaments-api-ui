@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -44,5 +45,9 @@ class StatusIcon extends Component {
     }
   }
 }
+
+StatusIcon.propTypes = {
+  status: PropTypes.string.isRequired
+};
 
 export default StatusIcon;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { ButtonBase, Typography } from 'material-ui';
@@ -62,5 +63,9 @@ class Competitor extends Component {
     );
   }
 }
+
+Competitor.propTypes = {
+  competitor: PropTypes.object.isRequired
+};
 
 export default Competitor;

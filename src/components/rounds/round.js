@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react/index';
 import { Typography } from 'material-ui';
 import TableList from '../players/table_list';
@@ -25,5 +26,9 @@ class Round extends Component {
     );
   }
 }
+
+Round.propTypes = {
+  round: PropTypes.object.isRequired
+};
 
 export default Round;

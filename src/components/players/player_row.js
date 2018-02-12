@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { TableRow, TableCell } from 'material-ui';
 import EditResultsButton from './buttons/edit_results_button';
@@ -25,5 +26,9 @@ class PlayerRow extends Component {
     );
   }
 }
+
+PlayerRow.propTypes = {
+  player: PropTypes.object.isRequired
+};
 
 export default PlayerRow;
