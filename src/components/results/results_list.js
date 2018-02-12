@@ -8,6 +8,7 @@ import {
   TableRow,
   TableCell
 } from 'material-ui';
+import classNames from 'classnames';
 import styles from './results_list.scss';
 
 @inject('store')
@@ -24,35 +25,31 @@ class ResultsList extends Component {
       <Grid container justify="center">
         <Grid item>
           <div className={styles.container}>
-            <Table>
+            <Table padding="dense">
               <TableHead>
                 <TableRow>
-                  <TableCell padding="dense" numeric>
-                    #
-                  </TableCell>
-                  <TableCell padding="dense">Competitor</TableCell>
+                  <TableCell numeric>#</TableCell>
+                  <TableCell>Competitor</TableCell>
                   {tournament.result_names.map((name, index) => {
-                    return (
-                      <TableCell key={index} padding="dense">
-                        {name}
-                      </TableCell>
-                    );
+                    return <TableCell key={index}>{name}</TableCell>;
                   })}
                 </TableRow>
               </TableHead>
               <TableBody>
                 {tournament.results.map((result, idx) => {
+                  const rowClasses = classNames({
+                    [styles.gold]: idx === 0,
+                    [styles.silver]: idx === 1,
+                    [styles.bronze]: idx === 2
+                  });
+
                   return (
-                    <TableRow key={idx} className={styles[`top-${idx + 1}`]}>
-                      <TableCell padding="dense" numeric>
-                        {idx + 1}
-                      </TableCell>
-                      <TableCell padding="dense">
-                        {result.competitor_id.name}
-                      </TableCell>
+                    <TableRow key={idx} className={rowClasses}>
+                      <TableCell numeric>{idx + 1}</TableCell>
+                      <TableCell>{result.competitor_id.name}</TableCell>
                       {result.total.map((value, index) => {
                         return (
-                          <TableCell key={index} padding="dense" numeric>
+                          <TableCell key={index} numeric>
                             {value}
                           </TableCell>
                         );

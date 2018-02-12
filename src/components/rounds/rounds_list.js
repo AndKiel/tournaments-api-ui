@@ -7,6 +7,7 @@ import EditRoundButton from './buttons/edit_round_button';
 import AssignPlayersButton from './buttons/assign_players_button';
 import RemoveRoundButton from './buttons/remove_round_button';
 import Round from './round';
+import classNames from 'classnames';
 import styles from './rounds_list.scss';
 
 @inject('store')
@@ -17,6 +18,9 @@ class RoundsList extends Component {
   render() {
     const tournament = this.props.store.tournamentsStore.item;
     const round = tournament.rounds[this.currentRound];
+    const contentClasses = classNames(styles.main, {
+      [styles['not-signed-in']]: !this.props.store.sessionStore.isSignedIn
+    });
 
     return (
       <div className={styles.container}>
@@ -32,23 +36,18 @@ class RoundsList extends Component {
             )}
           </div>
         )}
-        <div
-          className={`${styles.main} ${
-            !this.props.store.sessionStore.isSignedIn
-              ? styles['not-signed-in']
-              : ''
-          }`}
-        >
+        <div className={contentClasses}>
           <div className={styles.navigation}>
             {tournament.rounds.map((r, idx) => {
               const isCurrent = this.currentRound === idx;
+              const buttonClasses = classNames(styles.button, {
+                [styles.active]: isCurrent
+              });
 
               return (
                 <IconButton
                   key={idx}
-                  className={`${styles.button} ${
-                    isCurrent ? styles.active : ''
-                  }`}
+                  className={buttonClasses}
                   disabled={isCurrent}
                   disableRipple
                   onClick={() => {
