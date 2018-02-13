@@ -10,6 +10,7 @@ import {
   Modal,
   Typography
 } from 'material-ui';
+import classNames from 'classnames';
 import styles from '../../../styles/modals.scss';
 import RoundForm from '../../../forms/round_form';
 import TextInput from '../../forms/text_input';
@@ -33,7 +34,7 @@ class EditRoundModal extends Component {
   render() {
     return (
       <Modal open={this.props.open} onClose={this.props.onClose}>
-        <Card className={styles.contents}>
+        <Card className={classNames(styles.contents, styles.small)}>
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
               <Typography type="headline">Edit round</Typography>
