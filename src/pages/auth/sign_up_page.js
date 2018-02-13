@@ -24,8 +24,10 @@ class SignUpPage extends Component {
 
   @autobind
   async submitImpl() {
-    await this.props.store.sessionStore.signUp(this.form.values());
-    this.props.history.push(routes.signIn());
+    const data = this.form.values();
+    await this.props.store.sessionStore.signUp(data);
+    await this.props.store.sessionStore.signIn(data.user);
+    this.props.history.push(routes.tournaments());
     this.props.store.uiStore.setAlert('You have successfully signed up.');
   }
 
