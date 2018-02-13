@@ -26,7 +26,7 @@ class EnlistedTournamentsPage extends Component {
 
     return (
       <div>
-        <Typography type="headline" paragraph>
+        <Typography variant="headline" paragraph>
           Enlisted tournaments
         </Typography>
         <Grid container spacing={24}>

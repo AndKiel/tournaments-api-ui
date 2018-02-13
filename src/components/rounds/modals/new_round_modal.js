@@ -39,7 +39,7 @@ class NewRoundModal extends Component {
         <Card className={classNames(styles.contents, styles.small)}>
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
-              <Typography type="headline">New round</Typography>
+              <Typography variant="headline">New round</Typography>
               <TextInput
                 field={this.form.$('round.competitors_limit')}
                 type="number"

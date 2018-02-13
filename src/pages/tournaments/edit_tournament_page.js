@@ -55,7 +55,7 @@ class EditTournamentPage extends Component {
             <Card>
               <form onSubmit={this.form.onSubmit}>
                 <CardContent>
-                  <Typography type="headline">Edit tournament</Typography>
+                  <Typography variant="headline">Edit tournament</Typography>
                   <TextInput
                     field={this.form.$('tournament.name')}
                     autoFocus

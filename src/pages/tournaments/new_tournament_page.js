@@ -42,7 +42,7 @@ class NewTournamentPage extends Component {
           <Card>
             <form onSubmit={this.form.onSubmit}>
               <CardContent>
-                <Typography type="headline">New tournament</Typography>
+                <Typography variant="headline">New tournament</Typography>
                 <TextInput
                   field={this.form.$('tournament.name')}
                   autoFocus

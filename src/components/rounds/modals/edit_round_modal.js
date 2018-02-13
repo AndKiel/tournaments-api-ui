@@ -37,7 +37,7 @@ class EditRoundModal extends Component {
         <Card className={classNames(styles.contents, styles.small)}>
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
-              <Typography type="headline">Edit round</Typography>
+              <Typography variant="headline">Edit round</Typography>
               <TextInput
                 field={this.form.$('round.competitors_limit')}
                 type="number"

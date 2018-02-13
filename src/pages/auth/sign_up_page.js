@@ -36,7 +36,7 @@ class SignUpPage extends Component {
           <Card>
             <form onSubmit={this.form.onSubmit}>
               <CardContent>
-                <Typography type="headline">Sign up</Typography>
+                <Typography variant="headline">Sign up</Typography>
                 <TextInput
                   field={this.form.$('user.email')}
                   autoFocus

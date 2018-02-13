@@ -38,7 +38,7 @@ class EnlistModal extends Component {
         <Card className={styles.contents}>
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
-              <Typography type="headline">Enlist</Typography>
+              <Typography variant="headline">Enlist</Typography>
               <TextInput
                 field={this.form.$('competitor.name')}
                 autoFocus

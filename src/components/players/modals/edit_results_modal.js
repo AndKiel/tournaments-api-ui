@@ -66,7 +66,7 @@ class EditResultsModal extends Component {
         <Card className={modalStyles.contents}>
           <form onSubmit={this.onSubmit}>
             <CardContent>
-              <Typography type="headline">
+              <Typography variant="headline">
                 Results for {this.props.player.competitor_id.name}{' '}
               </Typography>
               {resultNames.map((name, index) => {

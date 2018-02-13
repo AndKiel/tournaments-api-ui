@@ -37,7 +37,7 @@ class TournamentCard extends Component {
         </CardContent>
         <CardContent className={styles.content}>
           <div className={styles.info}>
-            <Typography type="title" paragraph component="span">
+            <Typography variant="title" paragraph component="span">
               {name}
               <StatusIcon status={status} />
             </Typography>

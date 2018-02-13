@@ -38,7 +38,7 @@ class AccountPage extends Component {
           <Card>
             <form onSubmit={this.form.onSubmit}>
               <CardContent>
-                <Typography type="headline">Account</Typography>
+                <Typography variant="headline">Account</Typography>
                 <TextInput
                   field={this.form.$('user.email')}
                   autoFocus

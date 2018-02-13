@@ -40,7 +40,7 @@ class AddCompetitorModal extends Component {
         <Card className={styles.contents}>
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
-              <Typography type="headline">Add competitor</Typography>
+              <Typography variant="headline">Add competitor</Typography>
               <TextInput
                 field={this.form.$('competitor.name')}
                 autoFocus

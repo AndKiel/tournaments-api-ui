@@ -12,7 +12,7 @@ class Navbar extends Component {
       <AppBar position="static">
         <Toolbar>
           <DrawerMenu />
-          <Typography type="title" color="inherit" style={{ flex: 1 }}>
+          <Typography variant="title" color="inherit" style={{ flex: 1 }}>
             <Link className={styles.link} to={routes.tournaments()}>
               Tournaments
             </Link>

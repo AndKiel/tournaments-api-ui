@@ -22,7 +22,7 @@ class TournamentsPage extends Component {
 
     return (
       <div>
-        <Typography type="headline" paragraph>
+        <Typography variant="headline" paragraph>
           Tournaments
         </Typography>
         <Grid container spacing={24}>
