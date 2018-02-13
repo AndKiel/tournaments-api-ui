@@ -91,7 +91,7 @@ class ApiClient {
   // Helpers
 
   setToken(token) {
-    cookie.set('token', token);
+    cookie.set('token', token, { expires: 365 });
     this.token = AccessToken.create(token);
   }
 
