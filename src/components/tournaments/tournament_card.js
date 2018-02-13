@@ -57,9 +57,7 @@ class TournamentCard extends Component {
                 );
               })}
           </div>
-          <div className={styles.actions}>
-            <OrganiserMenu tournament={this.props.tournament} />
-          </div>
+          <OrganiserMenu tournament={this.props.tournament} />
         </CardContent>
       </Card>
     );
