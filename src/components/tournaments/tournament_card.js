@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import { observer } from 'mobx-react/index';
-import { Link } from 'react-router-dom';
-import {
-  Card,
-  CardContent,
-  IconButton,
-  Tooltip,
-  Typography
-} from 'material-ui';
+import autobind from 'autobind-decorator';
+import { Card, CardContent, Typography } from 'material-ui';
 import CalendarIcon from './icons/calendar_icon';
 import TimeIcon from './icons/time_icon';
 import StatusIcon from './icons/status_icon';
 import OrganiserMenu from './organiser_menu';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../utils/routes';
 import styles from './tournament_card.scss';
+import classNames from 'classnames';
 
+@withRouter
 @observer
 class TournamentCard extends Component {
+  @autobind
+  goToTournament() {
+    this.props.history.push(routes.tournament(this.props.tournament.id));
+  }
+
   render() {
     const {
-      id,
       name,
       description,
       parsedStartsAt,
@@ -29,8 +29,12 @@ class TournamentCard extends Component {
       status
     } = this.props.tournament;
 
+    const cardClasses = classNames(styles.card, {
+      [styles.clickable]: this.props.clickable
+    });
+
     return (
-      <Card className={styles.card}>
+      <Card className={cardClasses} onClick={this.goToTournament}>
         <CardContent>
           <CalendarIcon date={parsedStartsAt} />
           <TimeIcon date={parsedStartsAt} />
@@ -55,17 +59,6 @@ class TournamentCard extends Component {
           </div>
           <div className={styles.actions}>
             <OrganiserMenu tournament={this.props.tournament} />
-            {this.props.withActions && (
-              <Tooltip title="Details">
-                <IconButton
-                  className={styles.details}
-                  component={Link}
-                  to={routes.tournament(id)}
-                >
-                  <FontAwesomeIcon icon="info-circle" />
-                </IconButton>
-              </Tooltip>
-            )}
           </div>
         </CardContent>
       </Card>
@@ -74,8 +67,8 @@ class TournamentCard extends Component {
 }
 
 TournamentCard.propTypes = {
+  clickable: PropTypes.bool,
   tournament: PropTypes.object.isRequired,
-  withActions: PropTypes.bool,
   withDescription: PropTypes.bool,
   withLimit: PropTypes.bool
 };

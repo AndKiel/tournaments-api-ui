@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .content {
   flex: 1;
   padding-bottom: 16px !important;
@@ -13,8 +17,4 @@
 
 .actions {
   text-align: right;
-}
-
-.details {
-  color: #78909C !important;
 }

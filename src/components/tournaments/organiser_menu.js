@@ -28,7 +28,7 @@ class OrganiserActions extends Component {
   render() {
     if (this.props.tournament.isUserOrganiser) {
       return (
-        <div className={styles.container}>
+        <div className={styles.container} onClick={e => e.stopPropagation()}>
           <IconButton className={styles.icon} onClick={this.openMenu}>
             <FontAwesomeIcon size="sm" icon="ellipsis-v" />
           </IconButton>

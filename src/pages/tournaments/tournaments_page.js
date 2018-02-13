@@ -29,7 +29,7 @@ class TournamentsPage extends Component {
           {collection.map(t => {
             return (
               <Grid item xs={12} md={6} lg={4} xl={3} key={t.id}>
-                <TournamentCard tournament={t} withLimit withActions />
+                <TournamentCard tournament={t} withLimit clickable />
               </Grid>
             );
           })}
