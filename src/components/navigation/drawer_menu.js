@@ -26,7 +26,7 @@ class DrawerMenu extends Component {
     if (this.props.store.sessionStore.isSignedIn) {
       return (
         <div>
-          <Drawer anchor="top" open={this.isMenuOpen} onClose={this.closeMenu}>
+          <Drawer anchor="left" open={this.isMenuOpen} onClose={this.closeMenu}>
             <List onClick={this.closeMenu} onKeyDown={this.closeMenu}>
               <ListItem component={Link} to={routes.tournaments()}>
                 <ListItemText primary="All tournaments" />
