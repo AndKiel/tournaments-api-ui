@@ -3,7 +3,10 @@ import moment from 'moment';
 
 const FilterStore = types
   .model('FilterStore', {
-    starts_at_after: types.optional(types.string, moment().toISOString())
+    starts_at_after: types.optional(
+      types.maybe(types.string),
+      moment().toISOString()
+    )
   })
   .views(self => {
     return {
