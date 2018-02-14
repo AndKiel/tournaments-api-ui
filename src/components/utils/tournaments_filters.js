@@ -25,7 +25,7 @@ class TournamentsFilters extends Component {
           id="starts_at_after"
           className={styles.input}
           name="starts_at_after"
-          label="Starts at after"
+          label="Starting after"
           disabled={!filterStore.isStartsAtAfterEnabled}
           value={filterStore.starts_at_after}
           onChange={date =>
