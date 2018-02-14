@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react/index';
 import { DateTimePicker } from 'material-ui-pickers';
-import { Button, Switch } from 'material-ui';
+import { Typography } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import moment from 'moment';
 import styles from './tournaments_filters.scss';
 
 @inject('store')
@@ -15,33 +14,31 @@ class TournamentsFilters extends Component {
 
     return (
       <div className={styles.container}>
-        <Switch
-          checked={filterStore.isStartsAtAfterEnabled}
-          onChange={() => {
-            filterStore.toggleFilter('starts_at_after', moment().toISOString());
-          }}
-        />
+        <Typography component="span" className={styles.label}>
+          <FontAwesomeIcon className={styles.icon} icon="filter" fixedWidth />
+          Filters
+        </Typography>
         <DateTimePicker
           id="starts_at_after"
           className={styles.input}
           name="starts_at_after"
           label="Starting after"
-          disabled={!filterStore.isStartsAtAfterEnabled}
           value={filterStore.starts_at_after}
-          onChange={date =>
-            filterStore.setFilter('starts_at_after', date.toISOString())
-          }
+          onChange={date => {
+            filterStore.setFilter(
+              'starts_at_after',
+              date ? date.toISOString() : null
+            );
+            this.props.onFilter();
+          }}
           margin="normal"
           ampm={false}
           leftArrowIcon={<FontAwesomeIcon icon="chevron-left" />}
           rightArrowIcon={<FontAwesomeIcon icon="chevron-right" />}
           dateRangeIcon={<FontAwesomeIcon icon="calendar-alt" />}
           timeIcon={<FontAwesomeIcon icon="clock" />}
+          clearable
         />
-        <Button size="small" onClick={this.props.onFilter}>
-          <FontAwesomeIcon className={styles.icon} icon="filter" fixedWidth />
-          Filter
-        </Button>
       </div>
     );
   }

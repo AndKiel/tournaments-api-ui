@@ -1,9 +1,13 @@
 .container {
-  padding-bottom: 20px;
+  padding-bottom: 16px;
+}
+
+.label {
+  display: inline-block !important;
+  margin-right: 32px !important;
 }
 
 .input {
-  margin-right: 10px !important;
   margin-top: 0 !important;
 }
 
