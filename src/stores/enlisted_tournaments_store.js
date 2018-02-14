@@ -1,4 +1,4 @@
-import { types, getEnv, flow } from 'mobx-state-tree';
+import { types, getEnv, getRoot, flow } from 'mobx-state-tree';
 import Tournament from '../models/tournament';
 import apiRoutes from '../utils/api_routes';
 
@@ -14,9 +14,10 @@ const EnlistedTournamentsStore = types
     return {
       getTournaments: flow(function* getTournaments(page = 1) {
         self.page = page;
+        const filters = getRoot(self).filterStore;
         const response = yield apiClient.get(apiRoutes.enlistedTournaments(), {
           authenticate: true,
-          params: { page }
+          params: { page, filters }
         });
         self.totalCount = response.data.meta.total_count;
         self.collection = response.data.tournaments;

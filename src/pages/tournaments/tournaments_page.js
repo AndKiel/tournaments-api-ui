@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { Grid, Typography } from 'material-ui';
+import TournamentsFilters from '../../components/utils/tournaments_filters';
 import TournamentCard from '../../components/tournaments/tournament_card';
 import Pagination from '../../components/utils/pagination';
 
@@ -9,6 +10,11 @@ import Pagination from '../../components/utils/pagination';
 @observer
 class TournamentsPage extends Component {
   componentWillMount() {
+    this.setup();
+  }
+
+  @autobind
+  setup() {
     this.props.store.tournamentsStore.getTournaments();
   }
 
@@ -25,6 +31,7 @@ class TournamentsPage extends Component {
         <Typography variant="headline" paragraph>
           Tournaments
         </Typography>
+        <TournamentsFilters onFilter={this.setup} />
         <Grid container spacing={24}>
           {collection.map(t => {
             return (

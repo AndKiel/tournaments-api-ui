@@ -5,12 +5,16 @@ import apiRoutes from './api_routes';
 import AccessToken from '../models/access_token';
 
 import cookie from 'js-cookie';
+import qs from 'qs';
 
 class ApiClient {
   @observable token = null;
 
   constructor() {
-    this.client = axios.create({ baseURL: process.env.REACT_APP_API_URL });
+    this.client = axios.create({
+      baseURL: process.env.REACT_APP_API_URL,
+      paramsSerializer: qs.stringify
+    });
     const cookieToken = cookie.getJSON('token');
     if (cookieToken) {
       this.token = AccessToken.create(cookieToken);
