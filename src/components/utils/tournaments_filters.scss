@@ -1,4 +1,4 @@
-.container {
+.wrapper {
   padding-bottom: 16px;
 }
 
@@ -7,10 +7,22 @@
   margin-right: 32px !important;
 }
 
+.filter-icon {
+  margin-right: 10px;
+}
+
+.container {
+  position: relative;
+}
+
 .input {
   margin-top: 0 !important;
 }
 
-.icon {
-  margin-right: 10px;
+.adornment {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #757575;
+  cursor: pointer;
 }

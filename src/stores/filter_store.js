@@ -13,18 +13,8 @@ const FilterStore = types
   })
   .actions(self => {
     return {
-      setFilter(name, value) {
+      setFilter(name, value = null) {
         self[name] = value;
-      },
-
-      isFilterEnabled(name) {
-        return !!self[name];
-      },
-
-      toggleFilter(name, value) {
-        self.isFilterEnabled(name)
-          ? self.setFilter(name, null)
-          : self.setFilter(name, value);
       }
     };
   });
