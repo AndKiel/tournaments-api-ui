@@ -6,19 +6,17 @@ const FilterStore = types
     starts_at_after: types.optional(
       types.maybe(types.string),
       moment().toISOString()
-    )
-  })
-  .views(self => {
-    return {
-      get isStartsAtAfterEnabled() {
-        return !!self.starts_at_after;
-      }
-    };
+    ),
+    with_name: types.optional(types.maybe(types.string), '')
   })
   .actions(self => {
     return {
       setFilter(name, value = null) {
         self[name] = value;
+      },
+
+      isFilterEnabled(name) {
+        return !!self[name];
       }
     };
   });

@@ -3,26 +3,36 @@ import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { DateTimePicker } from 'material-ui-pickers';
-import { Typography } from 'material-ui';
+import { Typography, TextField } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import debounce from 'lodash/debounce';
 import styles from './tournaments_filters.scss';
 
 @inject('store')
 @observer
 class TournamentsFilters extends Component {
+  debouncedOnFilter = debounce(this.props.onFilter, 500);
+
+  @autobind
+  onWithNameChange(e) {
+    const { filterStore } = this.props.store;
+    filterStore.setFilter('with_name', e.currentTarget.value);
+    this.debouncedOnFilter();
+  }
+
   @autobind
   onStartsAtChange(date) {
     const { filterStore } = this.props.store;
     filterStore.setFilter('starts_at_after', date ? date.toISOString() : null);
-    this.props.onFilter();
+    this.debouncedOnFilter();
   }
 
   @autobind
-  clearStartsAtAfter() {
+  clearFilter(name, value = null) {
     const { filterStore } = this.props.store;
-    if (filterStore.isStartsAtAfterEnabled) {
-      filterStore.setFilter('starts_at_after');
-      this.props.onFilter();
+    if (filterStore.isFilterEnabled(name)) {
+      filterStore.setFilter(name, value);
+      this.debouncedOnFilter();
     }
   }
 
@@ -40,6 +50,22 @@ class TournamentsFilters extends Component {
           Filters
         </Typography>
         <span className={styles.container}>
+          <TextField
+            id="with_name"
+            name="with_name"
+            label="Name"
+            value={filterStore.with_name}
+            onChange={this.onWithNameChange}
+            margin="normal"
+          />
+          <div
+            className={styles.adornment}
+            onClick={() => this.clearFilter('with_name', '')}
+          >
+            <FontAwesomeIcon icon="times-circle" fixedWidth />
+          </div>
+        </span>
+        <span className={styles.container}>
           <DateTimePicker
             className={styles.input}
             id="starts_at_after"
@@ -55,7 +81,10 @@ class TournamentsFilters extends Component {
             timeIcon={<FontAwesomeIcon icon="clock" />}
             clearable
           />
-          <div className={styles.adornment} onClick={this.clearStartsAtAfter}>
+          <div
+            className={styles.adornment}
+            onClick={() => this.clearFilter('starts_at_after')}
+          >
             <FontAwesomeIcon icon="times-circle" fixedWidth />
           </div>
         </span>
