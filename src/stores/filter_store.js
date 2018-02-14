@@ -1,8 +1,9 @@
 import { types } from 'mobx-state-tree';
+import moment from 'moment';
 
 const FilterStore = types
   .model('FilterStore', {
-    starts_at_after: types.maybe(types.string)
+    starts_at_after: types.optional(types.string, moment().toISOString())
   })
   .views(self => {
     return {
