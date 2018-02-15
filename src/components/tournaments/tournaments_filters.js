@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { DateTimePicker } from 'material-ui-pickers';
@@ -8,6 +9,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import debounce from 'lodash/debounce';
 import styles from './tournaments_filters.scss';
 
+@translate()
 @inject('store')
 @observer
 class TournamentsFilters extends Component {
@@ -37,6 +39,7 @@ class TournamentsFilters extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const { filterStore } = this.props.store;
 
     return (
@@ -47,14 +50,14 @@ class TournamentsFilters extends Component {
             icon="filter"
             fixedWidth
           />
-          Filters
+          {t('components.tournaments.tournaments_filters.title')}
         </Typography>
         <span className={styles.container}>
           <TextField
             id="with_name"
             className={styles.input}
             name="with_name"
-            label="Name"
+            label={t('forms.labels.filter.with_name')}
             value={filterStore.with_name}
             onChange={this.onWithNameChange}
             margin="normal"
@@ -71,7 +74,7 @@ class TournamentsFilters extends Component {
             className={styles.input}
             id="starts_at_after"
             name="starts_at_after"
-            label="Starting after"
+            label={t('forms.labels.filter.starts_at_after')}
             value={filterStore.starts_at_after}
             onChange={this.onStartsAtChange}
             margin="normal"
