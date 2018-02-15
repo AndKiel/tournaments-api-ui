@@ -18,8 +18,10 @@
       "create": "Create",
       "delete": "Delete",
       "edit": "Edit",
+      "no": "No",
       "update": "Update",
-      "submit": "Submit"
+      "submit": "Submit",
+      "yes": "Yes"
     }
   },
   "components": {
@@ -42,12 +44,6 @@
       }
     },
     "utils": {
-      "confirmation_dialog": {
-        "buttons": {
-          "no": "No",
-          "yes": "Yes"
-        }
-      },
       "pagination": {
         "summary": "{{from}}-{{to}} of {{count}}"
       }

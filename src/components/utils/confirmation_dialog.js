@@ -34,10 +34,10 @@ class ConfirmationDialog extends Component {
         )}
         <DialogActions>
           <Button color="primary" onClick={onClose}>
-            {t('components.utils.confirmation_dialog.buttons.no')}
+            {t('common.buttons.no')}
           </Button>
           <Button color="primary" onClick={this.confirm} autoFocus>
-            {t('components.utils.confirmation_dialog.buttons.yes')}
+            {t('common.buttons.yes')}
           </Button>
         </DialogActions>
       </Dialog>
