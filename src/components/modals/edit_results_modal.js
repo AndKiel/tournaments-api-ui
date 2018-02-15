@@ -47,7 +47,7 @@ class EditResultsModal extends Component {
       await this.props.player.update({
         player: { result_values: this.resultValues }
       });
-      this.props.store.uiStore.setAlert(this.props.t('alert.result.update'));
+      this.props.store.uiStore.setAlert(this.props.t('alerts.result.update'));
       this.props.onClose();
     } catch (error) {
       if (error.response && error.response.data && error.response.data.fields) {
