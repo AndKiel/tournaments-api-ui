@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import { observable } from 'mobx';
 import autobind from 'autobind-decorator';
@@ -7,6 +8,7 @@ import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import ConfirmationDialog from '../../utils/confirmation_dialog';
 
+@translate()
 @inject('store')
 @observer
 class AssignPlayersButton extends Component {
@@ -26,7 +28,7 @@ class AssignPlayersButton extends Component {
   async assignPlayers() {
     await this.props.round.assignPlayers();
     this.props.store.uiStore.setAlert(
-      'Players have been successfully assigned to tables.'
+      this.props.t('alerts.round.assign_players')
     );
   }
 
@@ -34,9 +36,11 @@ class AssignPlayersButton extends Component {
     const tournament = this.props.store.tournamentsStore.item;
 
     if (tournament.status === 'in_progress') {
+      const { t } = this.props;
+
       return (
         <div>
-          <Tooltip title="Assign players to tables">
+          <Tooltip title={t('components.rounds.buttons.assign_players')}>
             <IconButton onClick={this.openDialog}>
               <FontAwesomeIcon size="sm" icon="users" fixedWidth />
             </IconButton>
@@ -45,8 +49,8 @@ class AssignPlayersButton extends Component {
             onClose={this.closeDialog}
             onConfirm={this.assignPlayers}
             open={this.isDialogOpen}
-            title="Assign players to tables?"
-            text="First round assignment is random. In the following rounds players are assigned to tables based on the results."
+            title={t('dialogs.round.assign_players.title')}
+            text={t('dialogs.round.assign_players.text')}
           />
         </div>
       );

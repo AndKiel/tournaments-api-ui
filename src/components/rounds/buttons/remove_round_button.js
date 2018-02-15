@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import { observable } from 'mobx';
 import autobind from 'autobind-decorator';
@@ -8,6 +9,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import ConfirmationDialog from '../../utils/confirmation_dialog';
 import styles from './buttons.scss';
 
+@translate()
 @inject('store')
 @observer
 class RemoveRoundButton extends Component {
@@ -28,16 +30,18 @@ class RemoveRoundButton extends Component {
     await this.props.store.tournamentsStore.item.removeRound(
       this.props.round.id
     );
-    this.props.store.uiStore.setAlert('You have successfully removed a round.');
+    this.props.store.uiStore.setAlert(this.props.t('alerts.round.delete'));
   }
 
   render() {
     const tournament = this.props.store.tournamentsStore.item;
 
     if (tournament.status !== 'ended') {
+      const { t } = this.props;
+
       return (
         <div>
-          <Tooltip title="Remove">
+          <Tooltip title={t('components.rounds.buttons.delete_round')}>
             <IconButton className={styles.remove} onClick={this.openDialog}>
               <FontAwesomeIcon size="xs" icon="trash-alt" fixedWidth />
             </IconButton>
@@ -46,7 +50,7 @@ class RemoveRoundButton extends Component {
             onClose={this.closeDialog}
             onConfirm={this.removeRound}
             open={this.isDialogOpen}
-            title="Remove this round?"
+            title={t('dialogs.round.delete.title')}
           />
         </div>
       );

@@ -1,5 +1,9 @@
 {
   "alerts": {
+    "round": {
+      "assign_players": "Players have been successfully assigned to tables.",
+      "delete": "You have successfully removed a round."
+    },
     "tournament": {
       "create": "You have successfully created a tournament.",
       "delete": "You have successfully deleted a tournament.",
@@ -25,7 +29,18 @@
     }
   },
   "components": {
-
+    "rounds": {
+      "buttons": {
+        "assign_players": "Assign players to tables",
+        "new_round": "New round",
+        "delete_round": "Remove"
+      },
+      "round": {
+        "competitors": "{{count}} competitors",
+        "tables": "on {{count}} table",
+        "tables_plural": "on {{count}} tables"
+      }
+    },
     "tournaments": {
       "organiser_menu": {
         "start": "Start",
@@ -50,6 +65,15 @@
     }
   },
   "dialogs": {
+    "round": {
+      "assign_players": {
+        "title": "Assign players to tables?",
+        "text": "First round assignment is random. In the following rounds players are assigned to tables based on the results."
+      },
+      "delete": {
+        "title": "Remove this round?"
+      }
+    },
     "tournament": {
       "delete": {
         "title": "Delete this tournament?"
