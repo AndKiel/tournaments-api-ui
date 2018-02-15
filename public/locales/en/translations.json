@@ -2,6 +2,9 @@
   "alerts": {
     "tournament": {
       "create": "You have successfully created a tournament.",
+      "delete": "You have successfully deleted a tournament.",
+      "end": "You have successfully ended a tournament.",
+      "start": "You have successfully started a tournament.",
       "update": "You have successfully updated a tournament."
     },
     "user": {
@@ -10,7 +13,61 @@
       "update": "You have successfully updated your account."
     }
   },
+  "common": {
+    "buttons": {
+      "create": "Create",
+      "delete": "Delete",
+      "edit": "Edit",
+      "update": "Update",
+      "submit": "Submit"
+    }
+  },
+  "components": {
 
+    "tournaments": {
+      "organiser_menu": {
+        "start": "Start",
+        "end": "End"
+      },
+      "status_icon": {
+        "created": "Created",
+        "ended": "Ended",
+        "in_progress": "In progress"
+      },
+      "tournament_card": {
+        "competitors_limit": "Competitors limit: {{count}}"
+      },
+      "tournaments_filters": {
+        "title": "Filters"
+      }
+    },
+    "utils": {
+      "confirmation_dialog": {
+        "buttons": {
+          "no": "No",
+          "yes": "Yes"
+        }
+      },
+      "pagination": {
+        "summary": "{{from}}-{{to}} of {{count}}"
+      }
+    }
+  },
+  "dialogs": {
+    "tournament": {
+      "delete": {
+        "title": "Delete this tournament?"
+      },
+      "end": {
+        "title": "End this tournament?",
+        "text": "It will no longer be possible to add, edit or remove rounds, assign players to tables and update table results."
+      },
+      "start": {
+        "title": "Start this tournament?",
+        "text": "Users will no longer be allowed to enlist or resign. You will also not be able to confirm, reject, add or remove competitors."
+      }
+    }
+  },
   "forms": {
     "labels": {
       "email": "Email",

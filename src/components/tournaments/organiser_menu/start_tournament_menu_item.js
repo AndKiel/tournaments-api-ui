@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import { observable } from 'mobx';
 import autobind from 'autobind-decorator';
@@ -8,6 +9,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import ConfirmationDialog from '../../utils/confirmation_dialog';
 import styles from './icons.scss';
 
+@translate()
 @inject('store')
 @observer
 class StartTournamentMenuItem extends Component {
@@ -31,7 +33,7 @@ class StartTournamentMenuItem extends Component {
       );
       this.props.tournament.setStatus('in_progress');
       this.props.store.uiStore.setAlert(
-        'You have successfully started a tournament.'
+        this.props.t('alerts.tournament.start')
       );
     } catch (error) {
       if (
@@ -51,6 +53,8 @@ class StartTournamentMenuItem extends Component {
 
   render() {
     if (this.props.tournament.status === 'created') {
+      const { t } = this.props;
+
       return (
         <div>
           <MenuItem onClick={this.openDialog}>
@@ -61,14 +65,16 @@ class StartTournamentMenuItem extends Component {
                 fixedWidth
               />
             </ListItemIcon>
-            <ListItemText primary="Start" />
+            <ListItemText
+              primary={t('components.tournaments.organiser_menu.start')}
+            />
           </MenuItem>
           <ConfirmationDialog
             onClose={this.closeDialog}
             onConfirm={this.startTournament}
             open={this.isDialogOpen}
-            title="Start this tournament?"
-            text="Users will no longer be allowed to enlist or resign. You will also not be able to confirm, reject, add or remove competitors."
+            title={t('dialogs.tournament.start.title')}
+            text={t('dialogs.tournament.start.text')}
           />
         </div>
       );

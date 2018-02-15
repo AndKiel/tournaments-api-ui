@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import { observable } from 'mobx';
 import autobind from 'autobind-decorator';
@@ -8,6 +9,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import ConfirmationDialog from '../../utils/confirmation_dialog';
 import styles from './icons.scss';
 
+@translate()
 @inject('store')
 @observer
 class EndTournamentMenuItem extends Component {
@@ -29,13 +31,13 @@ class EndTournamentMenuItem extends Component {
       this.props.tournament.id
     );
     this.props.tournament.setStatus('ended');
-    this.props.store.uiStore.setAlert(
-      'You have successfully ended a tournament.'
-    );
+    this.props.store.uiStore.setAlert(this.props.t('alerts.tournament.end'));
   }
 
   render() {
     if (this.props.tournament.status === 'in_progress') {
+      const { t } = this.props;
+
       return (
         <div>
           <MenuItem onClick={this.openDialog}>
@@ -46,14 +48,16 @@ class EndTournamentMenuItem extends Component {
                 fixedWidth
               />
             </ListItemIcon>
-            <ListItemText primary="End" />
+            <ListItemText
+              primary={t('components.tournaments.organiser_menu.end')}
+            />
           </MenuItem>
           <ConfirmationDialog
             onClose={this.closeDialog}
             onConfirm={this.endTournament}
             open={this.isDialogOpen}
-            title="End this tournament?"
-            text="It will no longer be possible to add, edit or remove rounds, assign players to tables and update table results."
+            title={t('dialogs.tournament.end.title')}
+            text={t('dialogs.tournament.end.text')}
           />
         </div>
       );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react/index';
 import { observable } from 'mobx';
@@ -10,6 +11,7 @@ import routes from '../../../utils/routes';
 import ConfirmationDialog from '../../utils/confirmation_dialog';
 import styles from './icons.scss';
 
+@translate()
 @withRouter
 @inject('store')
 @observer
@@ -38,12 +40,12 @@ class DeleteTournamentMenuItem extends Component {
     } else {
       this.props.history.push(routes.organisedTournaments());
     }
-    this.props.store.uiStore.setAlert(
-      'You have successfully deleted a tournament.'
-    );
+    this.props.store.uiStore.setAlert(this.props.t('alerts.tournament.delete'));
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <div>
         <MenuItem onClick={this.openDialog}>
@@ -54,13 +56,13 @@ class DeleteTournamentMenuItem extends Component {
               fixedWidth
             />
           </ListItemIcon>
-          <ListItemText primary="Delete" />
+          <ListItemText primary={t('common.buttons.delete')} />
         </MenuItem>
         <ConfirmationDialog
           onClose={this.closeDialog}
           onConfirm={this.deleteTournament}
           open={this.isDialogOpen}
-          title="Delete this tournament?"
+          title={t('dialogs.tournament.delete.title')}
         />
       </div>
     );

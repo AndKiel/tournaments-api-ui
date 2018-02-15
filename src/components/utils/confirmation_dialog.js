@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import {
@@ -11,6 +12,7 @@ import {
   DialogActions
 } from 'material-ui';
 
+@translate()
 @observer
 class ConfirmationDialog extends Component {
   @autobind
@@ -20,7 +22,7 @@ class ConfirmationDialog extends Component {
   }
 
   render() {
-    const { open, onClose, title, text } = this.props;
+    const { t, open, onClose, title, text } = this.props;
 
     return (
       <Dialog open={open} onClose={onClose}>
@@ -32,10 +34,10 @@ class ConfirmationDialog extends Component {
         )}
         <DialogActions>
           <Button color="primary" onClick={onClose}>
-            No
+            {t('components.utils.confirmation_dialog.buttons.no')}
           </Button>
           <Button color="primary" onClick={this.confirm} autoFocus>
-            Yes
+            {t('components.utils.confirmation_dialog.buttons.yes')}
           </Button>
         </DialogActions>
       </Dialog>

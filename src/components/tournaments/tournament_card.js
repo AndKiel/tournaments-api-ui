@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { withRouter } from 'react-router';
 import { observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
@@ -12,6 +13,7 @@ import routes from '../../utils/routes';
 import styles from './tournament_card.scss';
 import classNames from 'classnames';
 
+@translate()
 @withRouter
 @observer
 class TournamentCard extends Component {
@@ -21,6 +23,7 @@ class TournamentCard extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const {
       name,
       description,
@@ -46,7 +49,11 @@ class TournamentCard extends Component {
               <StatusIcon status={status} />
             </Typography>
             {this.props.withLimit && (
-              <Typography>Competitors limit: {competitors_limit}</Typography>
+              <Typography>
+                {t('components.tournaments.tournament_card.competitors_limit', {
+                  count: competitors_limit
+                })}
+              </Typography>
             )}
             {this.props.withDescription &&
               description.split('\n').map((p, idx) => {

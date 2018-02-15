@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../../utils/routes';
 import styles from './icons.scss';
 
+@translate()
 class EditTournamentMenuItem extends Component {
   render() {
+    const { t } = this.props;
     const { id } = this.props.tournament;
 
     return (
@@ -19,7 +22,7 @@ class EditTournamentMenuItem extends Component {
             fixedWidth
           />
         </ListItemIcon>
-        <ListItemText primary="Edit" />
+        <ListItemText primary={t('common.buttons.edit')} />
       </MenuItem>
     );
   }
