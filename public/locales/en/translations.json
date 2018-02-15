@@ -1,3 +1,50 @@
 {
+  "alerts": {
+    "tournament": {
+      "create": "You have successfully created a tournament.",
+      "update": "You have successfully updated a tournament."
+    },
+    "user": {
+      "sign_in": "You have successfully signed in.",
+      "sign_up": "You have successfully signed up.",
+      "update": "You have successfully updated your account."
+    }
+  },
 
+  "pages": {
+    "account": {
+      "title": "Account"
+    },
+    "edit_tournament": {
+      "title": "Edit tournament"
+    },
+    "enlisted_tournaments": {
+      "title": "Enlisted tournaments"
+    },
+    "new_tournament": {
+      "title": "New tournament"
+    },
+    "not_found": {
+      "text": "Page Not Found"
+    },
+    "organised_tournaments": {
+      "title": "Organised tournaments"
+    },
+    "sign_in": {
+      "title": "Sign in"
+    },
+    "sign_up": {
+      "title": "Sign up"
+    },
+    "tournament": {
+      "tabs": {
+        "competitors": "Competitors",
+        "rounds": "Rounds",
+        "results": "Results"
+      }
+    },
+    "tournaments": {
+      "title": "Tournaments"
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
@@ -10,6 +11,7 @@ import RoundsList from '../../components/rounds/rounds_list';
 import ResultsList from '../../components/results/results_list';
 import styles from './tournament_page.scss';
 
+@translate()
 @inject('store')
 @observer
 class TournamentPage extends Component {
@@ -43,6 +45,7 @@ class TournamentPage extends Component {
 
   render() {
     if (this.props.store.tournamentsStore.item) {
+      const { t } = this.props;
       const tournament = this.props.store.tournamentsStore.item;
 
       return (
@@ -58,9 +61,12 @@ class TournamentPage extends Component {
                 centered
                 fullWidth
               >
-                <Tab label="Competitors" disableRipple />
-                <Tab label="Rounds" disableRipple />
-                <Tab label="Results" disableRipple />
+                <Tab
+                  label={t('pages.tournament.tabs.competitors')}
+                  disableRipple
+                />
+                <Tab label={t('pages.tournament.tabs.rounds')} disableRipple />
+                <Tab label={t('pages.tournament.tabs.results')} disableRipple />
               </Tabs>
             </div>
             <div className={styles.contents}>

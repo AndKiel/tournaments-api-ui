@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { Grid, Typography } from 'material-ui';
-import TournamentsFilters from '../../components/utils/tournaments_filters';
+import TournamentsFilters from '../../components/tournaments/tournaments_filters';
 import TournamentCard from '../../components/tournaments/tournament_card';
 import Pagination from '../../components/utils/pagination';
 
+@translate()
 @inject('store')
 @observer
 class OrganisedTournamentsPage extends Component {
@@ -24,6 +26,7 @@ class OrganisedTournamentsPage extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const {
       collection,
       totalCount,
@@ -33,7 +36,7 @@ class OrganisedTournamentsPage extends Component {
     return (
       <div>
         <Typography variant="headline" paragraph>
-          Organised tournaments
+          {t('pages.organised_tournaments.title')}
         </Typography>
         <TournamentsFilters onFilter={this.setup} />
         <Grid container spacing={24}>

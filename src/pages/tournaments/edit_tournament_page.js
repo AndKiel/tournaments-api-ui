@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
@@ -17,6 +18,7 @@ import DatetimeInput from '../../components/forms/datetime_input';
 import ArrayInput from '../../components/forms/array_input';
 import routes from '../../utils/routes';
 
+@translate()
 @withRouter
 @inject('store')
 @observer
@@ -42,12 +44,12 @@ class EditTournamentPage extends Component {
       this.form.values()
     );
     this.props.history.push(routes.tournament(response.data.tournament.id));
-    this.props.store.uiStore.setAlert(
-      'You have successfully updated a tournament.'
-    );
+    this.props.store.uiStore.setAlert(this.props.t('alerts.tournament.update'));
   }
 
   render() {
+    const { t } = this.props;
+
     if (this.props.store.tournamentsStore.item) {
       return (
         <Grid container justify="center">
@@ -55,7 +57,9 @@ class EditTournamentPage extends Component {
             <Card>
               <form onSubmit={this.form.onSubmit}>
                 <CardContent>
-                  <Typography variant="headline">Edit tournament</Typography>
+                  <Typography variant="headline">
+                    {t('pages.edit_tournament.title')}
+                  </Typography>
                   <TextInput
                     field={this.form.$('tournament.name')}
                     autoFocus
@@ -79,7 +83,7 @@ class EditTournamentPage extends Component {
                 </CardContent>
                 <CardActions>
                   <Button color="primary" style={{ flex: 1 }} type="submit">
-                    Update
+                    {t('common.buttons.update')}
                   </Button>
                 </CardActions>
               </form>
