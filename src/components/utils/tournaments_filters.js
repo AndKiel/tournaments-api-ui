@@ -52,6 +52,7 @@ class TournamentsFilters extends Component {
         <span className={styles.container}>
           <TextField
             id="with_name"
+            className={styles.input}
             name="with_name"
             label="Name"
             value={filterStore.with_name}
