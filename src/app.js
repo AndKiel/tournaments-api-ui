@@ -11,66 +11,7 @@ import AppStore from './stores/app_store';
 import AppSwitch from './app_switch';
 
 import styles from './app.scss';
-
-import fontawesome from '@fortawesome/fontawesome';
-import {
-  faBars,
-  faCalendarAlt,
-  faCalendarPlus,
-  faChevronLeft,
-  faChevronRight,
-  faClock,
-  faEdit,
-  faEllipsisV,
-  faFilter,
-  faHourglassStart,
-  faHourglassHalf,
-  faHourglassEnd,
-  faLongArrowAltDown,
-  faPlusCircle,
-  faSignOutAlt,
-  faSpinner,
-  faSortAlphaDown,
-  faTimesCircle,
-  faTrashAlt,
-  faUsers,
-  faUserCircle,
-  faUserPlus,
-  faUserTimes
-} from '@fortawesome/fontawesome-free-solid';
-import {
-  faCalendarMinus as farCalendarMinus,
-  faCalendarPlus as farCalendarPlus,
-  faClock as farClock
-} from '@fortawesome/fontawesome-free-regular';
-fontawesome.library.add(
-  faBars,
-  faCalendarAlt,
-  faCalendarPlus,
-  faChevronLeft,
-  faChevronRight,
-  faClock,
-  faEdit,
-  faEllipsisV,
-  faFilter,
-  faHourglassStart,
-  faHourglassHalf,
-  faHourglassEnd,
-  faLongArrowAltDown,
-  faPlusCircle,
-  faSignOutAlt,
-  faSpinner,
-  faSortAlphaDown,
-  faTimesCircle,
-  faTrashAlt,
-  faUsers,
-  faUserCircle,
-  faUserPlus,
-  faUserTimes,
-  farCalendarMinus,
-  farCalendarPlus,
-  farClock
-);
+import './fontawesome';
 
 const apiClient = new ApiClient();
 const appStore = AppStore.create({}, { apiClient });

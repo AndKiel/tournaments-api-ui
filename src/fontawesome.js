@@ -1,0 +1,60 @@
+import fontawesome from '@fortawesome/fontawesome';
+import {
+  faBars,
+  faCalendarAlt,
+  faCalendarPlus,
+  faChevronLeft,
+  faChevronRight,
+  faClock,
+  faEdit,
+  faEllipsisV,
+  faFilter,
+  faHourglassStart,
+  faHourglassHalf,
+  faHourglassEnd,
+  faLongArrowAltDown,
+  faPlusCircle,
+  faSignOutAlt,
+  faSpinner,
+  faSortAlphaDown,
+  faTimesCircle,
+  faTrashAlt,
+  faUsers,
+  faUserCircle,
+  faUserPlus,
+  faUserTimes
+} from '@fortawesome/fontawesome-free-solid';
+import {
+  faCalendarMinus as farCalendarMinus,
+  faCalendarPlus as farCalendarPlus,
+  faClock as farClock
+} from '@fortawesome/fontawesome-free-regular';
+
+fontawesome.library.add(
+  faBars,
+  faCalendarAlt,
+  faCalendarPlus,
+  faChevronLeft,
+  faChevronRight,
+  faClock,
+  faEdit,
+  faEllipsisV,
+  faFilter,
+  faHourglassStart,
+  faHourglassHalf,
+  faHourglassEnd,
+  faLongArrowAltDown,
+  faPlusCircle,
+  faSignOutAlt,
+  faSpinner,
+  faSortAlphaDown,
+  faTimesCircle,
+  faTrashAlt,
+  faUsers,
+  faUserCircle,
+  faUserPlus,
+  faUserTimes,
+  farCalendarMinus,
+  farCalendarPlus,
+  farClock
+);
