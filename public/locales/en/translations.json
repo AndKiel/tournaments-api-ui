@@ -26,6 +26,7 @@
     },
     "user": {
       "sign_in": "You have successfully signed in.",
+      "sign_out": "You have successfully signed out.",
       "sign_up": "You have successfully signed up.",
       "update": "You have successfully updated your account."
     }

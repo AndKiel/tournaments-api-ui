@@ -18,6 +18,7 @@ class UserMenu extends Component {
     try {
       await this.props.store.sessionStore.signOut();
       this.props.history.push(routes.signIn());
+      this.props.store.uiStore.setAlert(this.props.t('alerts.user.sign_out'));
     } catch (error) {
       throw error;
     }
