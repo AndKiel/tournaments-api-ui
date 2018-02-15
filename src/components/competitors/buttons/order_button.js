@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
+@translate()
 @inject('store')
 @observer
 class OrderButton extends Component {
@@ -21,15 +23,13 @@ class OrderButton extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const { competitorsOrder } = this.props.store.uiStore;
+    const label = competitorsOrder === 'created_at' ? 'name' : 'date';
 
     return (
       <div>
-        <Tooltip
-          title={`Order by ${
-            competitorsOrder === 'created_at' ? 'name' : 'date'
-          }`}
-        >
+        <Tooltip title={t(`components.competitors.buttons.order_by_${label}`)}>
           <IconButton onClick={this.order}>
             {competitorsOrder === 'created_at' && (
               <FontAwesomeIcon size="sm" icon="sort-alpha-down" fixedWidth />

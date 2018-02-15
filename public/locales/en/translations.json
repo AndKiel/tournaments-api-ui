@@ -1,7 +1,10 @@
 {
   "alerts": {
     "competitor": {
-      "create": "You have successfully added a competitor to a tournament."
+      "confirm": "You have successfully confirmed a competitor.",
+      "create": "You have successfully added a competitor to a tournament.",
+      "delete": "You have successfully removed a competitor from a tournament.",
+      "reject": "You have successfully rejected a competitor."
     },
     "result": {
       "update": "You have successfully updated results."
@@ -17,6 +20,7 @@
       "delete": "You have successfully deleted a tournament.",
       "end": "You have successfully ended a tournament.",
       "enlist": "You have successfully enlisted in a tournament.",
+      "resign": "You have successfully resigned from a tournament.",
       "start": "You have successfully started a tournament.",
       "update": "You have successfully updated a tournament."
     },
@@ -38,6 +42,21 @@
     }
   },
   "components": {
+    "competitors": {
+      "buttons": {
+        "add_competitor": "Add competitor",
+        "enlist": "Enlist",
+        "order_by_date": "Order by date",
+        "order_by_name": "Order by name",
+        "remove_competitor": "Remove competitor",
+        "resign": "Resign"
+      },
+      "competitors_list": {
+        "confirmed_competitors": "Confirmed {{number}} out of {{count}} competitor",
+        "confirmed_competitors_plural": "Confirmed {{number}} out of {{count}} competitors",
+        "help": "Click on a name to confirm or reject a competitor. Only confirmed competitors can be assigned to tables in rounds."
+      }
+    },
     "modals": {
       "add_competitor": {
         "title": "Add competitor"
@@ -112,6 +131,11 @@
     }
   },
   "dialogs": {
+    "competitor": {
+      "delete": {
+        "title": "Remove this competitor?"
+      }
+    },
     "round": {
       "assign_players": {
         "title": "Assign players to tables?",
@@ -128,6 +152,9 @@
       "end": {
         "title": "End this tournament?",
         "text": "It will no longer be possible to add, edit or remove rounds, assign players to tables and update table results."
+      },
+      "resign": {
+        "title": "Resign from this tournament?"
       },
       "start": {
         "title": "Start this tournament?",

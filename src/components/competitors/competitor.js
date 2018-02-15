@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { ButtonBase, Typography } from 'material-ui';
 import RemoveCompetitorButton from './buttons/remove_competitor_button';
 import styles from './competitor.scss';
 
+@translate()
 @inject('store')
 @observer
 class Competitor extends Component {
@@ -26,16 +28,14 @@ class Competitor extends Component {
   async confirmCompetitor() {
     await this.props.competitor.confirm();
     this.props.store.uiStore.setAlert(
-      'You have successfully confirmed a competitor.'
+      this.props.t('alerts.competitor.confirm')
     );
   }
 
   @autobind
   async rejectCompetitor() {
     await this.props.competitor.reject();
-    this.props.store.uiStore.setAlert(
-      'You have successfully rejected a competitor.'
-    );
+    this.props.store.uiStore.setAlert(this.props.t('alerts.competitor.reject'));
   }
 
   render() {

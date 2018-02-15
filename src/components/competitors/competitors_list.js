@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import { Grid, Typography } from 'material-ui';
 import AddCompetitorButton from './buttons/add_competitor_button';
@@ -8,10 +9,12 @@ import OrderButton from './buttons/order_button';
 import Competitor from './competitor';
 import styles from './competitors_list.scss';
 
+@translate()
 @inject('store')
 @observer
 class CompetitorsList extends Component {
   render() {
+    const { t } = this.props;
     const tournament = this.props.store.tournamentsStore.item;
 
     return (
@@ -29,17 +32,23 @@ class CompetitorsList extends Component {
         </div>
         <div className={styles.main}>
           <Typography>
-            Competitors limit: {tournament.competitors_limit}
+            {t('components.tournaments.tournament_card.competitors_limit', {
+              count: tournament.competitors_limit
+            })}
           </Typography>
           <Typography paragraph>
-            Confirmed {tournament.confirmedCompetitorsCount} out of{' '}
-            {tournament.competitorsCount} competitors
+            {t(
+              'components.competitors.competitors_list.confirmed_competitors',
+              {
+                number: tournament.confirmedCompetitorsCount,
+                count: tournament.competitorsCount
+              }
+            )}
           </Typography>
           {tournament.isUserOrganiser &&
             tournament.status === 'created' && (
               <Typography paragraph>
-                Click on a name to confirm or reject a competitor. Only
-                confirmed competitors can be assigned to tables in rounds.
+                {t('components.competitors.competitors_list.help')}
               </Typography>
             )}
           <Grid className={styles.grid} container>
