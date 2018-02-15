@@ -29,6 +29,27 @@
     }
   },
   "components": {
+    "navigation": {
+      "drawer_menu": {
+        "all_tournaments": "All tournaments"
+      },
+      "user_menu": {
+        "sign_out": "Sign out"
+      }
+    },
+    "players": {
+      "buttons": {
+        "edit_results": "Edit results"
+      },
+      "players_table": {
+        "table": "Table {{letter}}"
+      }
+    },
+    "results": {
+      "results_list": {
+        "competitor": "Competitor"
+      }
+    },
     "rounds": {
       "buttons": {
         "assign_players": "Assign players to tables",

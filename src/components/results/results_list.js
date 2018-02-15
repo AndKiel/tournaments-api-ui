@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import {
   Grid,
@@ -11,6 +12,7 @@ import {
 import classNames from 'classnames';
 import styles from './results_list.scss';
 
+@translate()
 @inject('store')
 @observer
 class ResultsList extends Component {
@@ -19,6 +21,7 @@ class ResultsList extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const tournament = this.props.store.tournamentsStore.item;
 
     return (
@@ -29,7 +32,9 @@ class ResultsList extends Component {
               <TableHead>
                 <TableRow>
                   <TableCell numeric>#</TableCell>
-                  <TableCell>Competitor</TableCell>
+                  <TableCell>
+                    {t('components.results.results_list.competitor')}
+                  </TableCell>
                   {tournament.result_names.map((name, index) => {
                     return <TableCell key={index}>{name}</TableCell>;
                   })}

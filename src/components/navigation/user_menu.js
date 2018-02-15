@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
@@ -7,6 +8,7 @@ import { Button, IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../utils/routes';
 
+@translate()
 @withRouter
 @inject('store')
 @observer
@@ -22,10 +24,12 @@ class UserMenu extends Component {
   }
 
   render() {
+    const { t } = this.props;
+
     if (this.props.store.sessionStore.isSignedIn) {
       return (
         <div>
-          <Tooltip title="New tournament">
+          <Tooltip title={t('pages.new_tournament.title')}>
             <IconButton
               color="inherit"
               component={Link}
@@ -34,12 +38,12 @@ class UserMenu extends Component {
               <FontAwesomeIcon icon="calendar-plus" fixedWidth />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Account">
+          <Tooltip title={t('pages.account.title')}>
             <IconButton color="inherit" component={Link} to={routes.account()}>
               <FontAwesomeIcon icon="user-circle" fixedWidth />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Sign out">
+          <Tooltip title={t('components.navigation.user_menu.sign_out')}>
             <IconButton color="inherit" onClick={this.signOut}>
               <FontAwesomeIcon icon="sign-out-alt" fixedWidth />
             </IconButton>
@@ -50,10 +54,10 @@ class UserMenu extends Component {
       return (
         <div>
           <Button color="inherit" component={Link} to={routes.signIn()}>
-            Sign in
+            {t('pages.sign_in.title')}
           </Button>
           <Button color="inherit" component={Link} to={routes.signUp()}>
-            Sign up
+            {t('pages.sign_up.title')}
           </Button>
         </div>
       );

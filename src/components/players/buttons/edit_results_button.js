@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
@@ -8,6 +9,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import EditResultsModal from '../../modals/edit_results_modal';
 import styles from './edit_results_button.scss';
 
+@translate()
 @inject('store')
 @observer
 class EditResultsButton extends Component {
@@ -27,9 +29,11 @@ class EditResultsButton extends Component {
     const tournament = this.props.store.tournamentsStore.item;
 
     if (tournament.isUserOrganiser && tournament.status !== 'ended') {
+      const { t } = this.props;
+
       return (
         <span className={styles.container}>
-          <Tooltip title="Edit results">
+          <Tooltip title={t('components.players.buttons.edit_results')}>
             <IconButton className={styles.button} onClick={this.openModal}>
               <FontAwesomeIcon size="xs" icon="edit" />
             </IconButton>

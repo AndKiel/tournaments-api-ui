@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import {
   Paper,
@@ -11,12 +12,14 @@ import {
 } from 'material-ui';
 import PlayerRow from './player_row';
 
+@translate()
 @inject('store')
 @observer
 class PlayersTable extends Component {
   render() {
     const tournament = this.props.store.tournamentsStore.item;
-    const { number, players } = this.props;
+    const { t, number, players } = this.props;
+    const tableLetter = String.fromCharCode(64 + parseInt(number, 10));
 
     return (
       <Paper>
@@ -24,7 +27,9 @@ class PlayersTable extends Component {
           <TableHead>
             <TableRow>
               <TableCell padding="dense">
-                Table {String.fromCharCode(64 + parseInt(number, 10))}
+                {t('components.players.players_table.table', {
+                  letter: tableLetter
+                })}
               </TableCell>
               {tournament.result_names.map((name, index) => {
                 return (
