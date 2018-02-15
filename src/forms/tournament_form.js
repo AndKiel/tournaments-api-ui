@@ -11,13 +11,6 @@ class TournamentForm extends Form {
         'tournament.result_names[]',
         'tournament.starts_at'
       ],
-      labels: {
-        'tournament.competitors_limit': 'Competitors limit',
-        'tournament.description': 'Description',
-        'tournament.name': 'Name',
-        'tournament.result_names': 'Result names',
-        'tournament.starts_at': 'Starts at'
-      },
       initials: {
         'tournament.starts_at': moment()
       },

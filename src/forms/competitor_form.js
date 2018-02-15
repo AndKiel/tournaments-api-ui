@@ -3,10 +3,7 @@ import { Form } from 'mobx-react-form';
 class CompetitorForm extends Form {
   setup() {
     return {
-      fields: ['competitor.name'],
-      labels: {
-        'competitor.name': 'Name'
-      }
+      fields: ['competitor.name']
     };
   }
 

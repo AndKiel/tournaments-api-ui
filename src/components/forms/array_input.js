@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import ChipInput from 'material-ui-chip-input';
 
+@translate()
 @observer
 class ArrayInput extends Component {
   @autobind
@@ -29,13 +31,13 @@ class ArrayInput extends Component {
   }
 
   render() {
-    const { field, ...rest } = this.props;
+    const { t, field, ...rest } = this.props;
 
     return (
       <ChipInput
         id={field.key}
         name={field.name}
-        label={field.label}
+        label={t(`forms.labels.${field.path}`)}
         value={field.value}
         error={field.hasError}
         helperText={field.error}

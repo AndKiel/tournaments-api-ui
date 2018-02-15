@@ -11,6 +11,35 @@
     }
   },
 
+  "forms": {
+    "labels": {
+      "email": "Email",
+      "password": "Password",
+      "filter": {
+        "starts_at_after": "Starting after",
+        "with_name": "Name"
+      },
+      "user": {
+        "email": "Email",
+        "password": "Password",
+        "password_confirmation": "Password confirmation"
+      },
+      "competitor": {
+        "name": "Name"
+      },
+      "round": {
+        "competitors_limit": "Competitors limit",
+        "tables_count": "Tables count"
+      },
+      "tournament": {
+        "competitors_limit": "Competitors limit",
+        "description": "Description",
+        "name": "Name",
+        "result_names": "Result names",
+        "starts_at": "Starts at"
+      }
+    }
+  },
   "pages": {
     "account": {
       "title": "Account"

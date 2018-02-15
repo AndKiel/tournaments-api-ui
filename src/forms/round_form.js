@@ -3,11 +3,7 @@ import { Form } from 'mobx-react-form';
 class RoundForm extends Form {
   setup() {
     return {
-      fields: ['round.competitors_limit', 'round.tables_count'],
-      labels: {
-        'round.competitors_limit': 'Competitors limit',
-        'round.tables_count': 'Tables count'
-      }
+      fields: ['round.competitors_limit', 'round.tables_count']
     };
   }
 
