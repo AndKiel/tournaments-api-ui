@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import EnlistModal from '../modals/enlist_modal';
+import EnlistModal from '../../modals/enlist_modal';
 
 @inject('store')
 @observer

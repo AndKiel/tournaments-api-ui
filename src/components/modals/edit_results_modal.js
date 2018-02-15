@@ -13,7 +13,7 @@ import {
   TextField,
   Typography
 } from 'material-ui';
-import modalStyles from '../../../styles/modals.scss';
+import modalStyles from '../../styles/modals.scss';
 import styles from './edit_results_modal.scss';
 
 @inject('store')

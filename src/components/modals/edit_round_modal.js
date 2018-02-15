@@ -11,9 +11,9 @@ import {
   Typography
 } from 'material-ui';
 import classNames from 'classnames';
-import styles from '../../../styles/modals.scss';
-import RoundForm from '../../../forms/round_form';
-import TextInput from '../../forms/text_input';
+import styles from '../../styles/modals.scss';
+import RoundForm from '../../forms/round_form';
+import TextInput from '../forms/text_input';
 
 @inject('store')
 @observer

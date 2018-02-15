@@ -5,7 +5,7 @@ import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import EditRoundModal from '../modals/edit_round_modal';
+import EditRoundModal from '../../modals/edit_round_modal';
 
 @inject('store')
 @observer
