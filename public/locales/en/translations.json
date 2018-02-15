@@ -1,13 +1,22 @@
 {
   "alerts": {
+    "competitor": {
+      "create": "You have successfully added a competitor to a tournament."
+    },
+    "result": {
+      "update": "You have successfully updated results."
+    },
     "round": {
       "assign_players": "Players have been successfully assigned to tables.",
-      "delete": "You have successfully removed a round."
+      "create": "You have successfully added a round to a tournament.",
+      "delete": "You have successfully removed a round.",
+      "update": "You have successfully updated a round."
     },
     "tournament": {
       "create": "You have successfully created a tournament.",
       "delete": "You have successfully deleted a tournament.",
       "end": "You have successfully ended a tournament.",
+      "enlist": "You have successfully enlisted in a tournament.",
       "start": "You have successfully started a tournament.",
       "update": "You have successfully updated a tournament."
     },
@@ -29,6 +38,23 @@
     }
   },
   "components": {
+    "modals": {
+      "add_competitor": {
+        "title": "Add competitor"
+      },
+      "edit_results": {
+        "title": "Results for {{name}}"
+      },
+      "edit_round": {
+        "title": "Edit round"
+      },
+      "enlist": {
+        "title": "Enlist"
+      },
+      "new_round": {
+        "title": "New round"
+      }
+    },
     "navigation": {
       "drawer_menu": {
         "all_tournaments": "All tournaments"

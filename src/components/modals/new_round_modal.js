@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import {
@@ -15,6 +16,7 @@ import styles from '../../styles/modals.scss';
 import RoundForm from '../../forms/round_form';
 import TextInput from '../forms/text_input';
 
+@translate()
 @inject('store')
 @observer
 class NewRoundModal extends Component {
@@ -27,19 +29,21 @@ class NewRoundModal extends Component {
   async submitImpl() {
     const tournament = this.props.store.tournamentsStore.item;
     await tournament.addRound(this.form.values());
-    this.props.store.uiStore.setAlert(
-      'You have successfully added a round to a tournament.'
-    );
+    this.props.store.uiStore.setAlert(this.props.t('alerts.round.create'));
     this.props.onClose();
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <Modal open={this.props.open} onClose={this.props.onClose}>
         <Card className={classNames(styles.contents, styles.small)}>
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
-              <Typography variant="headline">New round</Typography>
+              <Typography variant="headline">
+                {t('components.modals.new_round.title')}
+              </Typography>
               <TextInput
                 field={this.form.$('round.competitors_limit')}
                 type="number"
@@ -54,7 +58,7 @@ class NewRoundModal extends Component {
             </CardContent>
             <CardActions>
               <Button color="primary" style={{ flex: 1 }} type="submit">
-                Create
+                {t('common.buttons.create')}
               </Button>
             </CardActions>
           </form>

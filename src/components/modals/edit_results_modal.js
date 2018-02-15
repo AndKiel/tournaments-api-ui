@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import { observable } from 'mobx';
 import autobind from 'autobind-decorator';
@@ -16,6 +17,7 @@ import {
 import modalStyles from '../../styles/modals.scss';
 import styles from './edit_results_modal.scss';
 
+@translate()
 @inject('store')
 @observer
 class EditResultsModal extends Component {
@@ -45,9 +47,7 @@ class EditResultsModal extends Component {
       await this.props.player.update({
         player: { result_values: this.resultValues }
       });
-      this.props.store.uiStore.setAlert(
-        'You have successfully updated results.'
-      );
+      this.props.store.uiStore.setAlert(this.props.t('alert.result.update'));
       this.props.onClose();
     } catch (error) {
       if (error.response && error.response.data && error.response.data.fields) {
@@ -59,6 +59,7 @@ class EditResultsModal extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const resultNames = this.props.store.tournamentsStore.item.result_names;
 
     return (
@@ -67,7 +68,9 @@ class EditResultsModal extends Component {
           <form onSubmit={this.onSubmit}>
             <CardContent>
               <Typography variant="headline">
-                Results for {this.props.player.competitor_id.name}{' '}
+                {t('components.modals.edit_results.title', {
+                  name: this.props.player.competitor_id.name
+                })}
               </Typography>
               {resultNames.map((name, index) => {
                 return (
@@ -95,7 +98,7 @@ class EditResultsModal extends Component {
             </CardContent>
             <CardActions>
               <Button color="primary" style={{ flex: 1 }} type="submit">
-                Update
+                {t('common.buttons.update')}
               </Button>
             </CardActions>
           </form>
