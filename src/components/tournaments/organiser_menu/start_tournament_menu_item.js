@@ -70,11 +70,10 @@ class StartTournamentMenuItem extends Component {
             />
           </MenuItem>
           <ConfirmationDialog
+            action="tournament.start"
             onClose={this.closeDialog}
             onConfirm={this.startTournament}
             open={this.isDialogOpen}
-            title={t('dialogs.tournament.start.title')}
-            text={t('dialogs.tournament.start.text')}
           />
         </div>
       );

@@ -48,10 +48,10 @@ class ResignButton extends Component {
             </IconButton>
           </Tooltip>
           <ConfirmationDialog
+            action="tournament.resign"
             onClose={this.closeDialog}
             onConfirm={this.resign}
             open={this.isDialogOpen}
-            title={t('dialogs.tournament.resign.title')}
           />
         </div>
       );

@@ -22,12 +22,14 @@ class ConfirmationDialog extends Component {
   }
 
   render() {
-    const { t, open, onClose, title, text } = this.props;
+    const { t, action, open, onClose } = this.props;
+    const title = t(`dialogs.${action}.title`);
+    const text = t(`dialogs.${action}.text`);
 
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogTitle>{title}</DialogTitle>
-        {text && (
+        {!text.includes(action) && (
           <DialogContent>
             <DialogContentText>{text}</DialogContentText>
           </DialogContent>
@@ -46,11 +48,10 @@ class ConfirmationDialog extends Component {
 }
 
 ConfirmationDialog.propTypes = {
+  action: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  text: PropTypes.string,
-  title: PropTypes.string.isRequired
+  open: PropTypes.bool.isRequired
 };
 
 export default ConfirmationDialog;

@@ -47,10 +47,10 @@ class RemoveRoundButton extends Component {
             </IconButton>
           </Tooltip>
           <ConfirmationDialog
+            action="round.delete"
             onClose={this.closeDialog}
             onConfirm={this.removeRound}
             open={this.isDialogOpen}
-            title={t('dialogs.round.delete.title')}
           />
         </div>
       );

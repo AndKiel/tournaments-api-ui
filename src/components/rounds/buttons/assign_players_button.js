@@ -46,11 +46,10 @@ class AssignPlayersButton extends Component {
             </IconButton>
           </Tooltip>
           <ConfirmationDialog
+            action="round.assign_players"
             onClose={this.closeDialog}
             onConfirm={this.assignPlayers}
             open={this.isDialogOpen}
-            title={t('dialogs.round.assign_players.title')}
-            text={t('dialogs.round.assign_players.text')}
           />
         </div>
       );

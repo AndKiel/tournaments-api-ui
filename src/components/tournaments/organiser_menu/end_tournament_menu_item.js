@@ -53,11 +53,10 @@ class EndTournamentMenuItem extends Component {
             />
           </MenuItem>
           <ConfirmationDialog
+            action="tournament.end"
             onClose={this.closeDialog}
             onConfirm={this.endTournament}
             open={this.isDialogOpen}
-            title={t('dialogs.tournament.end.title')}
-            text={t('dialogs.tournament.end.text')}
           />
         </div>
       );

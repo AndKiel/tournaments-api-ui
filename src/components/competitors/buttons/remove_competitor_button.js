@@ -52,10 +52,10 @@ class RemoveCompetitorButton extends Component {
             </IconButton>
           </Tooltip>
           <ConfirmationDialog
+            action="competitor.delete"
             onClose={this.closeDialog}
             onConfirm={this.removeCompetitor}
             open={this.isDialogOpen}
-            title={t('dialogs.competitor.delete.title')}
           />
         </div>
       );

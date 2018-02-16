@@ -59,10 +59,10 @@ class DeleteTournamentMenuItem extends Component {
           <ListItemText primary={t('common.buttons.delete')} />
         </MenuItem>
         <ConfirmationDialog
+          action="tournament.delete"
           onClose={this.closeDialog}
           onConfirm={this.deleteTournament}
           open={this.isDialogOpen}
-          title={t('dialogs.tournament.delete.title')}
         />
       </div>
     );
