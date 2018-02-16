@@ -190,6 +190,14 @@
         "result_names": "Result names",
         "starts_at": "Starts at"
       }
+    },
+    "values": {
+      "tournament": {
+        "result_names": {
+          "points": "Points",
+          "win": "Win"
+        }
+      }
     }
   },
   "pages": {

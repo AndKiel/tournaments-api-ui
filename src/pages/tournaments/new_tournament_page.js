@@ -16,13 +16,26 @@ import TextInput from '../../components/forms/text_input';
 import DatetimeInput from '../../components/forms/datetime_input';
 import ArrayInput from '../../components/forms/array_input';
 import routes from '../../utils/routes';
+import moment from 'moment';
 
 @translate()
 @withRouter
 @inject('store')
 class NewTournamentPage extends Component {
   componentWillMount() {
-    this.form = new TournamentForm();
+    this.form = new TournamentForm({
+      initials: {
+        'tournament.starts_at': moment()
+      },
+      values: {
+        tournament: {
+          result_names: [
+            this.props.t('forms.values.tournament.result_names.win'),
+            this.props.t('forms.values.tournament.result_names.points')
+          ]
+        }
+      }
+    });
     this.form.submitImpl = this.submitImpl;
   }
 

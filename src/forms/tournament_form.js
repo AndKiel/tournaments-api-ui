@@ -1,5 +1,4 @@
 import { Form } from 'mobx-react-form';
-import moment from 'moment';
 
 class TournamentForm extends Form {
   setup() {
@@ -10,15 +9,7 @@ class TournamentForm extends Form {
         'tournament.name',
         'tournament.result_names[]',
         'tournament.starts_at'
-      ],
-      initials: {
-        'tournament.starts_at': moment()
-      },
-      values: {
-        tournament: {
-          result_names: ['Win', 'Points']
-        }
-      }
+      ]
     };
   }
 
