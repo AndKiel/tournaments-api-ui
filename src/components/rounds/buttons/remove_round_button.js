@@ -41,7 +41,7 @@ class RemoveRoundButton extends Component {
 
       return (
         <div>
-          <Tooltip title={t('components.rounds.buttons.delete_round')}>
+          <Tooltip title={t('components.rounds.buttons.remove_round')}>
             <IconButton className={styles.remove} onClick={this.openDialog}>
               <FontAwesomeIcon size="xs" icon="trash-alt" fixedWidth />
             </IconButton>

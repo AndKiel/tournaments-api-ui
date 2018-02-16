@@ -100,7 +100,7 @@
       "buttons": {
         "assign_players": "Assign players to tables",
         "new_round": "New round",
-        "delete_round": "Remove"
+        "remove_round": "Remove"
       },
       "round": {
         "competitors": "{{count}} competitors",
