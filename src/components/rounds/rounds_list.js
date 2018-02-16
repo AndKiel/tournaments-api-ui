@@ -59,7 +59,7 @@ class RoundsList extends Component {
               );
             })}
           </div>
-          <div>{round && <Round round={round} />}</div>
+          {round && <Round round={round} />}
         </div>
       </div>
     );
