@@ -84,9 +84,6 @@
       }
     },
     "players": {
-      "buttons": {
-        "edit_results": "Edit results"
-      },
       "players_table": {
         "table": "Table {{letter}}"
       }
@@ -105,7 +102,8 @@
       "round": {
         "competitors": "{{count}} competitors",
         "tables": "on {{count}} table",
-        "tables_plural": "on {{count}} tables"
+        "tables_plural": "on {{count}} tables",
+        "help": "Click on a name to edit results for a player."
       }
     },
     "tournaments": {

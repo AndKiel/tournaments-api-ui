@@ -12,6 +12,7 @@ import styles from './round.scss';
 class Round extends Component {
   render() {
     const { t, round } = this.props;
+    const tournament = this.props.store.tournamentsStore.item;
 
     return (
       <div>
@@ -21,9 +22,15 @@ class Round extends Component {
               count: round.competitors_limit
             })}
           </Typography>
-          <Typography align="center">
+          <Typography align="center" paragraph>
             {t('components.rounds.round.tables', { count: round.tables_count })}
           </Typography>
+          {tournament.isUserOrganiser &&
+            tournament.status === 'in_progress' && (
+              <Typography align="center" paragraph>
+                {t('components.rounds.round.help')}
+              </Typography>
+            )}
         </div>
         <TableList players={round.players} />
       </div>
