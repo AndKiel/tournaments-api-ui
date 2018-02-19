@@ -23,6 +23,10 @@ i18n
 
     react: {
       wait: true
+    },
+
+    detection: {
+      cookieMinutes: 60 * 24 * 30 * 12
     }
   });
 
