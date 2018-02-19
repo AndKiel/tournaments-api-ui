@@ -4,6 +4,7 @@ import { observable } from 'mobx';
 import apiRoutes from './api_routes';
 import AccessToken from '../models/access_token';
 
+import i18n from '../i18n';
 import cookie from 'js-cookie';
 import qs from 'qs';
 
@@ -12,7 +13,6 @@ class ApiClient {
 
   constructor() {
     this.client = axios.create({
-      baseURL: process.env.REACT_APP_API_URL,
       paramsSerializer: qs.stringify
     });
     const cookieToken = cookie.getJSON('token');
@@ -37,7 +37,13 @@ class ApiClient {
   }
 
   async send(opts) {
-    const request = assign({ authenticate: false }, opts);
+    const request = assign(
+      {
+        authenticate: false,
+        baseURL: `${process.env.REACT_APP_API_URL}/${i18n.language || 'en'}`
+      },
+      opts
+    );
 
     if (request.authenticate === true && this.hasToken()) {
       request.headers = { Authorization: `Bearer ${this.token.access_token}` };
