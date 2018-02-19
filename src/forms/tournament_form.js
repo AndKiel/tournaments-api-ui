@@ -7,9 +7,12 @@ class TournamentForm extends Form {
         'tournament.competitors_limit',
         'tournament.description',
         'tournament.name',
-        'tournament.result_names[]',
+        'tournament.result_names',
         'tournament.starts_at'
-      ]
+      ],
+      initials: {
+        'tournament.result_names': []
+      }
     };
   }
 
