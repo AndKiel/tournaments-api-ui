@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
-import { observable } from 'mobx';
 import autobind from 'autobind-decorator';
 import {
   Button,
@@ -14,6 +13,7 @@ import {
   TextField,
   Typography
 } from 'material-ui';
+import PlayerForm from '../../forms/player_form';
 import modalStyles from '../../styles/modals.scss';
 import styles from './edit_results_modal.scss';
 
@@ -21,67 +21,62 @@ import styles from './edit_results_modal.scss';
 @inject('store')
 @observer
 class EditResultsModal extends Component {
-  @observable resultValues = [];
-  @observable error = null;
-
   componentWillMount() {
-    const tournament = this.props.store.tournamentsStore.item;
-    if (
-      this.props.player.result_values.length === tournament.result_names.length
-    ) {
-      this.resultValues = this.props.player.result_values.map(value => {
-        return value;
-      });
-    } else {
-      this.resultValues = tournament.result_names.map(() => {
-        return 0;
-      });
-    }
+    const resultNames = this.props.store.tournamentsStore.item.result_names;
+    const resultValues =
+      this.props.player.result_values.length === resultNames.length
+        ? this.props.player.result_values.map(val => {
+            return val;
+          })
+        : resultNames.map(() => {
+            return 0;
+          });
+
+    this.form = new PlayerForm();
+    this.form.submitImpl = this.submitImpl;
+    this.form.set({
+      player: {
+        result_values: resultValues
+      }
+    });
   }
 
   @autobind
-  async onSubmit(e) {
-    e.preventDefault();
-    try {
-      this.error = null;
-      await this.props.player.update({
-        player: { result_values: this.resultValues }
-      });
-      this.props.store.uiStore.setAlert(this.props.t('alerts.result.update'));
-      this.props.onClose();
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.fields) {
-        this.error = error.response.data.fields.result_values.join(', ');
-      } else {
-        throw error;
-      }
-    }
+  async submitImpl() {
+    await this.props.player.update(this.form.values());
+    this.props.store.uiStore.setAlert(this.props.t('alerts.result.update'));
+    this.props.onClose();
   }
 
   render() {
     const { t } = this.props;
     const resultNames = this.props.store.tournamentsStore.item.result_names;
+    const field = this.form.$('player.result_values');
 
     return (
       <Modal open={this.props.open} onClose={this.props.onClose}>
         <Card className={modalStyles.contents}>
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.form.onSubmit}>
             <CardContent>
               <Typography variant="headline">
                 {t('components.modals.edit_results.title', {
                   name: this.props.player.competitor_id.name
                 })}
               </Typography>
-              {resultNames.map((name, index) => {
+              {field.value.map((value, index) => {
+                const name = resultNames[index];
+
                 return (
                   <TextField
                     key={index}
                     id={name}
                     name={name}
                     label={name}
-                    value={this.resultValues[index]}
+                    value={value}
                     onChange={e => {
-                      this.resultValues[index] = e.currentTarget.value;
+                      const array = field.value;
+                      array[index] = e.currentTarget.value;
+                      field.set(array);
                     }}
                     type="number"
                     margin="normal"
@@ -90,9 +85,9 @@ class EditResultsModal extends Component {
                   />
                 );
               })}
-              {this.error && (
+              {field.hasError && (
                 <FormHelperText className={styles.error} error>
-                  {this.error}
+                  {field.error}
                 </FormHelperText>
               )}
             </CardContent>
