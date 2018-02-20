@@ -49,6 +49,7 @@ class EditTournamentPage extends Component {
 
   render() {
     const { t } = this.props;
+    const tournament = this.props.store.tournamentsStore.item;
 
     if (this.props.store.tournamentsStore.item) {
       return (
@@ -72,6 +73,7 @@ class EditTournamentPage extends Component {
                   />
                   <DatetimeInput
                     field={this.form.$('tournament.starts_at')}
+                    disabled={tournament.status !== 'created'}
                     required
                   />
                   <TextInput
