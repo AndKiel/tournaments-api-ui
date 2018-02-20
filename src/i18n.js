@@ -34,7 +34,7 @@ i18n
     cache: {
       enabled: true,
       versions: {
-        en: 'v2'
+        en: 'v3'
       }
     }
   });

@@ -138,7 +138,7 @@
     "round": {
       "assign_players": {
         "title": "Assign players to tables?",
-        "text": "First round assignment is random. In the following rounds players are assigned to tables based on the results."
+        "text": "First round assignment is random. If consecutive rounds have the same competitors limit and tables count, algorithm tries to pair up competitors who haven't met yet. Otherwise assignment is based on the results."
       },
       "delete": {
         "title": "Remove this round?"
