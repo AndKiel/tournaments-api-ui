@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    image: node:lts
+    build: .
     working_dir: /tournaments-api-ui
     entrypoint: ["sh", "-c"]
     command: ["yarn install && yarn start"]

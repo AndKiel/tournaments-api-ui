@@ -7,4 +7,5 @@
 .tool-versions
 docker-compose.yml
 LICENCE
+Makefile
 README.md
