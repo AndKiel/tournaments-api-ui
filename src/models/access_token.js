@@ -5,7 +5,7 @@ const AccessToken = types.model('AccessToken', {
   created_at: types.number,
   expires_in: types.number,
   refresh_token: types.string,
-  token_type: types.enumeration(['bearer'])
+  token_type: types.enumeration(['Bearer'])
 });
 
 export default AccessToken;
