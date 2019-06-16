@@ -1,0 +1,10 @@
+/.git
+/.idea
+/build
+/node_modules
+.dockerignore
+.gitignore
+.tool-versions
+docker-compose.yml
+LICENCE
+README.md

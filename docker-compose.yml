@@ -1,19 +1,23 @@
-version: '3.3'
+version: '3.7'
 
 services:
   web:
-    image: node:latest
+    image: node:lts
     working_dir: /tournaments-api-ui
-    command: bash -c "yarn install && yarn start"
+    entrypoint: ["sh", "-c"]
+    command: ["yarn install && yarn start"]
     environment:
       PORT: 3001
       YARN_CACHE_FOLDER: /yarn_cache
     ports:
       - '3001:3001'
-      - '3002:3002'
+    tty: true
+    stdin_open: true
     volumes:
       - .:/tournaments-api-ui
+      - node-modules:/tournaments-api-ui/node_modules
       - yarn-cache:/yarn_cache
 
 volumes:
+  node-modules:
   yarn-cache:

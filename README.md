@@ -6,10 +6,10 @@ Front-end for tournament management application.
 
 ### Setup ###
 
-First Docker build: `docker-compose build`.
+Run `make setup`,
 
-Launch stack: `docker-compose up web`.
+then launch the app via `make start`.
 
-App will be available at [http://localhost:3001/]().
+The app will be available at [http://localhost:3001/]().
 
 UI requires [tournaments-api](https://github.com/AndKiel/tournaments-api) running in the background to work properly.
