@@ -1,11 +1,14 @@
 /.git
 /.idea
 /build
+/coverage
 /node_modules
 .dockerignore
 .gitignore
 .tool-versions
 docker-compose.yml
+Dockerfile
 LICENCE
 Makefile
 README.md
+static.json
