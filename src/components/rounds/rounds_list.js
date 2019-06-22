@@ -8,7 +8,7 @@ import AssignPlayersButton from './buttons/assign_players_button';
 import RemoveRoundButton from './buttons/remove_round_button';
 import Round from './round';
 import classNames from 'classnames';
-import styles from './rounds_list.scss';
+import styles from './rounds_list.module.scss';
 
 @inject('store')
 @observer

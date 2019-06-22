@@ -7,7 +7,7 @@ import EnlistButton from './buttons/enlist_button';
 import ResignButton from './buttons/resign_button';
 import OrderButton from './buttons/order_button';
 import Competitor from './competitor';
-import styles from './competitors_list.scss';
+import styles from './competitors_list.module.scss';
 
 @translate()
 @inject('store')

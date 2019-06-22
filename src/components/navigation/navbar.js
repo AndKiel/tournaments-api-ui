@@ -5,7 +5,7 @@ import { AppBar, Toolbar, Typography } from 'material-ui';
 import DrawerMenu from './drawer_menu';
 import UserMenu from './user_menu';
 import routes from '../../utils/routes';
-import styles from './navbar.scss';
+import styles from './navbar.module.scss';
 
 @translate()
 class Navbar extends Component {

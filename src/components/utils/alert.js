@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Fade, Snackbar, SnackbarContent } from 'material-ui';
 import classNames from 'classnames';
-import styles from './alert.scss';
+import styles from './alert.module.scss';
 
 const Alert = ({
   store: { uiStore: { alertText, alertType, isAlertOpen } }

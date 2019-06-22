@@ -9,7 +9,7 @@ import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../../utils/routes';
 import ConfirmationDialog from '../../utils/confirmation_dialog';
-import styles from './icons.scss';
+import styles from './icons.module.scss';
 
 @translate()
 @withRouter

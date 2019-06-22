@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 import { observer } from 'mobx-react/index';
 import { Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import styles from './status_icon.scss';
+import styles from './status_icon.module.scss';
 
 @translate()
 @observer

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Drawer, IconButton, List, ListItem, ListItemText } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../utils/routes';
-import styles from './drawer_menu.scss';
+import styles from './drawer_menu.module.scss';
 
 @translate()
 @inject('store')

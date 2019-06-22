@@ -9,7 +9,7 @@ import TournamentCard from '../../components/tournaments/tournament_card';
 import CompetitorsList from '../../components/competitors/competitors_list';
 import RoundsList from '../../components/rounds/rounds_list';
 import ResultsList from '../../components/results/results_list';
-import styles from './tournament_page.scss';
+import styles from './tournament_page.module.scss';
 
 @translate()
 @inject('store')

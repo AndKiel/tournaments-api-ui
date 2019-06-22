@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 import { inject, observer } from 'mobx-react/index';
 import { Typography } from 'material-ui';
 import TableList from '../players/table_list';
-import styles from './round.scss';
+import styles from './round.module.scss';
 
 @translate()
 @inject('store')

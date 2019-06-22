@@ -12,7 +12,7 @@ import AppStore from './stores/app_store';
 import AppSwitch from './app_switch';
 
 import i18n from './i18n';
-import styles from './app.scss';
+import styles from './app.module.scss';
 import './fontawesome';
 
 const apiClient = new ApiClient();

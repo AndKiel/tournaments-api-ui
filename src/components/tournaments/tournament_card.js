@@ -10,7 +10,7 @@ import TimeIcon from './icons/time_icon';
 import StatusIcon from './icons/status_icon';
 import OrganiserMenu from './organiser_menu';
 import routes from '../../utils/routes';
-import styles from './tournament_card.scss';
+import styles from './tournament_card.module.scss';
 import classNames from 'classnames';
 
 @translate()

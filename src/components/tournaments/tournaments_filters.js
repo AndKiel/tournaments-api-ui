@@ -7,7 +7,7 @@ import { DateTimePicker } from 'material-ui-pickers';
 import { Typography, TextField } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import debounce from 'lodash/debounce';
-import styles from './tournaments_filters.scss';
+import styles from './tournaments_filters.module.scss';
 
 @translate()
 @inject('store')

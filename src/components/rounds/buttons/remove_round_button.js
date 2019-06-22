@@ -7,7 +7,7 @@ import autobind from 'autobind-decorator';
 import { IconButton, Tooltip } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import ConfirmationDialog from '../../utils/confirmation_dialog';
-import styles from './buttons.scss';
+import styles from './buttons.module.scss';
 
 @translate()
 @inject('store')

@@ -5,7 +5,7 @@ import { inject, observer } from 'mobx-react/index';
 import autobind from 'autobind-decorator';
 import { ButtonBase, Typography } from 'material-ui';
 import RemoveCompetitorButton from './buttons/remove_competitor_button';
-import styles from './competitor.scss';
+import styles from './competitor.module.scss';
 
 @translate()
 @inject('store')

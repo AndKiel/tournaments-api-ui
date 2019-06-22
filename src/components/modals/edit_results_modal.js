@@ -14,8 +14,8 @@ import {
   Typography
 } from 'material-ui';
 import PlayerForm from '../../forms/player_form';
-import modalStyles from '../../styles/modals.scss';
-import styles from './edit_results_modal.scss';
+import modalStyles from '../../styles/modals.module.scss';
+import styles from './edit_results_modal.module.scss';
 
 @translate()
 @inject('store')

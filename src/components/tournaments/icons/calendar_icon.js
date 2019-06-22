@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { Typography } from 'material-ui';
-import styles from './calendar_icon.scss';
+import styles from './calendar_icon.module.scss';
 
 @observer
 class CalendarIcon extends Component {

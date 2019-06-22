@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import routes from '../../../utils/routes';
-import styles from './icons.scss';
+import styles from './icons.module.scss';
 
 @translate()
 class EditTournamentMenuItem extends Component {

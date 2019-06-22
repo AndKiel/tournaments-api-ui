@@ -9,7 +9,7 @@ import EditTournamentMenuItem from './organiser_menu/edit_tournament_menu_item';
 import EndTournamentMenuItem from './organiser_menu/end_tournament_menu_item';
 import StartTournamentMenuItem from './organiser_menu/start_tournament_menu_item';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import styles from './organiser_menu.scss';
+import styles from './organiser_menu.module.scss';
 
 @inject('store')
 @observer

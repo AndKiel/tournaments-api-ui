@@ -10,7 +10,7 @@ import {
   TableCell
 } from 'material-ui';
 import classNames from 'classnames';
-import styles from './results_list.scss';
+import styles from './results_list.module.scss';
 
 @translate()
 @inject('store')

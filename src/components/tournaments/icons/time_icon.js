@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/index';
 import { Typography } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import styles from './time_icon.scss';
+import styles from './time_icon.module.scss';
 
 @observer
 class TimeIcon extends Component {

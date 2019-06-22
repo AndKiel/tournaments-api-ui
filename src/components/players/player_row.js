@@ -6,7 +6,7 @@ import autobind from 'autobind-decorator';
 import { TableRow, TableCell } from 'material-ui';
 import EditResultsModal from '../modals/edit_results_modal';
 import classNames from 'classnames';
-import styles from './player_row.scss';
+import styles from './player_row.module.scss';
 
 @inject('store')
 @observer

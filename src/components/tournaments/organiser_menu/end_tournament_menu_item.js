@@ -7,7 +7,7 @@ import autobind from 'autobind-decorator';
 import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import ConfirmationDialog from '../../utils/confirmation_dialog';
-import styles from './icons.scss';
+import styles from './icons.module.scss';
 
 @translate()
 @inject('store')
