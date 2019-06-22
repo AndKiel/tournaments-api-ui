@@ -1,9 +1,9 @@
-import { Form } from 'mobx-react-form';
+import { Form } from "mobx-react-form";
 
 class CompetitorForm extends Form {
   setup() {
     return {
-      fields: ['competitor.name']
+      fields: ["competitor.name"]
     };
   }
 
@@ -20,7 +20,7 @@ class CompetitorForm extends Form {
             error.response.data.fields
           ) {
             for (let pair of Object.entries(error.response.data.fields)) {
-              form.$(`competitor.${pair[0]}`).invalidate(pair[1].join(', '));
+              form.$(`competitor.${pair[0]}`).invalidate(pair[1].join(", "));
             }
           } else {
             throw error;

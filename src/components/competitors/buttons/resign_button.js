@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
-import { observable } from 'mobx';
-import autobind from 'autobind-decorator';
-import { IconButton, Tooltip } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import ConfirmationDialog from '../../utils/confirmation_dialog';
+import React, { Component } from "react";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
+import { observable } from "mobx";
+import autobind from "autobind-decorator";
+import { IconButton, Tooltip } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import ConfirmationDialog from "../../utils/confirmation_dialog";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class ResignButton extends Component {
   @observable isDialogOpen = false;
@@ -27,7 +27,7 @@ class ResignButton extends Component {
   async resign() {
     const tournament = this.props.store.tournamentsStore.item;
     await tournament.resign();
-    this.props.store.uiStore.setAlert(this.props.t('alerts.tournament.resign'));
+    this.props.store.uiStore.setAlert(this.props.t("alerts.tournament.resign"));
   }
 
   render() {
@@ -38,11 +38,11 @@ class ResignButton extends Component {
 
       return (
         <div>
-          <Tooltip title={t('components.competitors.buttons.resign')}>
+          <Tooltip title={t("components.competitors.buttons.resign")}>
             <IconButton onClick={this.openDialog}>
               <FontAwesomeIcon
                 size="sm"
-                icon={['far', 'calendar-minus']}
+                icon={["far", "calendar-minus"]}
                 fixedWidth
               />
             </IconButton>

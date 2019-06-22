@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
-import { observable } from 'mobx';
-import autobind from 'autobind-decorator';
-import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import ConfirmationDialog from '../../utils/confirmation_dialog';
-import styles from './icons.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
+import { observable } from "mobx";
+import autobind from "autobind-decorator";
+import { ListItemIcon, ListItemText, MenuItem } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import ConfirmationDialog from "../../utils/confirmation_dialog";
+import styles from "./icons.module.scss";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class StartTournamentMenuItem extends Component {
   @observable isDialogOpen = false;
@@ -31,9 +31,9 @@ class StartTournamentMenuItem extends Component {
       await this.props.store.organisedTournamentsStore.startTournament(
         this.props.tournament.id
       );
-      this.props.tournament.setStatus('in_progress');
+      this.props.tournament.setStatus("in_progress");
       this.props.store.uiStore.setAlert(
-        this.props.t('alerts.tournament.start')
+        this.props.t("alerts.tournament.start")
       );
     } catch (error) {
       if (
@@ -43,7 +43,7 @@ class StartTournamentMenuItem extends Component {
       ) {
         this.props.store.uiStore.setAlert(
           error.response.data.error_description,
-          'error'
+          "error"
         );
       } else {
         throw error;
@@ -52,7 +52,7 @@ class StartTournamentMenuItem extends Component {
   }
 
   render() {
-    if (this.props.tournament.status === 'created') {
+    if (this.props.tournament.status === "created") {
       const { t } = this.props;
 
       return (
@@ -60,13 +60,13 @@ class StartTournamentMenuItem extends Component {
           <MenuItem onClick={this.openDialog}>
             <ListItemIcon>
               <FontAwesomeIcon
-                className={styles['menu-icon']}
+                className={styles["menu-icon"]}
                 icon="hourglass-half"
                 fixedWidth
               />
             </ListItemIcon>
             <ListItemText
-              primary={t('components.tournaments.organiser_menu.start')}
+              primary={t("components.tournaments.organiser_menu.start")}
             />
           </MenuItem>
           <ConfirmationDialog

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { translate } from 'react-i18next';
-import { withRouter } from 'react-router';
-import { inject, observer } from 'mobx-react';
-import autobind from 'autobind-decorator';
-import { Link } from 'react-router-dom';
-import { Button, IconButton, Tooltip } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import routes from '../../utils/routes';
+import React, { Component } from "react";
+import { translate } from "react-i18next";
+import { withRouter } from "react-router";
+import { inject, observer } from "mobx-react";
+import autobind from "autobind-decorator";
+import { Link } from "react-router-dom";
+import { Button, IconButton, Tooltip } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import routes from "../../utils/routes";
 
 @translate()
 @withRouter
-@inject('store')
+@inject("store")
 @observer
 class UserMenu extends Component {
   @autobind
@@ -18,7 +18,7 @@ class UserMenu extends Component {
     try {
       await this.props.store.sessionStore.signOut();
       this.props.history.push(routes.signIn());
-      this.props.store.uiStore.setAlert(this.props.t('alerts.user.sign_out'));
+      this.props.store.uiStore.setAlert(this.props.t("alerts.user.sign_out"));
     } catch (error) {
       throw error;
     }
@@ -30,7 +30,7 @@ class UserMenu extends Component {
     if (this.props.store.sessionStore.isSignedIn) {
       return (
         <div>
-          <Tooltip title={t('pages.new_tournament.title')}>
+          <Tooltip title={t("pages.new_tournament.title")}>
             <IconButton
               color="inherit"
               component={Link}
@@ -39,12 +39,12 @@ class UserMenu extends Component {
               <FontAwesomeIcon icon="calendar-plus" fixedWidth />
             </IconButton>
           </Tooltip>
-          <Tooltip title={t('pages.account.title')}>
+          <Tooltip title={t("pages.account.title")}>
             <IconButton color="inherit" component={Link} to={routes.account()}>
               <FontAwesomeIcon icon="user-circle" fixedWidth />
             </IconButton>
           </Tooltip>
-          <Tooltip title={t('components.navigation.user_menu.sign_out')}>
+          <Tooltip title={t("components.navigation.user_menu.sign_out")}>
             <IconButton color="inherit" onClick={this.signOut}>
               <FontAwesomeIcon icon="sign-out-alt" fixedWidth />
             </IconButton>
@@ -55,10 +55,10 @@ class UserMenu extends Component {
       return (
         <div>
           <Button color="inherit" component={Link} to={routes.signIn()}>
-            {t('pages.sign_in.title')}
+            {t("pages.sign_in.title")}
           </Button>
           <Button color="inherit" component={Link} to={routes.signUp()}>
-            {t('pages.sign_up.title')}
+            {t("pages.sign_up.title")}
           </Button>
         </div>
       );

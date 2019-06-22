@@ -1,4 +1,4 @@
-import fontawesome from '@fortawesome/fontawesome';
+import fontawesome from "@fortawesome/fontawesome";
 import {
   faBars,
   faCalendarAlt,
@@ -23,12 +23,12 @@ import {
   faUserCircle,
   faUserPlus,
   faUserTimes
-} from '@fortawesome/fontawesome-free-solid';
+} from "@fortawesome/fontawesome-free-solid";
 import {
   faCalendarMinus as farCalendarMinus,
   faCalendarPlus as farCalendarPlus,
   faClock as farClock
-} from '@fortawesome/fontawesome-free-regular';
+} from "@fortawesome/fontawesome-free-regular";
 
 fontawesome.library.add(
   faBars,

@@ -1,7 +1,7 @@
-import React from 'react';
-import { observer } from 'mobx-react';
-import { Route, Redirect } from 'react-router-dom';
-import routes from '../utils/routes';
+import React from "react";
+import { observer } from "mobx-react";
+import { Route, Redirect } from "react-router-dom";
+import routes from "../utils/routes";
 
 const AuthenticatedRoute = ({ store, component: Component, ...rest }) => {
   return (

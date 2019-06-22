@@ -1,13 +1,13 @@
-import { types, getEnv, flow } from 'mobx-state-tree';
-import moment from 'moment';
-import apiRoutes from '../utils/api_routes';
+import { types, getEnv, flow } from "mobx-state-tree";
+import moment from "moment";
+import apiRoutes from "../utils/api_routes";
 
 const Competitor = types
-  .model('Competitor', {
+  .model("Competitor", {
     created_at: types.string,
     id: types.identifier(types.string),
     name: types.string,
-    status: types.enumeration(['enlisted', 'confirmed']),
+    status: types.enumeration(["enlisted", "confirmed"]),
     user_id: types.maybe(types.string)
   })
   .views(self => {
@@ -25,14 +25,14 @@ const Competitor = types
         yield apiClient.post(apiRoutes.confirmCompetitor(self.id), {
           authenticate: true
         });
-        self.status = 'confirmed';
+        self.status = "confirmed";
       }),
 
       reject: flow(function* reject() {
         yield apiClient.post(apiRoutes.rejectCompetitor(self.id), {
           authenticate: true
         });
-        self.status = 'enlisted';
+        self.status = "enlisted";
       })
     };
   });

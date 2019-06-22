@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import routes from '../../../utils/routes';
-import styles from './icons.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { Link } from "react-router-dom";
+import { ListItemIcon, ListItemText, MenuItem } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import routes from "../../../utils/routes";
+import styles from "./icons.module.scss";
 
 @translate()
 class EditTournamentMenuItem extends Component {
@@ -17,12 +17,12 @@ class EditTournamentMenuItem extends Component {
       <MenuItem component={Link} to={routes.editTournament(id)}>
         <ListItemIcon>
           <FontAwesomeIcon
-            className={styles['menu-icon']}
+            className={styles["menu-icon"]}
             icon="edit"
             fixedWidth
           />
         </ListItemIcon>
-        <ListItemText primary={t('common.buttons.edit')} />
+        <ListItemText primary={t("common.buttons.edit")} />
       </MenuItem>
     );
   }

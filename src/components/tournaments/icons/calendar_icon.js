@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { observer } from 'mobx-react/index';
-import { Typography } from 'material-ui';
-import styles from './calendar_icon.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { observer } from "mobx-react/index";
+import { Typography } from "material-ui";
+import styles from "./calendar_icon.module.scss";
 
 @observer
 class CalendarIcon extends Component {
@@ -12,12 +12,12 @@ class CalendarIcon extends Component {
     return (
       <div className={styles.container}>
         <Typography component="span" className={styles.month}>
-          {date.format('MMM').toUpperCase()}
+          {date.format("MMM").toUpperCase()}
         </Typography>
         <Typography component="span" className={styles.day}>
-          {date.format('D')}
+          {date.format("D")}
           <Typography component="span" className={styles.dow}>
-            {date.format('ddd')}
+            {date.format("ddd")}
           </Typography>
         </Typography>
       </div>

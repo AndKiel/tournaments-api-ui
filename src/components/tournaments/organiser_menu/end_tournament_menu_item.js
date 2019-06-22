@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
-import { observable } from 'mobx';
-import autobind from 'autobind-decorator';
-import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import ConfirmationDialog from '../../utils/confirmation_dialog';
-import styles from './icons.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
+import { observable } from "mobx";
+import autobind from "autobind-decorator";
+import { ListItemIcon, ListItemText, MenuItem } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import ConfirmationDialog from "../../utils/confirmation_dialog";
+import styles from "./icons.module.scss";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class EndTournamentMenuItem extends Component {
   @observable isDialogOpen = false;
@@ -30,12 +30,12 @@ class EndTournamentMenuItem extends Component {
     await this.props.store.organisedTournamentsStore.endTournament(
       this.props.tournament.id
     );
-    this.props.tournament.setStatus('ended');
-    this.props.store.uiStore.setAlert(this.props.t('alerts.tournament.end'));
+    this.props.tournament.setStatus("ended");
+    this.props.store.uiStore.setAlert(this.props.t("alerts.tournament.end"));
   }
 
   render() {
-    if (this.props.tournament.status === 'in_progress') {
+    if (this.props.tournament.status === "in_progress") {
       const { t } = this.props;
 
       return (
@@ -43,13 +43,13 @@ class EndTournamentMenuItem extends Component {
           <MenuItem onClick={this.openDialog}>
             <ListItemIcon>
               <FontAwesomeIcon
-                className={styles['menu-icon']}
+                className={styles["menu-icon"]}
                 icon="hourglass-end"
                 fixedWidth
               />
             </ListItemIcon>
             <ListItemText
-              primary={t('components.tournaments.organiser_menu.end')}
+              primary={t("components.tournaments.organiser_menu.end")}
             />
           </MenuItem>
           <ConfirmationDialog

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
 import {
   Button,
   Card,
@@ -10,14 +10,14 @@ import {
   CardContent,
   Modal,
   Typography
-} from 'material-ui';
-import classNames from 'classnames';
-import styles from '../../styles/modals.module.scss';
-import RoundForm from '../../forms/round_form';
-import TextInput from '../forms/text_input';
+} from "material-ui";
+import classNames from "classnames";
+import styles from "../../styles/modals.module.scss";
+import RoundForm from "../../forms/round_form";
+import TextInput from "../forms/text_input";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class EditRoundModal extends Component {
   componentWillMount() {
@@ -29,7 +29,7 @@ class EditRoundModal extends Component {
   @autobind
   async submitImpl() {
     await this.props.round.update(this.form.values());
-    this.props.store.uiStore.setAlert(this.props.t('alerts.round.update'));
+    this.props.store.uiStore.setAlert(this.props.t("alerts.round.update"));
     this.props.onClose();
   }
 
@@ -42,23 +42,23 @@ class EditRoundModal extends Component {
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
               <Typography variant="headline">
-                {t('components.modals.edit_round.title')}
+                {t("components.modals.edit_round.title")}
               </Typography>
               <TextInput
-                field={this.form.$('round.competitors_limit')}
+                field={this.form.$("round.competitors_limit")}
                 type="number"
                 autoFocus
                 required
               />
               <TextInput
-                field={this.form.$('round.tables_count')}
+                field={this.form.$("round.tables_count")}
                 type="number"
                 required
               />
             </CardContent>
             <CardActions>
               <Button color="primary" style={{ flex: 1 }} type="submit">
-                {t('common.buttons.update')}
+                {t("common.buttons.update")}
               </Button>
             </CardActions>
           </form>

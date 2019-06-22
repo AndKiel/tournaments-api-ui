@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { translate } from 'react-i18next';
-import { inject } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
+import React, { Component } from "react";
+import { translate } from "react-i18next";
+import { inject } from "mobx-react/index";
+import autobind from "autobind-decorator";
 import {
   Button,
   Card,
@@ -9,17 +9,17 @@ import {
   CardContent,
   Grid,
   Typography
-} from 'material-ui';
-import AccountForm from '../../forms/account_form';
-import TextInput from '../../components/forms/text_input';
+} from "material-ui";
+import AccountForm from "../../forms/account_form";
+import TextInput from "../../components/forms/text_input";
 
 @translate()
-@inject('store')
+@inject("store")
 class AccountPage extends Component {
   componentWillMount() {
     this.form = new AccountForm({
       initials: {
-        'user.email': this.props.store.userStore.user.email
+        "user.email": this.props.store.userStore.user.email
       }
     });
     this.form.submitImpl = this.submitImpl;
@@ -28,7 +28,7 @@ class AccountPage extends Component {
   @autobind
   async submitImpl() {
     await this.props.store.userStore.updateUser(this.form.values());
-    this.props.store.uiStore.setAlert(this.props.t('alerts.user.update'));
+    this.props.store.uiStore.setAlert(this.props.t("alerts.user.update"));
   }
 
   render() {
@@ -41,25 +41,25 @@ class AccountPage extends Component {
             <form onSubmit={this.form.onSubmit}>
               <CardContent>
                 <Typography variant="headline">
-                  {t('pages.account.title')}
+                  {t("pages.account.title")}
                 </Typography>
                 <TextInput
-                  field={this.form.$('user.email')}
+                  field={this.form.$("user.email")}
                   autoFocus
                   required
                 />
                 <TextInput
-                  field={this.form.$('user.password')}
+                  field={this.form.$("user.password")}
                   type="password"
                 />
                 <TextInput
-                  field={this.form.$('user.password_confirmation')}
+                  field={this.form.$("user.password_confirmation")}
                   type="password"
                 />
               </CardContent>
               <CardActions>
                 <Button color="primary" style={{ flex: 1 }} type="submit">
-                  {t('common.buttons.update')}
+                  {t("common.buttons.update")}
                 </Button>
               </CardActions>
             </form>

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
 import {
   Button,
   Card,
@@ -12,13 +12,13 @@ import {
   Modal,
   TextField,
   Typography
-} from 'material-ui';
-import PlayerForm from '../../forms/player_form';
-import modalStyles from '../../styles/modals.module.scss';
-import styles from './edit_results_modal.module.scss';
+} from "material-ui";
+import PlayerForm from "../../forms/player_form";
+import modalStyles from "../../styles/modals.module.scss";
+import styles from "./edit_results_modal.module.scss";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class EditResultsModal extends Component {
   componentWillMount() {
@@ -44,14 +44,14 @@ class EditResultsModal extends Component {
   @autobind
   async submitImpl() {
     await this.props.player.update(this.form.values());
-    this.props.store.uiStore.setAlert(this.props.t('alerts.result.update'));
+    this.props.store.uiStore.setAlert(this.props.t("alerts.result.update"));
     this.props.onClose();
   }
 
   render() {
     const { t } = this.props;
     const resultNames = this.props.store.tournamentsStore.item.result_names;
-    const field = this.form.$('player.result_values');
+    const field = this.form.$("player.result_values");
 
     return (
       <Modal open={this.props.open} onClose={this.props.onClose}>
@@ -59,7 +59,7 @@ class EditResultsModal extends Component {
           <form onSubmit={this.form.onSubmit}>
             <CardContent>
               <Typography variant="headline">
-                {t('components.modals.edit_results.title', {
+                {t("components.modals.edit_results.title", {
                   name: this.props.player.competitor_id.name
                 })}
               </Typography>
@@ -93,7 +93,7 @@ class EditResultsModal extends Component {
             </CardContent>
             <CardActions>
               <Button color="primary" style={{ flex: 1 }} type="submit">
-                {t('common.buttons.update')}
+                {t("common.buttons.update")}
               </Button>
             </CardActions>
           </form>

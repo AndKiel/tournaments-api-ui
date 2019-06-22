@@ -1,17 +1,17 @@
-import { types, getEnv, getRoot, flow } from 'mobx-state-tree';
-import apiRoutes from '../utils/api_routes';
+import { types, getEnv, getRoot, flow } from "mobx-state-tree";
+import apiRoutes from "../utils/api_routes";
 
 const SessionStore = types
-  .model('SessionStore', {
+  .model("SessionStore", {
     state: types.optional(
-      types.enumeration(['initial', 'loading', 'ready']),
-      'initial'
+      types.enumeration(["initial", "loading", "ready"]),
+      "initial"
     )
   })
   .views(self => {
     return {
       get isSignedIn() {
-        return self.state === 'ready' && getRoot(self).userStore.user;
+        return self.state === "ready" && getRoot(self).userStore.user;
       }
     };
   })
@@ -20,11 +20,11 @@ const SessionStore = types
 
     return {
       setup: flow(function* setup() {
-        self.state = 'loading';
+        self.state = "loading";
         if (apiClient.hasToken()) {
           yield getRoot(self).userStore.getUser();
         }
-        self.state = 'ready';
+        self.state = "ready";
       }),
 
       signUp: flow(function* signUp(data) {
@@ -33,9 +33,9 @@ const SessionStore = types
 
       signIn: flow(function* signIn({ email, password }) {
         yield apiClient.requestToken(email, password);
-        self.state = 'loading';
+        self.state = "loading";
         yield getRoot(self).userStore.getUser();
-        self.state = 'ready';
+        self.state = "ready";
       }),
 
       signOut: flow(function* signOut() {

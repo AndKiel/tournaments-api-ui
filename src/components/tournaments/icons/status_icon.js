@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { observer } from 'mobx-react/index';
-import { Tooltip } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import styles from './status_icon.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { observer } from "mobx-react/index";
+import { Tooltip } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import styles from "./status_icon.module.scss";
 
 @translate()
 @observer
@@ -13,9 +13,9 @@ class StatusIcon extends Component {
     const { t, status } = this.props;
 
     switch (status) {
-      case 'created':
+      case "created":
         return (
-          <Tooltip title={t('components.tournaments.status_icon.created')}>
+          <Tooltip title={t("components.tournaments.status_icon.created")}>
             <FontAwesomeIcon
               className={styles.status}
               icon="hourglass-start"
@@ -24,9 +24,9 @@ class StatusIcon extends Component {
             />
           </Tooltip>
         );
-      case 'in_progress':
+      case "in_progress":
         return (
-          <Tooltip title={t('components.tournaments.status_icon.in_progress')}>
+          <Tooltip title={t("components.tournaments.status_icon.in_progress")}>
             <FontAwesomeIcon
               className={styles.status}
               icon="hourglass-half"
@@ -37,7 +37,7 @@ class StatusIcon extends Component {
         );
       default:
         return (
-          <Tooltip title={t('components.tournaments.status_icon.ended')}>
+          <Tooltip title={t("components.tournaments.status_icon.ended")}>
             <FontAwesomeIcon
               className={styles.status}
               icon="hourglass-end"

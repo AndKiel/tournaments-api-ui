@@ -10,7 +10,7 @@
     "build": "node scripts/build.js",
     "start": "node scripts/start.js",
     "test": "node scripts/test.js",
-    "lint:fix": "prettier --write",
+    "lint:fix": "prettier --write \"src/**/*.js\"",
     "precommit": "lint-staged"
   },
   "dependencies": {

@@ -1,9 +1,9 @@
-import { types, getEnv, getRoot, flow } from 'mobx-state-tree';
-import Tournament from '../models/tournament';
-import apiRoutes from '../utils/api_routes';
+import { types, getEnv, getRoot, flow } from "mobx-state-tree";
+import Tournament from "../models/tournament";
+import apiRoutes from "../utils/api_routes";
 
 const EnlistedTournamentsStore = types
-  .model('EnlistedTournamentsStore', {
+  .model("EnlistedTournamentsStore", {
     collection: types.optional(types.array(Tournament), []),
     page: types.optional(types.number, 1),
     totalCount: types.optional(types.number, 0)

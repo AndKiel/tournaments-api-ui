@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
+import React, { Component } from "react";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
 import {
   Grid,
   Table,
@@ -8,12 +8,12 @@ import {
   TableBody,
   TableRow,
   TableCell
-} from 'material-ui';
-import classNames from 'classnames';
-import styles from './results_list.module.scss';
+} from "material-ui";
+import classNames from "classnames";
+import styles from "./results_list.module.scss";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class ResultsList extends Component {
   componentWillMount() {
@@ -33,7 +33,7 @@ class ResultsList extends Component {
                 <TableRow>
                   <TableCell numeric>#</TableCell>
                   <TableCell>
-                    {t('components.results.results_list.competitor')}
+                    {t("components.results.results_list.competitor")}
                   </TableCell>
                   {tournament.result_names.map((name, index) => {
                     return <TableCell key={index}>{name}</TableCell>;

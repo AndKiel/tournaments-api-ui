@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { withRouter } from 'react-router';
-import { observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
-import { Card, CardContent, Typography } from 'material-ui';
-import CalendarIcon from './icons/calendar_icon';
-import TimeIcon from './icons/time_icon';
-import StatusIcon from './icons/status_icon';
-import OrganiserMenu from './organiser_menu';
-import routes from '../../utils/routes';
-import styles from './tournament_card.module.scss';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { withRouter } from "react-router";
+import { observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
+import { Card, CardContent, Typography } from "material-ui";
+import CalendarIcon from "./icons/calendar_icon";
+import TimeIcon from "./icons/time_icon";
+import StatusIcon from "./icons/status_icon";
+import OrganiserMenu from "./organiser_menu";
+import routes from "../../utils/routes";
+import styles from "./tournament_card.module.scss";
+import classNames from "classnames";
 
 @translate()
 @withRouter
@@ -50,13 +50,13 @@ class TournamentCard extends Component {
             </Typography>
             {this.props.withLimit && (
               <Typography>
-                {t('components.tournaments.tournament_card.competitors_limit', {
+                {t("components.tournaments.tournament_card.competitors_limit", {
                   count: competitors_limit
                 })}
               </Typography>
             )}
             {this.props.withDescription &&
-              description.split('\n').map((p, idx) => {
+              description.split("\n").map((p, idx) => {
                 return (
                   <Typography key={`p${idx}`} paragraph={p.length === 0}>
                     {p}

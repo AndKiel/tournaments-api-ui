@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { withRouter } from 'react-router';
-import { inject, observer } from 'mobx-react/index';
-import { observable } from 'mobx';
-import autobind from 'autobind-decorator';
-import { ListItemIcon, ListItemText, MenuItem } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import routes from '../../../utils/routes';
-import ConfirmationDialog from '../../utils/confirmation_dialog';
-import styles from './icons.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { withRouter } from "react-router";
+import { inject, observer } from "mobx-react/index";
+import { observable } from "mobx";
+import autobind from "autobind-decorator";
+import { ListItemIcon, ListItemText, MenuItem } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import routes from "../../../utils/routes";
+import ConfirmationDialog from "../../utils/confirmation_dialog";
+import styles from "./icons.module.scss";
 
 @translate()
 @withRouter
-@inject('store')
+@inject("store")
 @observer
 class DeleteTournamentMenuItem extends Component {
   @observable isDialogOpen = false;
@@ -40,7 +40,7 @@ class DeleteTournamentMenuItem extends Component {
     } else {
       this.props.history.push(routes.organisedTournaments());
     }
-    this.props.store.uiStore.setAlert(this.props.t('alerts.tournament.delete'));
+    this.props.store.uiStore.setAlert(this.props.t("alerts.tournament.delete"));
   }
 
   render() {
@@ -51,12 +51,12 @@ class DeleteTournamentMenuItem extends Component {
         <MenuItem onClick={this.openDialog}>
           <ListItemIcon className={styles.delete}>
             <FontAwesomeIcon
-              className={styles['menu-icon']}
+              className={styles["menu-icon"]}
               icon="trash-alt"
               fixedWidth
             />
           </ListItemIcon>
-          <ListItemText primary={t('common.buttons.delete')} />
+          <ListItemText primary={t("common.buttons.delete")} />
         </MenuItem>
         <ConfirmationDialog
           action="tournament.delete"

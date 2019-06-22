@@ -1,12 +1,12 @@
-import assign from 'lodash/assign';
-import axios from 'axios';
-import { observable } from 'mobx';
-import apiRoutes from './api_routes';
-import AccessToken from '../models/access_token';
+import assign from "lodash/assign";
+import axios from "axios";
+import { observable } from "mobx";
+import apiRoutes from "./api_routes";
+import AccessToken from "../models/access_token";
 
-import i18n from '../i18n';
-import cookie from 'js-cookie';
-import qs from 'qs';
+import i18n from "../i18n";
+import cookie from "js-cookie";
+import qs from "qs";
 
 class ApiClient {
   @observable token = null;
@@ -15,7 +15,7 @@ class ApiClient {
     this.client = axios.create({
       paramsSerializer: qs.stringify
     });
-    const cookieToken = cookie.getJSON('token');
+    const cookieToken = cookie.getJSON("token");
     if (cookieToken) {
       this.token = AccessToken.create(cookieToken);
     }
@@ -24,23 +24,23 @@ class ApiClient {
   // Requests
 
   async get(url, opts) {
-    return await this.send(assign({ url: url, method: 'GET' }, opts));
+    return await this.send(assign({ url: url, method: "GET" }, opts));
   }
   async post(url, opts) {
-    return await this.send(assign({ url: url, method: 'POST' }, opts));
+    return await this.send(assign({ url: url, method: "POST" }, opts));
   }
   async patch(url, opts) {
-    return await this.send(assign({ url: url, method: 'PATCH' }, opts));
+    return await this.send(assign({ url: url, method: "PATCH" }, opts));
   }
   async delete(url, opts) {
-    return await this.send(assign({ url: url, method: 'DELETE' }, opts));
+    return await this.send(assign({ url: url, method: "DELETE" }, opts));
   }
 
   async send(opts) {
     const request = assign(
       {
         authenticate: false,
-        baseURL: `${process.env.REACT_APP_API_URL}/${i18n.language || 'en'}`
+        baseURL: `${process.env.REACT_APP_API_URL}/${i18n.language || "en"}`
       },
       opts
     );
@@ -70,7 +70,7 @@ class ApiClient {
   async requestToken(email, password) {
     try {
       const response = await this.post(apiRoutes.oauthToken(), {
-        data: { email, password, grant_type: 'password' }
+        data: { email, password, grant_type: "password" }
       });
       this.setToken(response.data);
     } catch (error) {
@@ -83,7 +83,7 @@ class ApiClient {
       const response = await this.post(apiRoutes.oauthToken(), {
         data: {
           refresh_token: this.token.refresh_token,
-          grant_type: 'refresh_token'
+          grant_type: "refresh_token"
         }
       });
       this.setToken(response.data);
@@ -101,7 +101,7 @@ class ApiClient {
   // Helpers
 
   setToken(token) {
-    cookie.set('token', token, { expires: 365 });
+    cookie.set("token", token, { expires: 365 });
     this.token = AccessToken.create(token);
   }
 
@@ -110,7 +110,7 @@ class ApiClient {
   }
 
   nullifyToken() {
-    cookie.remove('token');
+    cookie.remove("token");
     this.token = null;
   }
 }

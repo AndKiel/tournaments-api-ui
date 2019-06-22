@@ -1,30 +1,30 @@
 const apiRoutes = {
-  signUpUsers: () => '/users/sign_up',
+  signUpUsers: () => "/users/sign_up",
 
-  oauthToken: () => '/oauth/token',
-  oauthTokenInfo: () => '/oauth/token/info',
-  oauthRevoke: () => '/oauth/revoke',
+  oauthToken: () => "/oauth/token",
+  oauthTokenInfo: () => "/oauth/token/info",
+  oauthRevoke: () => "/oauth/revoke",
 
-  user: () => '/user',
+  user: () => "/user",
 
-  tournaments: () => '/tournaments',
-  enlistedTournaments: () => '/tournaments/enlisted',
+  tournaments: () => "/tournaments",
+  enlistedTournaments: () => "/tournaments/enlisted",
   tournament: id => `/tournaments/${id}`,
   startTournament: id => `/tournaments/${id}/start`,
   endTournament: id => `/tournaments/${id}/end`,
 
-  results: () => '/results',
+  results: () => "/results",
 
-  competitor: () => '/competitor',
-  addCompetitor: () => '/competitor/add',
+  competitor: () => "/competitor",
+  addCompetitor: () => "/competitor/add",
   removeCompetitor: id => `/competitors/${id}/remove`,
   confirmCompetitor: id => `/competitors/${id}/confirm`,
   rejectCompetitor: id => `/competitors/${id}/reject`,
 
-  rounds: () => '/rounds',
+  rounds: () => "/rounds",
   round: id => `/rounds/${id}`,
 
-  players: () => '/players',
+  players: () => "/players",
   player: id => `/players/${id}`
 };
 

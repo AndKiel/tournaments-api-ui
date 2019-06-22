@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
 import {
   Button,
   Dialog,
@@ -10,7 +10,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions
-} from 'material-ui';
+} from "material-ui";
 
 @translate()
 @observer
@@ -36,10 +36,10 @@ class ConfirmationDialog extends Component {
         )}
         <DialogActions>
           <Button color="primary" onClick={onClose}>
-            {t('common.buttons.no')}
+            {t("common.buttons.no")}
           </Button>
           <Button color="primary" onClick={this.confirm} autoFocus>
-            {t('common.buttons.yes')}
+            {t("common.buttons.yes")}
           </Button>
         </DialogActions>
       </Dialog>

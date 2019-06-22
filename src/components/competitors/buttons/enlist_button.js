@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { translate } from 'react-i18next';
-import { observable } from 'mobx';
-import { inject, observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
-import { IconButton, Tooltip } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import EnlistModal from '../../modals/enlist_modal';
+import React, { Component } from "react";
+import { translate } from "react-i18next";
+import { observable } from "mobx";
+import { inject, observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
+import { IconButton, Tooltip } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import EnlistModal from "../../modals/enlist_modal";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class EnlistButton extends Component {
   @observable isModalOpen = false;
@@ -31,11 +31,11 @@ class EnlistButton extends Component {
 
       return (
         <div>
-          <Tooltip title={t('components.competitors.buttons.enlist')}>
+          <Tooltip title={t("components.competitors.buttons.enlist")}>
             <IconButton onClick={this.openModal}>
               <FontAwesomeIcon
                 size="sm"
-                icon={['far', 'calendar-plus']}
+                icon={["far", "calendar-plus"]}
                 fixedWidth
               />
             </IconButton>

@@ -1,9 +1,9 @@
-import { types, getEnv, flow } from 'mobx-state-tree';
-import User from '../models/user';
-import apiRoutes from '../utils/api_routes';
+import { types, getEnv, flow } from "mobx-state-tree";
+import User from "../models/user";
+import apiRoutes from "../utils/api_routes";
 
 const UserStore = types
-  .model('UserStore', {
+  .model("UserStore", {
     user: types.maybe(User)
   })
   .actions(self => {

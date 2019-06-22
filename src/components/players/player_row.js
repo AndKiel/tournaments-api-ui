@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { observable } from 'mobx';
-import { inject, observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
-import { TableRow, TableCell } from 'material-ui';
-import EditResultsModal from '../modals/edit_results_modal';
-import classNames from 'classnames';
-import styles from './player_row.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { observable } from "mobx";
+import { inject, observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
+import { TableRow, TableCell } from "material-ui";
+import EditResultsModal from "../modals/edit_results_modal";
+import classNames from "classnames";
+import styles from "./player_row.module.scss";
 
-@inject('store')
+@inject("store")
 @observer
 class PlayerRow extends Component {
   @observable isModalOpen = false;
@@ -16,7 +16,7 @@ class PlayerRow extends Component {
   @autobind
   openModal() {
     const tournament = this.props.store.tournamentsStore.item;
-    if (tournament.isUserOrganiser && tournament.status === 'in_progress') {
+    if (tournament.isUserOrganiser && tournament.status === "in_progress") {
       this.isModalOpen = true;
     }
   }
@@ -31,7 +31,7 @@ class PlayerRow extends Component {
     const tournament = this.props.store.tournamentsStore.item;
     const competitorClasses = classNames({
       [styles.action]:
-        tournament.isUserOrganiser && tournament.status === 'in_progress'
+        tournament.isUserOrganiser && tournament.status === "in_progress"
     });
 
     return (

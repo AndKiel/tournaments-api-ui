@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { observer } from 'mobx-react/index';
-import { Typography } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import styles from './time_icon.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { observer } from "mobx-react/index";
+import { Typography } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import styles from "./time_icon.module.scss";
 
 @observer
 class TimeIcon extends Component {
@@ -12,9 +12,9 @@ class TimeIcon extends Component {
 
     return (
       <Typography component="span" align="center" className={styles.container}>
-        <FontAwesomeIcon icon={['far', 'clock']} />
+        <FontAwesomeIcon icon={["far", "clock"]} />
         <Typography component="span" className={styles.time}>
-          {date.format('HH:mm')}
+          {date.format("HH:mm")}
         </Typography>
       </Typography>
     );

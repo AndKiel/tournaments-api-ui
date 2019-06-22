@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { translate } from 'react-i18next';
-import { Grid, Typography } from 'material-ui';
+import React, { Component } from "react";
+import { translate } from "react-i18next";
+import { Grid, Typography } from "material-ui";
 
 @translate()
 class NotFoundPage extends Component {
@@ -13,7 +13,7 @@ class NotFoundPage extends Component {
           <Typography variant="headline" align="center">
             404
           </Typography>
-          <Typography align="center">{t('pages.not_found.text')}</Typography>
+          <Typography align="center">{t("pages.not_found.text")}</Typography>
         </Grid>
       </Grid>
     );

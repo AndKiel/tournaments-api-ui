@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { translate } from 'react-i18next';
-import { observable } from 'mobx';
-import { inject, observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
-import { Grid, Tabs, Tab } from 'material-ui';
-import Loading from '../../components/utils/loading';
-import TournamentCard from '../../components/tournaments/tournament_card';
-import CompetitorsList from '../../components/competitors/competitors_list';
-import RoundsList from '../../components/rounds/rounds_list';
-import ResultsList from '../../components/results/results_list';
-import styles from './tournament_page.module.scss';
+import React, { Component } from "react";
+import { translate } from "react-i18next";
+import { observable } from "mobx";
+import { inject, observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
+import { Grid, Tabs, Tab } from "material-ui";
+import Loading from "../../components/utils/loading";
+import TournamentCard from "../../components/tournaments/tournament_card";
+import CompetitorsList from "../../components/competitors/competitors_list";
+import RoundsList from "../../components/rounds/rounds_list";
+import ResultsList from "../../components/results/results_list";
+import styles from "./tournament_page.module.scss";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class TournamentPage extends Component {
   @observable activeTab = 0;
@@ -27,10 +27,10 @@ class TournamentPage extends Component {
       this.props.match.params.id
     );
     switch (this.props.store.tournamentsStore.item.status) {
-      case 'in_progress':
+      case "in_progress":
         this.activeTab = 1;
         break;
-      case 'ended':
+      case "ended":
         this.activeTab = 2;
         break;
       default:
@@ -62,11 +62,11 @@ class TournamentPage extends Component {
                 fullWidth
               >
                 <Tab
-                  label={t('pages.tournament.tabs.competitors')}
+                  label={t("pages.tournament.tabs.competitors")}
                   disableRipple
                 />
-                <Tab label={t('pages.tournament.tabs.rounds')} disableRipple />
-                <Tab label={t('pages.tournament.tabs.results')} disableRipple />
+                <Tab label={t("pages.tournament.tabs.rounds")} disableRipple />
+                <Tab label={t("pages.tournament.tabs.results")} disableRipple />
               </Tabs>
             </div>
             <div className={styles.contents}>

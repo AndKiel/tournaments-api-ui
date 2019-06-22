@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
 import {
   Paper,
   Table,
@@ -9,11 +9,11 @@ import {
   TableBody,
   TableRow,
   TableCell
-} from 'material-ui';
-import PlayerRow from './player_row';
+} from "material-ui";
+import PlayerRow from "./player_row";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class PlayersTable extends Component {
   render() {
@@ -27,7 +27,7 @@ class PlayersTable extends Component {
           <TableHead>
             <TableRow>
               <TableCell padding="dense">
-                {t('components.players.players_table.table', {
+                {t("components.players.players_table.table", {
                   letter: tableLetter
                 })}
               </TableCell>

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
-import { observable } from 'mobx';
-import autobind from 'autobind-decorator';
-import { IconButton, Tooltip } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import ConfirmationDialog from '../../utils/confirmation_dialog';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
+import { observable } from "mobx";
+import autobind from "autobind-decorator";
+import { IconButton, Tooltip } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import ConfirmationDialog from "../../utils/confirmation_dialog";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class RemoveCompetitorButton extends Component {
   @observable isDialogOpen = false;
@@ -29,7 +29,7 @@ class RemoveCompetitorButton extends Component {
     await this.props.store.tournamentsStore.item.removeCompetitor(
       this.props.competitor.id
     );
-    this.props.store.uiStore.setAlert(this.props.t('alerts.competitor.delete'));
+    this.props.store.uiStore.setAlert(this.props.t("alerts.competitor.delete"));
   }
 
   render() {
@@ -37,7 +37,7 @@ class RemoveCompetitorButton extends Component {
 
     if (
       tournament.isUserOrganiser &&
-      tournament.status === 'created' &&
+      tournament.status === "created" &&
       this.props.competitor.user_id === null
     ) {
       const { t } = this.props;
@@ -45,7 +45,7 @@ class RemoveCompetitorButton extends Component {
       return (
         <div>
           <Tooltip
-            title={t('components.competitors.buttons.remove_competitor')}
+            title={t("components.competitors.buttons.remove_competitor")}
           >
             <IconButton onClick={this.openDialog}>
               <FontAwesomeIcon size="xs" icon="user-times" />

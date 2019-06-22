@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { observer } from 'mobx-react/index';
-import { TextField } from 'material-ui';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { observer } from "mobx-react/index";
+import { TextField } from "material-ui";
 
 @translate()
 @observer

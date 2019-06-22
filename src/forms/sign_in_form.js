@@ -1,9 +1,9 @@
-import { Form } from 'mobx-react-form';
+import { Form } from "mobx-react-form";
 
 class SignInForm extends Form {
   setup() {
     return {
-      fields: ['email', 'password']
+      fields: ["email", "password"]
     };
   }
 
@@ -20,7 +20,7 @@ class SignInForm extends Form {
             error.response.data.error_description
           ) {
             form
-              .$('password')
+              .$("password")
               .invalidate(error.response.data.error_description);
           } else {
             throw error;

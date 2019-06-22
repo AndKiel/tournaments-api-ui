@@ -1,11 +1,11 @@
-import { Form } from 'mobx-react-form';
+import { Form } from "mobx-react-form";
 
 class PlayerForm extends Form {
   setup() {
     return {
-      fields: ['player.result_values'],
+      fields: ["player.result_values"],
       initials: {
-        'player.result_values': []
+        "player.result_values": []
       }
     };
   }
@@ -23,7 +23,7 @@ class PlayerForm extends Form {
             error.response.data.fields
           ) {
             for (let pair of Object.entries(error.response.data.fields)) {
-              form.$(`player.${pair[0]}`).invalidate(pair[1].join(', '));
+              form.$(`player.${pair[0]}`).invalidate(pair[1].join(", "));
             }
           } else {
             throw error;

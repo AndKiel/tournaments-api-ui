@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
-import { observable } from 'mobx';
-import autobind from 'autobind-decorator';
-import { IconButton, Tooltip } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import ConfirmationDialog from '../../utils/confirmation_dialog';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
+import { observable } from "mobx";
+import autobind from "autobind-decorator";
+import { IconButton, Tooltip } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import ConfirmationDialog from "../../utils/confirmation_dialog";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class AssignPlayersButton extends Component {
   @observable isDialogOpen = false;
@@ -28,19 +28,19 @@ class AssignPlayersButton extends Component {
   async assignPlayers() {
     await this.props.round.assignPlayers();
     this.props.store.uiStore.setAlert(
-      this.props.t('alerts.round.assign_players')
+      this.props.t("alerts.round.assign_players")
     );
   }
 
   render() {
     const tournament = this.props.store.tournamentsStore.item;
 
-    if (tournament.status === 'in_progress') {
+    if (tournament.status === "in_progress") {
       const { t } = this.props;
 
       return (
         <div>
-          <Tooltip title={t('components.rounds.buttons.assign_players')}>
+          <Tooltip title={t("components.rounds.buttons.assign_players")}>
             <IconButton onClick={this.openDialog}>
               <FontAwesomeIcon size="sm" icon="users" fixedWidth />
             </IconButton>

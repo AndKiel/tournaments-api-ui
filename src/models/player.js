@@ -1,9 +1,9 @@
-import { types, getEnv, flow } from 'mobx-state-tree';
-import Competitor from './competitor';
-import apiRoutes from '../utils/api_routes';
+import { types, getEnv, flow } from "mobx-state-tree";
+import Competitor from "./competitor";
+import apiRoutes from "../utils/api_routes";
 
 const Player = types
-  .model('Player', {
+  .model("Player", {
     id: types.identifier(types.string),
     competitor_id: types.reference(Competitor),
     result_values: types.array(types.number),

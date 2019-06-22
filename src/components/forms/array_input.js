@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
-import ChipInput from 'material-ui-chip-input';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
+import ChipInput from "material-ui-chip-input";
 
 @translate()
 @observer
@@ -25,7 +25,7 @@ class ArrayInput extends Component {
 
   @autobind
   async onKeyPress(e) {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
     }
   }

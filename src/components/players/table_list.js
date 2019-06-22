@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { observer } from 'mobx-react/index';
-import { Grid } from 'material-ui';
-import PlayersTable from './players_table';
-import groupBy from 'lodash/groupBy';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { observer } from "mobx-react/index";
+import { Grid } from "material-ui";
+import PlayersTable from "./players_table";
+import groupBy from "lodash/groupBy";
 
 @observer
 class CompetitorsList extends Component {
   render() {
-    const groupedPlayers = groupBy(this.props.players, 'table_number');
+    const groupedPlayers = groupBy(this.props.players, "table_number");
 
     return (
       <Grid container justify="center">

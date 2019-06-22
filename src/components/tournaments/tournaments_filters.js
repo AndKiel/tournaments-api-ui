@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
-import { inject, observer } from 'mobx-react/index';
-import autobind from 'autobind-decorator';
-import { DateTimePicker } from 'material-ui-pickers';
-import { Typography, TextField } from 'material-ui';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import debounce from 'lodash/debounce';
-import styles from './tournaments_filters.module.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { translate } from "react-i18next";
+import { inject, observer } from "mobx-react/index";
+import autobind from "autobind-decorator";
+import { DateTimePicker } from "material-ui-pickers";
+import { Typography, TextField } from "material-ui";
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import debounce from "lodash/debounce";
+import styles from "./tournaments_filters.module.scss";
 
 @translate()
-@inject('store')
+@inject("store")
 @observer
 class TournamentsFilters extends Component {
   debouncedOnFilter = debounce(this.props.onFilter, 500);
@@ -18,14 +18,14 @@ class TournamentsFilters extends Component {
   @autobind
   onWithNameChange(e) {
     const { filterStore } = this.props.store;
-    filterStore.setFilter('with_name', e.currentTarget.value);
+    filterStore.setFilter("with_name", e.currentTarget.value);
     this.debouncedOnFilter();
   }
 
   @autobind
   onStartsAtChange(date) {
     const { filterStore } = this.props.store;
-    filterStore.setFilter('starts_at_after', date ? date.toISOString() : null);
+    filterStore.setFilter("starts_at_after", date ? date.toISOString() : null);
     this.debouncedOnFilter();
   }
 
@@ -46,25 +46,25 @@ class TournamentsFilters extends Component {
       <div className={styles.wrapper}>
         <Typography component="span" className={styles.label}>
           <FontAwesomeIcon
-            className={styles['filter-icon']}
+            className={styles["filter-icon"]}
             icon="filter"
             fixedWidth
           />
-          {t('components.tournaments.tournaments_filters.title')}
+          {t("components.tournaments.tournaments_filters.title")}
         </Typography>
         <span className={styles.container}>
           <TextField
             id="with_name"
             className={styles.input}
             name="with_name"
-            label={t('forms.labels.filter.with_name')}
+            label={t("forms.labels.filter.with_name")}
             value={filterStore.with_name}
             onChange={this.onWithNameChange}
             margin="normal"
           />
           <div
             className={styles.adornment}
-            onClick={() => this.clearFilter('with_name', '')}
+            onClick={() => this.clearFilter("with_name", "")}
           >
             <FontAwesomeIcon icon="times-circle" fixedWidth />
           </div>
@@ -74,7 +74,7 @@ class TournamentsFilters extends Component {
             className={styles.input}
             id="starts_at_after"
             name="starts_at_after"
-            label={t('forms.labels.filter.starts_at_after')}
+            label={t("forms.labels.filter.starts_at_after")}
             value={filterStore.starts_at_after}
             onChange={this.onStartsAtChange}
             margin="normal"
@@ -87,7 +87,7 @@ class TournamentsFilters extends Component {
           />
           <div
             className={styles.adornment}
-            onClick={() => this.clearFilter('starts_at_after')}
+            onClick={() => this.clearFilter("starts_at_after")}
           >
             <FontAwesomeIcon icon="times-circle" fixedWidth />
           </div>

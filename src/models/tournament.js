@@ -1,13 +1,13 @@
-import { types, getEnv, getRoot, flow } from 'mobx-state-tree';
-import Competitor from './competitor';
-import Round from './round';
-import Result from './result';
-import moment from 'moment';
-import apiRoutes from '../utils/api_routes';
-import orderBy from 'lodash/orderBy';
+import { types, getEnv, getRoot, flow } from "mobx-state-tree";
+import Competitor from "./competitor";
+import Round from "./round";
+import Result from "./result";
+import moment from "moment";
+import apiRoutes from "../utils/api_routes";
+import orderBy from "lodash/orderBy";
 
 const Tournament = types
-  .model('Tournament', {
+  .model("Tournament", {
     id: types.identifier(types.string),
     competitors_limit: types.number,
     description: types.string,
@@ -15,7 +15,7 @@ const Tournament = types
     organiser_id: types.string,
     result_names: types.array(types.string),
     starts_at: types.string,
-    status: types.enumeration(['created', 'in_progress', 'ended']),
+    status: types.enumeration(["created", "in_progress", "ended"]),
     competitors: types.optional(types.array(Competitor), []),
     rounds: types.optional(types.array(Round), []),
     results: types.optional(types.array(Result), [])
@@ -34,7 +34,7 @@ const Tournament = types
 
       get confirmedCompetitorsCount() {
         return self.competitors.filter(c => {
-          return c.status === 'confirmed';
+          return c.status === "confirmed";
         }).length;
       },
 

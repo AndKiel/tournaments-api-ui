@@ -1,22 +1,24 @@
-import React from 'react';
-import { inject, observer } from 'mobx-react';
-import { Fade, Snackbar, SnackbarContent } from 'material-ui';
-import classNames from 'classnames';
-import styles from './alert.module.scss';
+import React from "react";
+import { inject, observer } from "mobx-react";
+import { Fade, Snackbar, SnackbarContent } from "material-ui";
+import classNames from "classnames";
+import styles from "./alert.module.scss";
 
 const Alert = ({
-  store: { uiStore: { alertText, alertType, isAlertOpen } }
+  store: {
+    uiStore: { alertText, alertType, isAlertOpen }
+  }
 }) => {
   const alertClasses = classNames({
-    [styles['alert-error']]: alertType === 'error',
-    [styles['alert-success']]: alertType === 'success'
+    [styles["alert-error"]]: alertType === "error",
+    [styles["alert-success"]]: alertType === "success"
   });
 
   return (
     <Snackbar
       anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'left'
+        vertical: "bottom",
+        horizontal: "left"
       }}
       transition={Fade}
       open={isAlertOpen}
@@ -26,4 +28,4 @@ const Alert = ({
   );
 };
 
-export default inject('store')(observer(Alert));
+export default inject("store")(observer(Alert));

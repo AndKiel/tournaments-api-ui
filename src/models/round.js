@@ -1,9 +1,9 @@
-import { types, getEnv, flow } from 'mobx-state-tree';
-import Player from './player';
-import apiRoutes from '../utils/api_routes';
+import { types, getEnv, flow } from "mobx-state-tree";
+import Player from "./player";
+import apiRoutes from "../utils/api_routes";
 
 const Round = types
-  .model('Round', {
+  .model("Round", {
     id: types.identifier(types.string),
     competitors_limit: types.number,
     created_at: types.string,

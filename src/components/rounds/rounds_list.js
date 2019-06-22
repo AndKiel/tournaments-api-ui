@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { observable } from 'mobx';
-import { inject, observer } from 'mobx-react/index';
-import { IconButton, Typography } from 'material-ui';
-import NewRoundButton from './buttons/new_round_button';
-import EditRoundButton from './buttons/edit_round_button';
-import AssignPlayersButton from './buttons/assign_players_button';
-import RemoveRoundButton from './buttons/remove_round_button';
-import Round from './round';
-import classNames from 'classnames';
-import styles from './rounds_list.module.scss';
+import React, { Component } from "react";
+import { observable } from "mobx";
+import { inject, observer } from "mobx-react/index";
+import { IconButton, Typography } from "material-ui";
+import NewRoundButton from "./buttons/new_round_button";
+import EditRoundButton from "./buttons/edit_round_button";
+import AssignPlayersButton from "./buttons/assign_players_button";
+import RemoveRoundButton from "./buttons/remove_round_button";
+import Round from "./round";
+import classNames from "classnames";
+import styles from "./rounds_list.module.scss";
 
-@inject('store')
+@inject("store")
 @observer
 class RoundsList extends Component {
   @observable currentRound = 0;
@@ -19,7 +19,7 @@ class RoundsList extends Component {
     const tournament = this.props.store.tournamentsStore.item;
     const round = tournament.rounds[this.currentRound];
     const contentClasses = classNames(styles.main, {
-      [styles['not-signed-in']]: !this.props.store.sessionStore.isSignedIn
+      [styles["not-signed-in"]]: !this.props.store.sessionStore.isSignedIn
     });
 
     return (

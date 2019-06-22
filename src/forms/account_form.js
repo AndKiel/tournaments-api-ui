@@ -1,9 +1,9 @@
-import { Form } from 'mobx-react-form';
+import { Form } from "mobx-react-form";
 
 class AccountForm extends Form {
   setup() {
     return {
-      fields: ['user.email', 'user.password', 'user.password_confirmation']
+      fields: ["user.email", "user.password", "user.password_confirmation"]
     };
   }
 
@@ -20,7 +20,7 @@ class AccountForm extends Form {
             error.response.data.fields
           ) {
             for (let pair of Object.entries(error.response.data.fields)) {
-              form.$(`user.${pair[0]}`).invalidate(pair[1].join(', '));
+              form.$(`user.${pair[0]}`).invalidate(pair[1].join(", "));
             }
           } else {
             throw error;
