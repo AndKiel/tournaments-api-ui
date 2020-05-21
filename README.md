@@ -2,8 +2,6 @@
 
 Front-end for tournament management application.
 
-[Demo](https://tournaments-api-ui.herokuapp.com/) is available on Heroku free dyno.
-
 ### Prerequisites ###
 
 - [Docker](https://www.docker.com/products/docker-desktop)
