@@ -94,8 +94,14 @@ class ApiClient {
   }
 
   async revokeToken() {
-    await this.post(apiRoutes.oauthRevoke(), { authenticate: true });
-    this.nullifyToken();
+    if (this.hasToken()) {
+      await this.post(apiRoutes.oauthRevoke(), {
+        data: {
+          token: this.token.access_token
+        }
+      });
+      this.nullifyToken();
+    }
   }
 
   // Helpers

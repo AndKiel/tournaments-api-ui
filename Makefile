@@ -14,3 +14,6 @@ install:
 
 start:
 	docker-compose up web
+
+down:
+	docker-compose down
