@@ -5,7 +5,7 @@ const FilterStore = types
   .model("FilterStore", {
     starts_at_after: types.optional(
       types.maybe(types.string),
-      moment().toISOString()
+      moment().subtract(1, "day").toISOString()
     ),
     with_name: types.optional(types.maybe(types.string), "")
   })

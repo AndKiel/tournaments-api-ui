@@ -28,7 +28,10 @@ class NewRoundModal extends Component {
   @autobind
   async submitImpl() {
     const tournament = this.props.store.tournamentsStore.item;
-    await tournament.addRound(this.form.values());
+    const data = this.form.values();
+    data.round.competitors_limit = parseInt(data.round.competitors_limit, 10);
+    data.round.tables_count = parseInt(data.round.tables_count, 10);
+    await tournament.addRound(data);
     this.props.store.uiStore.setAlert(this.props.t("alerts.round.create"));
     this.props.onClose();
   }

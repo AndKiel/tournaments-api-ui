@@ -28,7 +28,10 @@ class EditRoundModal extends Component {
 
   @autobind
   async submitImpl() {
-    await this.props.round.update(this.form.values());
+    const data = this.form.values();
+    data.round.competitors_limit = parseInt(data.round.competitors_limit, 10);
+    data.round.tables_count = parseInt(data.round.tables_count, 10);
+    await this.props.round.update(data);
     this.props.store.uiStore.setAlert(this.props.t("alerts.round.update"));
     this.props.onClose();
   }

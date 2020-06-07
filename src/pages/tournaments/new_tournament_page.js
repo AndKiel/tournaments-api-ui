@@ -41,9 +41,9 @@ class NewTournamentPage extends Component {
 
   @autobind
   async submitImpl() {
-    const response = await this.props.store.organisedTournamentsStore.createTournament(
-      this.form.values()
-    );
+    const data = this.form.values();
+    data.tournament.competitors_limit = parseInt(data.tournament.competitors_limit, 10);
+    const response = await this.props.store.organisedTournamentsStore.createTournament(data);
     this.props.history.push(routes.tournament(response.data.tournament.id));
     this.props.store.uiStore.setAlert(this.props.t("alerts.tournament.create"));
   }

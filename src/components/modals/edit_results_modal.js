@@ -43,7 +43,9 @@ class EditResultsModal extends Component {
 
   @autobind
   async submitImpl() {
-    await this.props.player.update(this.form.values());
+    const data = this.form.values();
+    data.player.result_values = data.player.result_values.map(value => parseInt(value, 10));
+    await this.props.player.update(data);
     this.props.store.uiStore.setAlert(this.props.t("alerts.result.update"));
     this.props.onClose();
   }
