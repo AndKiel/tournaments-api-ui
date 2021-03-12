@@ -78,7 +78,7 @@
     "qs": "^6.5.1",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
-    "react-dev-utils": "^9.0.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.8.6",
     "react-i18next": "7.4.0",
     "react-router-dom": "^4.2.2",
